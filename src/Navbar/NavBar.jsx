@@ -15,8 +15,8 @@ function NavBar() {
                 <h1>CES'eat</h1>
             </div>
             <div className="Nav-right">
-                <Link to="/">Home</Link>
-                <a href="#about">About</a>
+                <Link to="/">Accueil</Link>
+                <a href="#about">A propos</a>
                 <a href="/panier">Panier</a>
                 <a href="/connexion">Se connecter</a>
             </div>

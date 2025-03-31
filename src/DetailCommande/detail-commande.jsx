@@ -5,11 +5,11 @@ import Footer from '../Footer/Footer.jsx';
 import ImgResto from '../assets/img/burger.jpg';
 import Menu from '../assets/img/menu.jpg';
 
-function DetailCommande() {
+function RestaurantDetailsCommande() {
 
     const [items] = useState([
         { id: 1, Article: 'Menu 1', image: Menu, prix: 17 },
-        { id: 2, Article: 'Frite sans sauce', image: Menu, prix: 5 },
+        { id: 2, Article: 'Frites sans sauce', image: Menu, prix: 5 },
         { id: 3, Article: 'Thé noir', image: Menu, prix: 2 },
     ]);
     const [items2] = useState([
@@ -23,7 +23,7 @@ function DetailCommande() {
                 <img src={ImgResto} alt="Background" className="background-image-modifcarte" />
             </div>
             <h1 className="titre-modifcarte">Big Bite Burger</h1>
-            <h1 className={"Commande-titre"}>Détail de la commande</h1>
+            <h1 className={"Commande-titre"}>Détails de la commande</h1>
             <div className="container-detail">
                 <div className="container-detail-texte">
                     <p className="detail-texte"><b>Commande :</b> {items2[0].Commande}</p>
@@ -47,4 +47,4 @@ function DetailCommande() {
     );
 }
 
-export default DetailCommande;
+export default RestaurantDetailsCommande;

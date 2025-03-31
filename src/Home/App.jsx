@@ -11,7 +11,7 @@ import RestaurantModifMenu from "../Restaurant/modifier_menu/restaurant-modif-me
 import Paiement from "../Panier/paiement.jsx";
 import RestaurantGestionCommande from "../Restaurant/gestion_commande/restaurant-gestion-commande.jsx";
 import CommandeLivreur from "../Livreur/Commande/commande-livreur.jsx";
-import DetailCommande from "../DetailCommande/detail-commande.jsx";
+import RestaurantDetailsCommande from "../DetailCommande/detail-commande.jsx";
 
 
 function App() {
@@ -108,7 +108,7 @@ function AppWrapper() {
                 <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
                 <Route path="/paiement" element={<Paiement />} />
                 <Route path="/livreur-commande" element={<CommandeLivreur />} />
-                <Route path="/detail-commande" element={<DetailCommande />} />
+                <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
             </Routes>
         </Router>
     );

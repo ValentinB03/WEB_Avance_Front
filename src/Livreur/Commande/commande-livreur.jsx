@@ -8,9 +8,9 @@ import background from '../../assets/livraison-resto.jpg'
 function CommandeLivreur() {
 
     const [items] = useState([
-        { id: 1, resto: 'Big Bite Burger', Adresse_resto: '25 rue de la guerre', Nom_client: 'Jean cul', Adresse_client: '24 rue de la paix', prix_livraison: 1.2},
-        { id: 2, resto: 'Big Bite Burger', Adresse_resto: '25 rue de la guerre', Nom_client: 'Jean cul', Adresse_client: '24 rue de la paix', prix_livraison: 1.2},
-        { id: 3, resto: 'Big Bite Burger', Adresse_resto: '25 rue de la guerre', Nom_client: 'Jean cul', Adresse_client: '24 rue de la paix', prix_livraison: 1.2},
+        { id: 1, resto: 'Big Bite Burger', Adresse_resto: '25 rue de la guerre', Nom_client: 'Jean MARTIN', Adresse_client: '24 rue de la paix', prix_livraison: 1.2},
+        { id: 2, resto: 'Big Bite Burger', Adresse_resto: '25 rue de la guerre', Nom_client: 'Jean DIDIER', Adresse_client: '24 rue de la paix', prix_livraison: 1.2},
+        { id: 3, resto: 'Big Bite Burger', Adresse_resto: '25 rue de la guerre', Nom_client: 'Jean MARCEL', Adresse_client: '24 rue de la paix', prix_livraison: 1.2},
 
     ]);
     return (
