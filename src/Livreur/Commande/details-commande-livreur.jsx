@@ -3,7 +3,7 @@ import './details-commande-livreur.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import ImgResto from '../../assets/img/burger.jpg';
-import Menu from '../../assets/img/menu.jpg';
+
 
 function LivreurDetailsCommande() {
 
