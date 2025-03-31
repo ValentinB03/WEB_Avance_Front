@@ -1,0 +1,37 @@
+.detail-texte{
+    color: black;
+    font-size: 1.3vw;
+    margin: 0;
+}
+
+.container-detail-texte{
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container-maps iframe{
+    width:40vw;
+    height:25vw;
+    border: 0
+}
+
+.container-detail-items {
+    width: calc(35% - 6vw); /* Ensure three items per row with gap */
+    border: 3px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    padding: 0 0 1vw 0;
+}
+
+.containers-liste-items img{
+    width: 12vw;
+    height: 10vw;
+    border-radius: 17px;
+}
+
+.Commande-titre{
+    font-size: 3vw;
+}

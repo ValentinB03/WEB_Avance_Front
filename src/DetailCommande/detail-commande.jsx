@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './detail-commane.css';
+import './detail-commande.css';
 import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import ImgResto from '../assets/img/burger.jpg';

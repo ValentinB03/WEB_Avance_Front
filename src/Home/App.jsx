@@ -12,6 +12,7 @@ import Paiement from "../Panier/paiement.jsx";
 import RestaurantGestionCommande from "../Restaurant/gestion_commande/restaurant-gestion-commande.jsx";
 import CommandeLivreur from "../Livreur/Commande/commande-livreur.jsx";
 import RestaurantDetailsCommande from "../DetailCommande/detail-commande.jsx";
+import LivreurDetailsCommande from "../Livreur/Commande/details-commande-livreur.jsx";
 
 
 function App() {
@@ -108,6 +109,7 @@ function AppWrapper() {
                 <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
                 <Route path="/paiement" element={<Paiement />} />
                 <Route path="/livreur-commande" element={<CommandeLivreur />} />
+                <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
                 <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
             </Routes>
         </Router>
