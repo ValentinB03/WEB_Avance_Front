@@ -1,0 +1,102 @@
+.Background {
+    position: absolute;
+    z-index: -1;
+}
+
+.background-image {
+    width: 100%;
+    height: 101vh; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the area */
+}
+
+
+.name-resto {
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+}
+
+.content {
+    width: 100%;
+}
+
+.liste-article {
+    width: 100%;
+    background: linear-gradient(to right, #FF5F67, #FFC76C);
+    padding: 1% 2%;
+}
+
+.liste-article p {
+    color: black;
+}
+
+.liste-menu, .liste-articleseul{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+}
+
+.menu-image {
+    width: 100%;
+    max-width: 250px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+button {
+    padding: 10px 80px;
+    border-radius: 0;
+    margin-left: 0;
+}
+
+.Menu, .Article-seul{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 650px;
+    background: white;
+    border: 3px solid black;
+    border-radius: 25px;
+}
+
+.test-menu, .test-article{
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+.info-resto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    text-align: center;
+    color: black;
+}
+
+@media (max-width: 700px) {
+    .Menu, .Article-seul {
+        flex-direction: column;
+        max-width: 250px;
+    }
+
+    .menu-image {
+        width: 250px;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 25px;
+    }
+
+    .test-menu, .test-article{
+        padding: 0;
+    }
+
+    button {
+        padding: 2% 10%;
+        margin-left: 0;
+    }
+    .name-resto {
+        top: 15%;
+    }
+}

@@ -1,0 +1,109 @@
+.Background {
+    position: absolute;
+    z-index: -1;
+}
+
+.background-image-panier {
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    height: 280px;
+}
+
+.Commande-titre{
+    color: black;
+}
+
+.titre-panier {
+    z-index: 1;
+    margin-top: 20px;
+    font-size: 3vw;
+}
+
+.content-img {
+    width: 100%;
+}
+.liste-panier{
+    width: 100%;
+}
+
+
+.liste-panier p{
+    color: black;
+    font-size: 1.5vw;
+}
+
+.all-partie{
+    display: flex;
+    margin-bottom: 10vh;
+}
+
+.partie-commande{
+    padding-right: 1vw;
+    display: flex;
+    border: 3px solid black;
+    border-radius: 20px;
+    margin-left: 5%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    max-width: 50vw;
+    gap: 3vw;
+    justify-content: space-between;
+}
+
+.quantite{
+    border: 1px solid gray;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partie-commande img{
+    width: 15vw;
+    height: auto;
+    border-radius: 17px;
+}
+
+.partie-bouton {
+    padding: 10px 80px;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.partie-bouton button {
+    padding: 1vw 5vw;
+}
+
+@media (max-width: 600px) {
+    .all-partie{
+        display: flex    ;
+        margin-bottom: 10vh;
+        flex-direction: column;
+        align-items: center;
+    }
+    .partie-commande {
+        max-width: 75vw;
+    }
+
+    .partie-commande img {
+        width: 30vw;
+        height: auto;
+    }
+
+    .liste-panier p {
+        font-size: 2.5vw;
+    }
+
+    .partie-bouton {
+        flex-direction: row;
+    }
+
+    .partie-bouton button {
+        padding: 10px 30px;
+    }
+}

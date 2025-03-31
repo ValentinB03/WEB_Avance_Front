@@ -1,0 +1,37 @@
+.sous-titre{
+    color: black;
+    width: 100%;
+    margin-left: 5vw;
+    font-size: 3vw;
+}
+
+.container-livraison{
+    color: black;
+    display: flex;
+    gap: 10vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15vw;
+}
+
+.container-livraison button{
+    border-radius: 10px;
+}
+
+.info-commande-livreur-texte{
+    border: 3px solid black;
+    border-radius: 20px;
+    padding-left: 1vw;
+}
+
+.info-commande-livreur{
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    margin: 0 3vw;
+}
+.info-commande-livreur-bouton {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Adjust the value as needed */
+}

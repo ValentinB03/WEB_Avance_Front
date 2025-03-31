@@ -1,0 +1,123 @@
+.Background {
+    position: absolute;
+    z-index: -1;
+}
+
+.background-image-modifcarte {
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    height: 300px;
+}
+
+.Commande-titre{
+    color: black;
+}
+
+.titre-modifcarte {
+    z-index: 1;
+    margin-top: 20px;
+    font-size: 4vw;
+}
+
+.content-img {
+    width: 100%;
+}
+
+.columns-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the input-group elements horizontally */
+    width: 50%;
+    gap: 30px;
+}
+
+.column h1{
+    color: black;
+    text-align: center;
+}
+
+.columns-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 5px;
+    background-color: black;
+    transform: translateX(-50%);
+}
+
+.input-group {
+    width: 100%; /* Ensure the input-group takes full width of the column */
+    max-width: 400px; /* Optional: Set a max-width for better control */
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+.input-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: black;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.liste-article{
+    width: 100%;
+}
+
+.all-article{
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    margin: 10vh 0;
+    border: 3px solid black;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.all-article img{
+    width: 15vw;
+    border-radius: 17px;
+}
+
+
+.all-article p{
+    color: black;
+    text-align: center;
+}
+
+.all-article button{
+    border-radius: 10px;
+}

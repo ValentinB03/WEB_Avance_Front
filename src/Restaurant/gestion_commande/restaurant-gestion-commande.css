@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-evenly;
+    margin: 5vw;
+    color: black;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.vertical-bar {
+    width: 1px;
+    background-color: black;
+    margin: 0 2vw;
+    align-self: stretch;
+}
+
+.etat-commande {
+    color: black;
+    font-size: 1vw;
+    font-weight: initial;
+    display: flex;
+    margin-bottom: 5vw;
+}
+
+.info-commande {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-commande p {
+    margin: 0 2vw 0 0;
+}
+
+.bouton-commande, .bouton-commande-attente {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.bouton-accepter {
+    background-color: green;
+}
+
+.bouton-refuser {
+    background-color: firebrick;
+}
+
+.bouton-commande-attente button{
+    border-radius: 10px;
+}
+
+.bouton-commande button {
+    border-radius: 10px;
+}
+
+.CommandeEnCours, .CommandeEnAttente {
+    flex: 1;
+}

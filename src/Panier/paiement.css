@@ -1,0 +1,106 @@
+.paiement{
+    display: flex;
+    flex-direction: column;
+    background-color: darkgrey;
+    color: black;
+    padding: 1vw 1vw;
+    justify-content: center;
+    width: 25vw;
+
+}
+
+.paiement h1{
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    font-size: 2vw;
+}
+
+.paiement p{
+    margin: 0;
+    font-size: 1vw;
+}
+
+.paiement input{
+    border-radius: 0;
+    background-image: none;
+}
+
+.data-ccv{
+    margin-bottom: 50px;
+}
+
+.data-ccv {
+    display: flex;
+}
+
+.data-ccv input {
+    width: 100%;
+}
+
+.liste-resume img{
+    width: 10.2vw;
+    height: auto;
+    border-radius: 17px;
+
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 5vw;
+}
+
+.resume{
+    background-color: darkgrey;
+    color: black;
+    padding: 1vw;
+}
+
+.article-resume{
+    display: flex;
+    flex-direction: row;
+    border: 3px solid;
+    border-radius: 20px;
+    gap: 1vw;
+    align-items: flex-end;
+    width: 25vw;
+    margin: 1vw 0;
+    justify-content: space-between;
+}
+
+.article-resume p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.8vw;
+}
+
+.resume h1 {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    font-size: 2vw;
+}
+
+.total-article, .total-livraison, .total-frais, .totals{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1vw;
+    padding: 0 3vw;
+    font-weight: bold;
+}
+
+.total-article{
+    border-top: 3px solid;
+}
+
+.total-frais{
+    border-bottom: 3px solid;
+}
+
+
+
+
+
