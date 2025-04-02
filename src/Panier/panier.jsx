@@ -17,9 +17,8 @@ function Panier() {
     return (
         <div className="App">
             <NavBar />
-            <div className="content-img">
-                <img src={Marbre} alt="Background" className="background-image-panier" />
-            </div>
+            <img src={Marbre} alt="Background" className="background-image-panier" />
+
             <h1 className="titre-panier">Mon Panier</h1>
             <h1 className={"Commande-titre"}>Commande</h1>
             <div className={"liste-panier"}>

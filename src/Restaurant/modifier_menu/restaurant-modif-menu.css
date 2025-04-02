@@ -6,8 +6,6 @@
 .background-image-modifcarte {
     width: 100%;
     object-fit: cover;
-    position: absolute;
-    top: 0;
     height: 300px;
 }
 
@@ -17,7 +15,7 @@
 
 .titre-modifcarte {
     z-index: 1;
-    margin-top: 20px;
+    margin-top: -80px;
     font-size: 4vw;
 }
 

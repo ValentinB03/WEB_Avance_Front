@@ -5,16 +5,13 @@
 
 .background-image-inscription {
     width: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
     height: 280px;
 }
 
 
 .titre-inscription {
     z-index: 1;
-    margin-top: 20px;
+    margin-top: -80px;
 }
 
 .content-inscription {
@@ -22,7 +19,7 @@
 }
 
 .liste-info {
-    width: 100%;
+    width: 80%;
     max-width: 400px; /* Adjust as needed */
     padding: 20px;
     background-color: white;

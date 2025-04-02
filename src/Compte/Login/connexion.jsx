@@ -10,9 +10,8 @@ function Inscription() {
     return (
         <div className="App">
             <NavBar />
-            <div className="content-connexion">
-                <img src={Marbre} alt="Background" className="background-image-connexion" />
-            </div>
+            <img src={Marbre} alt="Background" className="background-image-connexion" />
+
             <h1 className="titre-connexion">Se connecter</h1>
                 <div className={"liste-info"}>
                     <form>

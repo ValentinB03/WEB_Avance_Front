@@ -16,9 +16,8 @@ function CommandeLivreur() {
     return (
         <div className="App">
             <NavBar />
-            <div className="content-img">
-                <img src={background} alt="Background" className="background-image-panier" />
-            </div>
+            <img src={background} alt="Background" className="background-image-panier" />
+
             <h1 className="titre-panier">Liste des commandes disponibles</h1>
             <h1 className={"sous-titre"}>Commandes en attente de livreur</h1>
             <div className={"container-livraison"}>

@@ -10,10 +10,10 @@ function Inscription() {
     return (
         <div className="App">
             <NavBar />
+            <img src={Marbre} alt="Background" className="background-image-inscription" />
+
+
             <h1 className="titre-inscription">S'inscrire</h1>
-            <div className="content-inscription">
-                <img src={Marbre} alt="Background" className="background-image-inscription" />
-            </div>
                 <div className={"liste-info"}>
                     <form>
                         <label htmlFor="email">Email</label>

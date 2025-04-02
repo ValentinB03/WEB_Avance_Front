@@ -5,16 +5,14 @@
 
 .background-image-connexion {
     width: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
     height: 280px;
 }
 
 
 .titre-connexion {
     z-index: 1;
-    margin-top: 20px;
+    margin-top: -70px;
+
 }
 
 .content-connexion {
@@ -22,7 +20,7 @@
 }
 
 .liste-info {
-    width: 100%;
+    width: 80%;
     max-width: 400px; /* Adjust as needed */
     padding: 20px;
     background-color: white;
