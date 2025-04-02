@@ -44,7 +44,7 @@
     border-radius: 17px;
 
 }
-.container{
+.container-paiement{
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -100,6 +100,38 @@
     border-bottom: 3px solid;
 }
 
+@media (max-width: 768px) {
+    .paiement{
+        width: 80%;
+    }
+    .resume{
+        width: 80%;
+    }
+    .article-resume{
+        width: 75%;
+    }
+    .article-resume img{
+        width: 22vw;
+    }
+    .article-resume p {
+        font-size: 1.73vw;
+    }
+
+    .container-paiement{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin-top: 15vw;
+    }
+
+    .paiement p {
+        font-size: 1.2rem;
+    }
+
+    .paiement h1 {
+        font-size: 1.5rem;
+    }
+}
 
 
 
