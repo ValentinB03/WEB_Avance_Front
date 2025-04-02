@@ -17,14 +17,13 @@ function RestaurantModifMenu() {
     return (
         <div className="App">
             <NavBar />
-            <div className="content-img">
-                <img src={ImgResto} alt="Background" className="background-image-modifcarte" />
-            </div>
+            <img src={ImgResto} alt="Background" className="background-image-modifcarte" />
+
             <h1 className="titre-modifcarte">Big Bite Burger</h1>
             <h1 className={"Commande-titre"}>Modification de la carte</h1>
             <div className="columns-container">
                 <div className="column">
-                    <h1 className="titre-modifcarte">Ajouter d'un article</h1>
+                    <h1>Ajouter d'un article</h1>
                     <div className="input-group">
                         <label htmlFor="item-name">Nom de l'article</label>
                         <input type="remplire" id="item-name" name="item-name" />
@@ -49,7 +48,7 @@ function RestaurantModifMenu() {
                     <button className="btn-modifcarte">Ajouter l'article</button>
                 </div>
                 <div className="column">
-                    <h1 className="titre-modifcarte">Listes des articles</h1>
+                    <h1>Listes des articles</h1>
                     <div className={"liste-article1"}>
                         {items.map(item => (
                             <div key={item.id} className="all-article">

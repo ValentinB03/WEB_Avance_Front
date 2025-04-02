@@ -18,7 +18,7 @@
 
 .etat-commande {
     color: black;
-    font-size: 1vw;
+    font-size: 1.3vw;
     font-weight: initial;
     display: flex;
     margin-bottom: 5vw;
@@ -58,4 +58,50 @@
 
 .CommandeEnCours, .CommandeEnAttente {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+button{
+    padding: 0.5vw 1vw;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .vertical-bar {
+        display: none;
+    }
+
+    .titre-panier{
+        font-size: 2rem;
+    }
+
+    .etat-commande {
+        flex-direction: column;
+    }
+
+    .CommandeEnCours p{
+        font-size: 1.2rem;
+    }
+
+    .titre-panier{
+        font-size: 1.5rem;
+    }
+
+    button{
+        font-size: 10px;
+        padding: 10px 20px;
+    }
+
+    .bouton-commande, .bouton-commande-attente{
+        flex-direction: row;
+
+    }
 }
