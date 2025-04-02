@@ -27,7 +27,6 @@ function LivreurDetailsCommande() {
                     <p className="detail-texte"><b>Etat de la commande :</b> {dcl_items2[0].EtatCommande}</p>
                     <p className="detail-texte"><b>Prix total :</b> {dcl_items2[0].prix}€</p>
                 </div>
-                <p></p>
                 <div className="container-maps">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.9999999999995!2d2.3522213156749424!3d48.85661407928792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fdfb7e8c9b7%3A0x40a8e9c7e8e8c9b7!2sBig%20Bite%20Burger%20Restaurant!5e0!3m2!1sfr!2sfr!4v1616161616161"
@@ -35,10 +34,8 @@ function LivreurDetailsCommande() {
                         loading="lazy"
                     ></iframe>
                 </div>
+                <button className="collected-button">Commande récupérée</button>
             </div>
-
-
-            <p></p>
             <Footer />
         </div>
     );

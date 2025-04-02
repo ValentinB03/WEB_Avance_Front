@@ -13,7 +13,13 @@
 .container-maps iframe{
     width:40vw;
     height:25vw;
+    margin: 2vw 0;
     border: 0
+}
+
+.collected-button{
+    width:100%;
+    margin-bottom: 2vw;
 }
 
 .container-detail-items {
