@@ -1,0 +1,175 @@
+.background-image-profil_developpeur {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Assure que l'image couvre toute la zone sans déformation */
+}
+
+.titre-profil_developpeur {     /* Titre de la section */
+    z-index: 1;                 /* Position au-dessus de l'image de fond */
+    margin-top: -70px;          /* Ajuste la position du titre */
+    color: white;               /* Couleur du texte */
+}
+
+
+form {      /* Formulaire de la page */
+    color: black;               /* Couleur du texte */
+    display: flex;              /* Utilise Flexbox pour la mise en page */
+    flex-direction: column;     /* Colonne pour empiler les éléments */
+    align-items: normal;        /* Centre les éléments horizontalement */
+    width: 100%;                /* Prend toute la largeur de son conteneur */
+}
+
+
+
+
+
+
+/*------------------------------------------------------------------*/
+/*Partie du haut contenant Modifier le profil et supprimer le profil*/
+/*------------------------------------------------------------------*/
+.container_top {        /* bloc contenant Modifier et supprimer profil */
+    display: grid;                      /* Utilise une grille CSS pour la mise en page */
+    grid-template-columns: 1fr 1fr;     /* Deux colonnes de taille égale */
+    gap: 20vw;                          /* Espace entre les colonnes */
+    place-items: center;                /* Centre les éléments dans la grille */
+}
+
+.modifier-profil_developpeur, .supprimer-profil_developpeur {
+    width: 100%;    /* Assure que les éléments prennent toute la largeur de leur cellule */
+}
+
+.titre-modifier_profil_developpeur {
+    text-align: center;     /* Centre le texte axe x*/
+    margin: 0 auto;         /* Centre le texte axe y */
+}
+
+
+
+.modifier_email, .modifier-password, .modifier-account_name {
+    display: flex;                      /* Utilise Flexbox pour la mise en page */
+    flex-direction: row;                /* Colonne pour empiler les éléments */
+    align-items: flex-end;              /* Centre les éléments horizontalement */
+    justify-content: space-between;     /* Espace entre les éléments */
+}
+
+.save-button {
+    width: auto;        /* Ajuste la taille du bouton à son contenu */
+    margin-left: 2vw;   /* Espace entre le bouton et le champ de texte */
+    border: 1px solid lightgray;    /* Bordure noire */
+
+}
+/*-----------------------Fin partie supérieur-----------------------*/
+
+
+
+
+/*------------------------------------------------------------------*/
+/*---------------Partie du bas contenant les composants-------------*/
+/*------------------------------------------------------------------*/
+.container-consulter_composants{
+    margin: 5vw 0 10vw 0;   /* Espace entre le haut et le bas */
+    text-align: center;     /* Centre le texte */
+}
+
+
+
+.grid-composants {
+    display: grid;                              /* Utilise une grille CSS pour la mise en page */
+    grid-template-columns: repeat(3, 1fr);      /* Trois colonnes de taille égale */
+    gap: 20px;                                  /* Espace entre les éléments */
+}
+
+.composant-service_paiement, .composant-liste_restaurants, .composant-suivi_livraison {
+    display: flex;
+    flex-direction: column;
+    align-items: center;                       /* Centre les éléments horizontalement */
+}
+
+
+
+.composant-box_1, .composant-box_2, .composant-box_3 {
+    width: 50%;                                /* Assure que les éléments prennent 50% de la largeur de leur cellule */
+    margin: 0 auto;                           /* Centre les éléments horizontalement */
+    height: 10vw;                              /* Hauteur fixe pour les composants */
+    text-align: center;                        /* Centre le texte */
+    align-content: center;                     /* Centre le contenu */
+    color: white;                             /* Couleur du texte */
+    background-color: gray;                     /* Couleur de fond grise */
+    border-radius: 10px;                        /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Ombre légère */
+}
+
+.consulter-button {         /* Bouton pour consulter le composant */
+    padding: 10px 20px;         /* Espacement interne */
+    width: 50%;              /* Centre le bouton horizontalement */
+    background-color: white;    /* Couleur de fond du bouton */
+    color: black;               /* Couleur du texte */
+    border: 1px solid lightgray;    /* Bordure noire */
+    border-radius: 5px;         /* Coins arrondis */
+    cursor: pointer;            /* Curseur en forme de main */
+}
+/*---------------------Fin partie composants--------------------*/
+
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+/*------------------------------------------------*/
+/* Media Queries pour rendre le design responsive */
+/*------------------------------------------------*/
+@media (max-width: 725px) {
+    .titre-profil_developpeur {
+        font-size: 1.2rem; /* Réduire encore la taille de la police pour les très petits écrans */
+        margin-top: -30px; /* Ajuster la marge pour éviter le chevauchement */
+        color: white;
+    }
+
+    .modifier_email, .modifier-password, .modifier-account_name {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .save-button {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .container_top {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 20px; /* Espace entre les lignes */
+    }
+
+    .supprimer-profil_developpeur {
+        margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
+    }
+
+    .container_top {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 20px; /* Espace entre les lignes */
+    }
+
+    .supprimer-profil_developpeur {
+        margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
+    }
+
+    .grid-composants {
+        grid-template-columns: 1fr; /* Une seule colonne */
+    }
+
+
+
+
+
+    .footer {
+        position: relative; /* Changer la position pour éviter les chevauchements */
+        margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
+    }
+}
