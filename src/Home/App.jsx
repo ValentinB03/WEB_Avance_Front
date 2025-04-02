@@ -13,6 +13,7 @@ import RestaurantGestionCommande from "../Restaurant/gestion_commande/restaurant
 import CommandeLivreur from "../Livreur/Commande/commande-livreur.jsx";
 import RestaurantDetailsCommande from "../DetailCommande/detail-commande.jsx";
 import LivreurDetailsCommande from "../Livreur/Commande/details-commande-livreur.jsx";
+import RestaurantStatistique from "../Restaurant/statistique/restaurant-statistique.jsx";
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
                     points à chaque commande et échangez-les contre des réductions ou des livraisons gratuites. Que ce soit
                     pour un déjeuner rapide ou un dîner gourmand, CES’eat vous simplifie la vie en quelques clics ! 🚀🍔🍕
                 </p>
+
                 <div id="liste-resto" className="liste-resto">
                     <p className="label-list-resto">Liste de nos restaurants</p>
                     <div className="input-container">
@@ -111,6 +113,7 @@ function AppWrapper() {
                 <Route path="/livreur-commande" element={<CommandeLivreur />} />
                 <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
                 <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
+                <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
             </Routes>
         </Router>
     );

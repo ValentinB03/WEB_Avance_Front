@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
+import { IoNotifications } from "react-icons/io5";
+import Notification from "../Notification/notification.jsx";
+import '../notification/notification.css'
 
 function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [notificationOpen, setNotificationOpen] = useState(false);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const toggleNotification = () => {
+        setNotificationOpen(!notificationOpen);
     };
 
     return (
@@ -16,9 +24,9 @@ function NavBar() {
             </div>
             <div className="Nav-right">
                 <Link to="/">Accueil</Link>
-                <a href="#about">A propos</a>
                 <a href="/panier">Panier</a>
                 <a href="/connexion">Se connecter</a>
+                <IoNotifications className={"notification-button"} onClick={toggleNotification}/>
             </div>
             <button className="menu-button" onClick={toggleMenu}>
                 Menu
@@ -26,9 +34,14 @@ function NavBar() {
             {menuOpen && (
                 <div className="dropdown-menu">
                     <Link to="/">Home</Link>
-                    <a href="#about">About</a>
                     <a href="/panier">Panier</a>
                     <a href="/connexion">Se connecter</a>
+                    <IoNotifications className={"notification-button"} onClick={toggleNotification}/>
+                </div>
+            )}
+            {notificationOpen && (
+                <div className="notification-popup">
+                    <Notification />
                 </div>
             )}
         </div>
