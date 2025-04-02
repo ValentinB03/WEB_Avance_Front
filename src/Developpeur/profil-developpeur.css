@@ -16,7 +16,7 @@ form {      /* Formulaire de la page */
     display: flex;              /* Utilise Flexbox pour la mise en page */
     flex-direction: column;     /* Colonne pour empiler les éléments */
     align-items: normal;        /* Centre les éléments horizontalement */
-    width: 100%;                /* Prend toute la largeur de son conteneur */
+    width: 80%;                /* Prend toute la largeur de son conteneur */
 }
 
 
@@ -31,17 +31,25 @@ form {      /* Formulaire de la page */
     display: grid;                      /* Utilise une grille CSS pour la mise en page */
     grid-template-columns: 1fr 1fr;     /* Deux colonnes de taille égale */
     gap: 20vw;                          /* Espace entre les colonnes */
-    place-items: center;                /* Centre les éléments dans la grille */
+    place-items: start;                /* Centre les éléments dans la grille */
+    margin: 0 100px;           /* Espace entre le haut et le bas */
 }
 
 .modifier-profil_developpeur, .supprimer-profil_developpeur {
     width: 100%;    /* Assure que les éléments prennent toute la largeur de leur cellule */
 }
 
+.supprimer-profil_developpeur{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+}
 .titre-modifier_profil_developpeur {
     text-align: center;     /* Centre le texte axe x*/
     margin: 0 auto;         /* Centre le texte axe y */
+    width: 70%;
 }
+
 
 
 
@@ -50,6 +58,7 @@ form {      /* Formulaire de la page */
     flex-direction: row;                /* Colonne pour empiler les éléments */
     align-items: flex-end;              /* Centre les éléments horizontalement */
     justify-content: space-between;     /* Espace entre les éléments */
+    width: 100%;
 }
 
 .save-button {
@@ -58,6 +67,14 @@ form {      /* Formulaire de la page */
     border: 1px solid lightgray;    /* Bordure noire */
 
 }
+
+.delete-button {
+    width: 70%;        /* Ajuste la taille du bouton à son contenu */
+    border: 1px solid lightgray;    /* Bordure noire */
+    margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
+}
+
+
 /*-----------------------Fin partie supérieur-----------------------*/
 
 
@@ -77,6 +94,7 @@ form {      /* Formulaire de la page */
     display: grid;                              /* Utilise une grille CSS pour la mise en page */
     grid-template-columns: repeat(3, 1fr);      /* Trois colonnes de taille égale */
     gap: 20px;                                  /* Espace entre les éléments */
+    margin-top: 40px;                          /* Espace entre le haut et le bas */
 }
 
 .composant-service_paiement, .composant-liste_restaurants, .composant-suivi_livraison {
@@ -89,7 +107,6 @@ form {      /* Formulaire de la page */
 
 .composant-box_1, .composant-box_2, .composant-box_3 {
     width: 50%;                                /* Assure que les éléments prennent 50% de la largeur de leur cellule */
-    margin: 0 auto;                           /* Centre les éléments horizontalement */
     height: 10vw;                              /* Hauteur fixe pour les composants */
     text-align: center;                        /* Centre le texte */
     align-content: center;                     /* Centre le contenu */
@@ -124,52 +141,63 @@ form {      /* Formulaire de la page */
 /*------------------------------------------------*/
 /* Media Queries pour rendre le design responsive */
 /*------------------------------------------------*/
-@media (max-width: 725px) {
-    .titre-profil_developpeur {
-        font-size: 1.2rem; /* Réduire encore la taille de la police pour les très petits écrans */
-        margin-top: -30px; /* Ajuster la marge pour éviter le chevauchement */
-        color: white;
+/* Media Queries pour les écrans de taille supérieure à 1135px */
+@media (min-width: 1135px) {
+    .container_top {
+        grid-template-columns: 1fr 1fr; /* Deux colonnes de taille égale */
+        gap: 20vw; /* Espace entre les éléments */
     }
 
-    .modifier_email, .modifier-password, .modifier-account_name {
-        flex-direction: column;
-        align-items: stretch;
+    .grid-composants {
+        grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
     }
 
-    .save-button {
-        margin-left: 0;
-        margin-top: 10px;
-        width: 100%;
+    .composant-box_1, .composant-box_2, .composant-box_3 {
+        width: 50%; /* Ajuster la largeur des composants */
     }
 
+    .consulter-button {
+        width: 50%; /* Ajuster la largeur du bouton */
+    }
+}
+
+
+/* Media Queries pour les petits écrans */
+@media (max-width: 800px) {
     .container_top {
         grid-template-columns: 1fr; /* Une seule colonne */
-        gap: 20px; /* Espace entre les lignes */
-    }
-
-    .supprimer-profil_developpeur {
-        margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
-    }
-
-    .container_top {
-        grid-template-columns: 1fr; /* Une seule colonne */
-        gap: 20px; /* Espace entre les lignes */
-    }
-
-    .supprimer-profil_developpeur {
-        margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
+        gap: 5vw; /* Réduire l'espace entre les éléments */
     }
 
     .grid-composants {
         grid-template-columns: 1fr; /* Une seule colonne */
     }
 
+    .composant-box_1, .composant-box_2, .composant-box_3 {
+        width: 90%; /* Augmenter la largeur des composants */
+    }
 
+    .consulter-button {
+        width: 70%; /* Augmenter la largeur du bouton */
+    }
+}
 
+/* Media Queries pour les très petits écrans */
+@media (max-width: 480px) {
+    .container_top {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 2vw; /* Réduire l'espace entre les éléments */
+    }
 
+    .grid-composants {
+        grid-template-columns: 1fr; /* Une seule colonne */
+    }
 
-    .footer {
-        position: relative; /* Changer la position pour éviter les chevauchements */
-        margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
+    .composant-box_1, .composant-box_2, .composant-box_3 {
+        width: 100%; /* Prendre toute la largeur */
+    }
+
+    .consulter-button {
+        width: 80%; /* Augmenter la largeur du bouton */
     }
 }
