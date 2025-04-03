@@ -33,15 +33,6 @@ function RestaurantStatistique() {
             ],
         };
 
-        const options = {
-            responsive: true,
-            plugins: {
-                tooltip: {
-                    enabled: true,
-                },
-            },
-        };
-
 
         return (
             <div className="App">
@@ -58,7 +49,7 @@ function RestaurantStatistique() {
                         <p className="nbcommande">- Nombre de commandes</p>
                     </div>
                     <div>
-                        <Line data={data} options={options} className={"graphique"}/>
+                        <Line data={data} className={"graphique"}/>
                         <p className="description-graphique">Jours</p>
                     </div>
                 </div>
