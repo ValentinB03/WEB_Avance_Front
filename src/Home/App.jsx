@@ -16,6 +16,8 @@ import LivreurDetailsCommande from "../Livreur/Commande/details-commande-livreur
 import DeveloppeurProfil from "../developpeur/profil-developpeur.jsx";
 import RestaurantStatistique from "../Restaurant/statistique/restaurant-statistique.jsx";
 import ServiceTechnique from "../Compte/technique/service-technique.jsx";
+import ServiceCommercialInfo from "../ServiceCommercial/ServiceCommercial-info.jsx";
+import SCGestionClient from "../ServiceCommercial/SCGestionClient.jsx";
 
 
 function App() {
@@ -118,6 +120,8 @@ function AppWrapper() {
                 <Route path="/developpeur/profil-developpeur" element={<DeveloppeurProfil />} />
                 <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
                 <Route path="/service-technique" element={<ServiceTechnique />} />
+                <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
+                <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
             </Routes>
         </Router>
     );
