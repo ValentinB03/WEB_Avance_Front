@@ -14,6 +14,7 @@ import CommandeLivreur from "../Livreur/Commande/commande-livreur.jsx";
 import RestaurantDetailsCommande from "../DetailCommande/detail-commande.jsx";
 import LivreurDetailsCommande from "../Livreur/Commande/details-commande-livreur.jsx";
 import RestaurantStatistique from "../Restaurant/statistique/restaurant-statistique.jsx";
+import ServiceTechnique from "../Compte/technique/service-technique.jsx";
 
 
 function App() {
@@ -114,6 +115,7 @@ function AppWrapper() {
                 <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
                 <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
                 <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
+                <Route path="/service-technique" element={<ServiceTechnique />} />
             </Routes>
         </Router>
     );
