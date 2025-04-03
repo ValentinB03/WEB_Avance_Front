@@ -1,0 +1,79 @@
+.container-sc{
+    margin-bottom: 15vh;
+}
+
+.content-sc {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+
+}
+
+.content-sc-header p, .content-sc-line p, .content-sc-line button {
+    padding: 10px;
+    align-content: center;
+}
+
+.content-sc-line {
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.content-sc-header{
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.id-tableau{
+    border-right: 1px solid black;
+    min-width: 3vw;
+    max-width: 3vw;
+}
+
+.case-tableau{
+    min-width: 12vw;
+    max-width: 12vw;
+}
+
+.content-sc-line:nth-child(even) {
+    background-color: lightgray;
+}
+
+.chiffre-affaire{
+    color: black;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.gestion-compte{
+    color: black;
+    font-size: 2.5rem;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+
+    .gestion-compte {
+        font-size: 1.5rem;
+    }
+
+    .chiffre-affaire{
+        font-size: 1.5rem;
+    }
+
+    .content-sc p{
+        font-size: 1.5vw;
+    }
+
+    .case-tableau{
+        font-size: 1.5vw;
+    }
+}

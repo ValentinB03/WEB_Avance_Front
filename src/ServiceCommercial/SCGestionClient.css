@@ -1,0 +1,30 @@
+.liste-bouton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.content-sc-header{
+    padding: 10px;
+}
+
+.content-sc-line{
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .liste-bouton{
+        flex-direction: column;
+        font-size: 1.5vw;
+    }
+
+
+    .case-tableau {
+        min-width: 8vw;
+        max-width: 8vw;
+    }
+
+
+}

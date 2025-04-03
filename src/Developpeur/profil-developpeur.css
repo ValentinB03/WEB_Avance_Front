@@ -128,16 +128,6 @@ form {      /* Formulaire de la page */
 /*---------------------Fin partie composants--------------------*/
 
 
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0;
-    text-align: center;
-}
-
-
 /*------------------------------------------------*/
 /* Media Queries pour rendre le design responsive */
 /*------------------------------------------------*/
