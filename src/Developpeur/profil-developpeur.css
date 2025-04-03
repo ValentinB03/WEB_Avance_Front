@@ -141,12 +141,20 @@ form {      /* Formulaire de la page */
 /*------------------------------------------------*/
 /* Media Queries pour rendre le design responsive */
 /*------------------------------------------------*/
-/* Media Queries pour les écrans de taille supérieure à 1135px */
-@media (min-width: 1135px) {
+
+/* Media Queries pour les écrans de taille inférieure à 1200px */
+
+@media (max-width: 1200px) {
     .container_top {
         grid-template-columns: 1fr 1fr; /* Deux colonnes de taille égale */
         gap: 20vw; /* Espace entre les éléments */
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
     }
+
+    .modifier_email, .modifier-password, .modifier-account_name {
+        min-width: 300px; /* Assure que les éléments prennent toute la largeur de leur cellule */
+    }
+
 
     .grid-composants {
         grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
@@ -154,6 +162,8 @@ form {      /* Formulaire de la page */
 
     .composant-box_1, .composant-box_2, .composant-box_3 {
         width: 50%; /* Ajuster la largeur des composants */
+        min-width: 100px;
+        min-height: 100px;
     }
 
     .consulter-button {
@@ -162,31 +172,71 @@ form {      /* Formulaire de la page */
 }
 
 
+
 /* Media Queries pour les petits écrans */
+
 @media (max-width: 800px) {
+
+    .titre-profil_developpeur {
+        margin-top: -55px;
+    }
+
+
+
     .container_top {
         grid-template-columns: 1fr; /* Une seule colonne */
         gap: 5vw; /* Réduire l'espace entre les éléments */
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
     }
+
+    .modifier-profil_developpeur, .supprimer-profil_developpeur {
+        margin: 0 0 15px 0;
+    }
+
 
     .grid-composants {
         grid-template-columns: 1fr; /* Une seule colonne */
     }
 
+    .container-consulter_composants {
+        margin: 0 0 100px 0;   /* Réduire l'espace entre le haut et le bas */
+    }
+
+
     .composant-box_1, .composant-box_2, .composant-box_3 {
-        width: 90%; /* Augmenter la largeur des composants */
+        width: 100%;    /* Prendre toute la largeur */
+        height: 20vw;   /* Augmenter la hauteur des composants */
     }
 
     .consulter-button {
-        width: 70%; /* Augmenter la largeur du bouton */
+        width: 80%; /* Augmenter la largeur du bouton */
     }
+
 }
 
 /* Media Queries pour les très petits écrans */
+
 @media (max-width: 480px) {
+
+    .titre-profil_developpeur {
+        margin-top: -60px;
+    }
+
+    h1 {
+        font-size: 2.4em;
+    }
+
     .container_top {
         grid-template-columns: 1fr; /* Une seule colonne */
-        gap: 2vw; /* Réduire l'espace entre les éléments */
+        gap: 2vw;                   /* Réduire l'espace entre les éléments */
+        margin: 0 1vw;           /* Réduire la marge de gauche */
+    }
+    .modifier-profil_developpeur, .supprimer-profil_developpeur {
+        margin: 0 0 15px 0;
+    }
+
+    .container-consulter_composants {
+        margin: 0 0 100px 0;   /* Réduire l'espace entre le haut et le bas */
     }
 
     .grid-composants {
@@ -194,7 +244,8 @@ form {      /* Formulaire de la page */
     }
 
     .composant-box_1, .composant-box_2, .composant-box_3 {
-        width: 100%; /* Prendre toute la largeur */
+        width: 100%;    /* Prendre toute la largeur */
+        height: 20vw;   /* Augmenter la hauteur des composants */
     }
 
     .consulter-button {
