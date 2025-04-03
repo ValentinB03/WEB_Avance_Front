@@ -1,0 +1,17 @@
+.notification{
+    position: absolute;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    width: 400px;
+    height: 200px;
+    color: black;
+    top: 4rem;
+    right: 3rem;
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+.notification p{
+    margin: 0 0 0 10px;
+}

@@ -17,11 +17,10 @@ function Panier() {
     return (
         <div className="App">
             <NavBar />
-            <div className="content-img">
-                <img src={Marbre} alt="Background" className="background-image-panier" />
-            </div>
+            <img src={Marbre} alt="Background" className="background-image-panier" />
+
             <h1 className="titre-panier">Paiement</h1>
-            <div className={"container"}>
+            <div className="container-paiement">
                 <div className={"paiement"}>
                     <h1>Coordonnées de la carte</h1>
                     <p>Information de la carte</p>

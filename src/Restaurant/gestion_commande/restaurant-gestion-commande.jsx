@@ -18,9 +18,8 @@ function RestaurantGestionCommande() {
     return (
         <div className="App">
             <NavBar />
-            <div className="content-img">
-                <img src={background} alt="Background" className="background-image-panier" />
-            </div>
+            <img src={background} alt="Background" className="background-image-panier" />
+
             <h1 className="titre-panier">Commandes en cours</h1>
             <div className={"container"}>
                 <div className={"CommandeEnCours"}>
