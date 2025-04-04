@@ -1,0 +1,244 @@
+.background-image-profil_client {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Assure que l'image couvre toute la zone sans déformation */
+}
+
+.titre-profil_client {     /* Titre de la section */
+    z-index: 1;                 /* Position au-dessus de l'image de fond */
+    margin-top: -70px;          /* Ajuste la position du titre */
+    color: white;               /* Couleur du texte */
+}
+
+
+.form-profil_client {           /* Formulaire de la page */
+    color: black;               /* Couleur du texte */
+    display: flex;              /* Utilise Flexbox pour la mise en page */
+    flex-direction: column;     /* Colonne pour empiler les éléments */
+    align-items: normal;        /* Centre les éléments horizontalement */
+    width: 80%;                 /* Prend toute la largeur de son conteneur */
+}
+
+
+/*------------------------------------------------------------------*/
+/*---Partie du haut Modifier/Supprimer profil + Commande en cours---*/
+/*------------------------------------------------------------------*/
+.container_top-profil_client {          /* bloc contenant Modifier et supprimer profil */
+    display: grid;                      /* Utilise une grille CSS pour la mise en page */
+    grid-template-columns: 1fr 1fr;     /* Deux colonnes de taille égale */
+    gap: 20vw;                          /* Espace entre les colonnes */
+    place-items: start;                 /* Centre les éléments dans la grille */
+    margin: 0 100px;                    /* Espace entre le haut et le bas */
+}
+
+.titre-modifier_profil_client {
+    text-align: center;     /* Centre le texte axe x*/
+    margin: 0 auto;         /* Centre le texte axe y */
+    width: 70%;
+}
+
+.modifier-profil_client, .supprimer-profil_client {
+    width: 100%;    /* Assure que les éléments prennent toute la largeur de leur cellule */
+}
+
+.supprimer-profil_client, .parrainage-profil_client{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+}
+
+.modifier_email_client, .modifier-password_profil_client, .modifier-account_name_profil_client {
+    display: flex;                      /* Utilise Flexbox pour la mise en page */
+    flex-direction: row;                /* Colonne pour empiler les éléments */
+    align-items: flex-end;              /* Centre les éléments horizontalement */
+    justify-content: space-between;     /* Espace entre les éléments */
+    width: 100%;
+}
+
+.save-button_profil_client {
+    width: auto;                    /* Ajuste la taille du bouton à son contenu */
+    margin-left: 2vw;               /* Espace entre le bouton et le champ de texte */
+    border: 1px solid lightgray;    /* Bordure noire */
+}
+
+.delete-button_profil_client {
+    width: 70%;        /* Ajuste la taille du bouton à son contenu */
+    border: 1px solid lightgray;    /* Bordure noire */
+    margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
+}
+
+.container-profil_client-commandes_en_cours{
+    margin: 50px 100px;
+}
+
+.profil_client-details_commande_en_cours_commande_numero{
+
+}
+.profil_client-details_commande_en_cours{
+    margin-bottom: -10px;
+}
+
+.container_maps-profil_client iframe{
+    width: 40rem;           /* Largeur de la carte */
+    height: 25rem;          /* Hauteur de la carte */
+    margin: 2vw 0;          /* Marge autour de la carte */
+    border: 0               /* Pas de bordure */
+}
+
+/*-----------------------Fin partie supérieur-----------------------*/
+
+
+
+
+
+
+/*------------------------------------------------------------------*/
+/*-------------Partie du bas : historique des commandes-------------*/
+/*------------------------------------------------------------------*/
+.tableau-profil_client-historique_commandes{
+    margin-bottom: 15vh;
+}
+
+.content-profil_client-historique_commandes{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.content-profil_client-historique_commandes-header p, .content-profil_client-historique_commandes-line p, .content-profil_client-historique_commandes-line button {
+    align-content: center;
+}
+
+.content-profil_client-historique_commandes-line {
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content-profil_client-historique_commandes-header{
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profil_client-id-tableau{
+    border-right: 1px solid black;
+    min-width: 30px;
+    max-width: 30px;
+}
+
+.profil_client-case-tableau{
+    min-width: 160px;
+    max-width: 160px;
+}
+
+.content-profil_client-historique_commandes-line:nth-child(even) {
+    background-color: lightgray;
+}
+/*-----------------------Fin partie basse-----------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------*/
+/* Media Queries pour rendre le design responsive */
+/*------------------------------------------------*/
+
+/* Media Queries pour les écrans de taille inférieure à 1200px */
+
+@media (max-width: 1200px) {
+    .container_top-profil_client {
+        grid-template-columns: 1fr 1fr; /* Deux colonnes de taille égale */
+        gap: 20vw; /* Espace entre les éléments */
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+    }
+
+    .titre-modifier_profil_client, .modifier-password_profil_client, .modifier-account_name_profil_client {
+        min-width: 260px; /* Assure que les éléments prennent toute la largeur de leur cellule */
+    }
+
+    .container-profil_client-commandes_en_cours {
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+    }
+
+    .container_maps-profil_client{
+        margin: 11px 0 0 0;
+    }
+}
+
+
+
+/* Media Queries pour les petits écrans */
+
+@media (max-width: 835px) {
+
+    .titre-profil_client {
+        margin-top: -55px;
+    }
+
+
+    .container_top-profil_client {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 5vw; /* Réduire l'espace entre les éléments */
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+    }
+
+    .container_top_right-profil_client {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 5vw; /* Réduire l'espace entre les éléments */
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+    }
+
+    .modifier-profil_client, .supprimer-profil_client {
+        margin: 0 0 15px 0;
+    }
+    .container_maps-profil_client iframe{
+        width: 100%;           /* Largeur de la carte */
+    }
+}
+
+/* Media Queries pour les très petits écrans */
+
+@media (max-width: 480px) {
+
+    .titre-profil_client {
+        margin-top: -60px;
+    }
+
+    h1 {
+        font-size: 2.4em;
+    }
+
+    .container_top-profil_client {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 2vw;                   /* Réduire l'espace entre les éléments */
+        margin: 0 1vw;           /* Réduire la marge de gauche */
+    }
+
+    .modifier-profil_client, .supprimer-profil_client {
+        margin: 0 0 15px 0;
+    }
+}

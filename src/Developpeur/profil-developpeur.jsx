@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './profil-developpeur.css';
 import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
-import Developpeur from '../assets/img/developpeur.jpg'
+import Developpeur from '../assets/img/humain.jpg'
 
 
 function ProfilDeveloppeur() {
@@ -48,7 +48,7 @@ function ProfilDeveloppeur() {
 
 
                     <div className="supprimer-profil_developpeur">
-                            <h2 className="titre-modifier_profil_developpeur">Supprimer profil</h2>
+                            <h2 className="titre-supprimer_profil_developpeur">Supprimer profil</h2>
                             <button className={"delete-button"}>Supprimer</button>
                     </div>
                 </div>
