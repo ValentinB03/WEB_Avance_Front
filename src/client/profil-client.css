@@ -56,16 +56,26 @@
 }
 
 .save-button_profil_client {
-    width: auto;        /* Ajuste la taille du bouton à son contenu */
-    margin-left: 2vw;   /* Espace entre le bouton et le champ de texte */
+    width: auto;                    /* Ajuste la taille du bouton à son contenu */
+    margin-left: 2vw;               /* Espace entre le bouton et le champ de texte */
     border: 1px solid lightgray;    /* Bordure noire */
-
 }
 
 .delete-button_profil_client {
     width: 70%;        /* Ajuste la taille du bouton à son contenu */
     border: 1px solid lightgray;    /* Bordure noire */
     margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
+}
+
+.container-profil_client-commandes_en_cours{
+    margin: 50px 100px;
+}
+
+.profil_client-details_commande_en_cours_commande_numero{
+
+}
+.profil_client-details_commande_en_cours{
+    margin-bottom: -10px;
 }
 
 .container_maps-profil_client iframe{
@@ -95,7 +105,8 @@
     color: black;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     margin: 20px;
-
+    overflow-y: auto;
+    white-space: nowrap;
 }
 
 .content-profil_client-historique_commandes-header p, .content-profil_client-historique_commandes-line p, .content-profil_client-historique_commandes-line button {
@@ -120,14 +131,13 @@
 
 .profil_client-id-tableau{
     border-right: 1px solid black;
-    min-width: 3vw;
-    max-width: 3vw;
+    min-width: 30px;
+    max-width: 30px;
 }
 
 .profil_client-case-tableau{
-    min-width: 12vw;
-    max-width: 12vw;
-    font-size: 0.9vw;
+    min-width: 160px;
+    max-width: 160px;
 }
 
 .content-profil_client-historique_commandes-line:nth-child(even) {
@@ -167,7 +177,15 @@
     }
 
     .titre-modifier_profil_client, .modifier-password_profil_client, .modifier-account_name_profil_client {
-        min-width: 300px; /* Assure que les éléments prennent toute la largeur de leur cellule */
+        min-width: 260px; /* Assure que les éléments prennent toute la largeur de leur cellule */
+    }
+
+    .container-profil_client-commandes_en_cours {
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+    }
+
+    .container_maps-profil_client{
+        margin: 11px 0 0 0;
     }
 }
 
@@ -196,6 +214,9 @@
 
     .modifier-profil_client, .supprimer-profil_client {
         margin: 0 0 15px 0;
+    }
+    .container_maps-profil_client iframe{
+        width: 100%;           /* Largeur de la carte */
     }
 }
 

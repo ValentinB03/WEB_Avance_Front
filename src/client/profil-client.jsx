@@ -78,12 +78,12 @@ function ProfilClient() {
 
                 <div className="container-profil_client-commandes_en_cours">
                     <h2 className="titre-profil_client-commande_en_cours">Commande en cours</h2>
-                    <p><b>Commande N° </b>{items_profil_client_commandes_en_cours[0].id_commande} <br></br><br></br></p>
-                    <p><b>Livreur :</b>  {items_profil_client_commandes_en_cours[0].livreur} </p>
-                    <p><b>Date :</b>  {items_profil_client_commandes_en_cours[0].date_commande} </p>
-                    <p><b>Statut commande :</b>  {items_profil_client_commandes_en_cours[0].statut_commande} </p>
-                    <p><b>Nom du restaurant :</b>  {items_profil_client_commandes_en_cours[0].restaurant} </p>
-                    <p><b>Prix :</b>  {items_profil_client_commandes_en_cours[0].prix_total} </p>
+                    <p className="profil_client-details_commande_en_cours_commande_numero"><b>Commande N° </b>{items_profil_client_commandes_en_cours[0].id_commande}</p>
+                    <p className="profil_client-details_commande_en_cours"><b>Livreur :</b>  {items_profil_client_commandes_en_cours[0].livreur} </p>
+                    <p className="profil_client-details_commande_en_cours"><b>Date :</b>  {items_profil_client_commandes_en_cours[0].date_commande} </p>
+                    <p className="profil_client-details_commande_en_cours"><b>Statut commande :</b>  {items_profil_client_commandes_en_cours[0].statut_commande} </p>
+                    <p className="profil_client-details_commande_en_cours"><b>Nom du restaurant :</b>  {items_profil_client_commandes_en_cours[0].restaurant} </p>
+                    <p className="profil_client-details_commande_en_cours"><b>Prix :</b>  {items_profil_client_commandes_en_cours[0].prix_total} </p>
 
                     <div className="container_maps-profil_client">
                         <iframe
@@ -103,13 +103,13 @@ function ProfilClient() {
                     <div className="tableau-profil_client-historique_commandes">
                         <div className="content-profil_client-historique_commandes">
                             <div className="content-profil_client-historique_commandes-header">
-                                <p className={"profil_client-id-tableau"}>N°</p>
-                                <p className={"profil_client-case-tableau"}>Nom du restaurant</p>
-                                <p className={"profil_client-case-tableau"}>N° Commande</p>
-                                <p className={"profil_client-case-tableau"}>Etat de la commande</p>
-                                <p className={"profil_client-case-tableau"}>Date</p>
-                                <p className={"profil_client-case-tableau"}>Prix de la commande</p>
-                                <p className={"profil_client-case-tableau"}>Livreur</p>
+                                <div className={"profil_client-id-tableau"}>N°</div>
+                                <div className={"profil_client-case-tableau"}>Nom du restaurant</div>
+                                <div  className={"profil_client-case-tableau"}>N° Commande</div>
+                                <div className={"profil_client-case-tableau"}>Etat de la commande</div>
+                                <div className={"profil_client-case-tableau"}>Date</div>
+                                <div className={"profil_client-case-tableau"}>Prix de la commande</div>
+                                <div className={"profil_client-case-tableau"}>Livreur</div>
                             </div>
                             {items_profil_client_historique_commandes.map(items_profil_client_historique_commandes => (
                                 <div key={items_profil_client_historique_commandes.id} className="content-profil_client-historique_commandes-line">
