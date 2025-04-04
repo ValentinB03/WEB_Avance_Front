@@ -32,9 +32,9 @@ function RestaurantDetailsCommande() {
                     <p className="detail-texte"><b>Etat de la commande :</b> {items2[0].EtatCommande}</p>
                     <p className="detail-texte"><b>Prix total :</b> {items2[0].prix}€</p>
                 </div>
-                <div className="containers-liste-items">
+                <div className="containers-liste-items-resto">
                     {items.map(item => (
-                        <div key={item.id} className="container-detail-items">
+                        <div key={item.id} className="container-detail-items-resto">
                             <img src={item.image} alt="Menu" className="img-menu" />
                             <p className="detail-texte">{item.Article}</p>
                             <p className="detail-texte">Prix: {item.prix}€</p>

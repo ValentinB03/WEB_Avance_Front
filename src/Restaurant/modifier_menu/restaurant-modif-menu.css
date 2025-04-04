@@ -9,33 +9,34 @@
     height: 300px;
 }
 
+
+
 .Commande-titre{
     color: black;
+    font-size: 4rem;
+    text-align: center;
 }
 
 .titre-modifcarte {
     z-index: 1;
-    margin-top: -80px;
-    font-size: 4vw;
+    margin-top: -100px;
+    color: white;
 }
 
 .content-img {
-    width: 100%;
+width: 100%;
 }
 
 .columns-container {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+display: flex;
+position: relative;
+width: 100%;
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center the input-group elements horizontally */
+display: flex;
+flex-direction: column;
+align-items: center; /* Center the input-group elements horizontally */
     width: 50%;
     gap: 30px;
 }
@@ -118,4 +119,24 @@
 
 .all-article button{
     border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .columns-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column {
+        width: 90%;
+        margin-bottom: 20px; /* Add some space between columns */
+    }
+
+    .columns-container::before {
+        display: none; /* Hide the vertical line on smaller screens */
+    }
+
+    .Commande-titre{
+        font-size: 3rem;
+    }
 }

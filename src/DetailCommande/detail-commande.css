@@ -10,30 +10,40 @@
     flex-direction: column;
 }
 
-.containers-liste-items {
+.containers-liste-items-resto {
     display: flex;
     flex-wrap: wrap;
     gap: 7vw;
     text-align: center;
     margin: 5vw 0;
+    justify-content: center;
 }
 
 .container-detail-items {
-    width: calc(35% - 6vw); /* Ensure three items per row with gap */
     border: 3px solid black;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     gap: 1vw;
     padding: 0 0 1vw 0;
+
 }
 
-.containers-liste-items img{
-    width: 12vw;
-    height: 10vw;
+.containers-liste-items-resto img{
+    width: 12rem;
+    height: 10rem;
     border-radius: 17px;
 }
 
 .Commande-titre{
-    font-size: 3vw;
+    font-size: 3rem;
+}
+
+.container-detail-items-resto{
+    border: 3px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 0 1vw 0;
 }

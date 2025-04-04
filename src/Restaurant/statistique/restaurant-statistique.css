@@ -1,0 +1,36 @@
+.titre-statistique, .titre-graphique{
+    color: black;
+    text-align: center;
+}
+
+canvas{
+    width: 100% !important;
+    height: 400px;
+}
+
+.graphique-global{
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    width: 60%;
+}
+
+.legende-graphique{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ca{
+    color: blue;
+}
+.nbcommande{
+    color: purple;
+}
+
+@media (max-width: 768px) {
+    .graphique-global{
+        width: 100%;
+    }
+}
