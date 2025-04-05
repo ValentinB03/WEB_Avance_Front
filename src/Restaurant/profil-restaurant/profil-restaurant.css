@@ -1,3 +1,10 @@
+.commentaires-piste_amelioration{
+    font-size: 1.5em;
+    color: #FF5F67;
+    font-weight: bold;
+}
+
+
 .background-image-profil_restaurant {
     width: 100%;
     height: 300px;
@@ -58,12 +65,12 @@
 .save-button_profil_restaurant {
     width: auto;                    /* Ajuste la taille du bouton à son contenu */
     margin-left: 2vw;               /* Espace entre le bouton et le champ de texte */
-    border: 1px solid lightgray;    /* Bordure noire */
+    border: 1px solid lightgray;    /* Bordure grise */
 }
 
 .delete-button_profil_restaurant {
     width: 70%;        /* Ajuste la taille du bouton à son contenu */
-    border: 1px solid lightgray;    /* Bordure noire */
+    border: 1px solid lightgray;    /* Bordure grise */
     margin-top: 20px; /* Ajouter une marge supérieure pour l'espacement */
 }
 

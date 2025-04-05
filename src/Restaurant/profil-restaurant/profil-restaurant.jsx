@@ -14,15 +14,15 @@ function ProfilRestaurant() {
         {code_parrainage: "BigBiteBurger75"},
     ]);
     const [items_profil_restaurant_historique_commandes] = useState([
-        {id:1, id_commande: "340003015", date_commande: "2023-10-01", statut_commande: "En cours", account_name: "Jean.Dupont", prix_commande: "15.00€"},
-        {id:2, id_commande: "340003016", date_commande: "2023-10-02", statut_commande: "Livrée", account_name: "Marie.Dupont", prix_commande: "20.00€"},
-        {id:3, id_commande: "340003017", date_commande: "2023-10-03", statut_commande: "Annulée", account_name: "Paul.Dupont", prix_commande: "25.00€"},
-        {id:4, id_commande: "340003018", date_commande: "2023-10-04", statut_commande: "En cours", account_name: "Luc.Dupont", prix_commande: "30.00€"},
-        {id:5, id_commande: "340003019", date_commande: "2023-10-05", statut_commande: "Livrée", account_name: "Sophie.Dupont", prix_commande: "35.00€"},
-        {id:6, id_commande: "340003020", date_commande: "2023-10-06", statut_commande: "Annulée", account_name: "Julien.Dupont", prix_commande: "40.00€"},
-        {id:7, id_commande: "340003021", date_commande: "2023-10-07", statut_commande: "En cours", account_name: "Claire.Dupont", prix_commande: "45.00€"},
-        {id:8, id_commande: "340003022", date_commande: "2023-10-08", statut_commande: "Livrée", account_name: "Thomas.Dupont", prix_commande: "50.00€"},
-        {id:9, id_commande: "340003023", date_commande: "2023-10-09", statut_commande: "Annulée", account_name: "Emma.Dupont", prix_commande: "55.00€"},
+        {id:1, id_commande: "340003015", date_commande: "2023-10-01", statut_commande: "En cours", account_name_client: "Brice.Dupont",prix_commande: "15.00€", account_name_livreur: "Colin.Richard"},
+        {id:2, id_commande: "340003016", date_commande: "2023-10-02", statut_commande: "Livrée", account_name_client: "Maelig.Dupont", prix_commande: "20.00€", account_name_livreur: "Hugo.Richard"},
+        {id:3, id_commande: "340003017", date_commande: "2023-10-03", statut_commande: "Annulée", account_name_client: "Pauline.Dupont", prix_commande: "25.00€", account_name_livreur: "David.Richard"},
+        {id:4, id_commande: "340003018", date_commande: "2023-10-04", statut_commande: "En cours", account_name_client: "Béatrice.Dupont", prix_commande: "30.00€", account_name_livreur: "Maxime.Richard"},
+        {id:5, id_commande: "340003019", date_commande: "2023-10-05", statut_commande: "Livrée", account_name_client: "DJ.Dupont", prix_commande: "35.00€", account_name_livreur: "Quentin.Richard"},
+        {id:6, id_commande: "340003020", date_commande: "2023-10-06", statut_commande: "Annulée", account_name_client: "Anne-Laure.Dupont", prix_commande: "40.00€", account_name_livreur: "Mathieu.Richard"},
+        {id:7, id_commande: "340003021", date_commande: "2023-10-07", statut_commande: "En cours", account_name_client: "Jeremy.Dupont", prix_commande: "45.00€", account_name_livreur: "Maxence.Richard"},
+        {id:8, id_commande: "340003022", date_commande: "2023-10-08", statut_commande: "Livrée", account_name_client: "Axel.Dupont", prix_commande: "50.00€", account_name_livreur: "Nolan.Richard"},
+        {id:9, id_commande: "340003023", date_commande: "2023-10-09", statut_commande: "Annulée", account_name_client: "Valentin.Dupont", prix_commande: "55.00€", account_name_livreur: "Ohonna.Richard"},
     ]);
 
     return (
@@ -98,25 +98,27 @@ function ProfilRestaurant() {
                         <div className="content-profil_restaurant-historique_commandes">
                             <div className="content-profil_restaurant-historique_commandes-header">
                                 <div className={"profil_restaurant-id-tableau"}>N°</div>
-                                <div className={"profil_restaurant-case-tableau"}>Nom du restaurant</div>
-                                <div  className={"profil_restaurant-case-tableau"}>N° Commande</div>
+                                <div className={"profil_restaurant-case-tableau"}>N° de commande</div>
+                                <div  className={"profil_restaurant-case-tableau"}>Date</div>
                                 <div className={"profil_restaurant-case-tableau"}>Etat de la commande</div>
-                                <div className={"profil_restaurant-case-tableau"}>Date</div>
+                                <div className={"profil_restaurant-case-tableau"}>Client</div>
                                 <div className={"profil_restaurant-case-tableau"}>Prix de la commande</div>
                                 <div className={"profil_restaurant-case-tableau"}>Livreur</div>
                             </div>
                             {items_profil_restaurant_historique_commandes.map(items_profil_restaurant_historique_commandes => (
                                 <div key={items_profil_restaurant_historique_commandes.id} className="content-profil_restaurant-historique_commandes-line">
                                     <p className={"profil_restaurant-id-tableau"}>{items_profil_restaurant_historique_commandes.id}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.restaurant}</p>
                                     <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.id_commande}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.statut_commande}</p>
                                     <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.date_commande}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.prix_total}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.livreur}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.statut_commande}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.account_name_client}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.prix_commande}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.account_name_livreur}</p>
                                 </div>
                             ))}
                         </div>
+                        <div className="commentaires-piste_amelioration" >Je pense qu'on devrais retirer la première colonne qui ne sert à rien puisque les numéros
+                            ne représentent rien de particulier. C'est juste un numéro d'ordre d'affichage sur les 10 dernières commandes.</div>
                     </div>`
                 </div>
             </form>
