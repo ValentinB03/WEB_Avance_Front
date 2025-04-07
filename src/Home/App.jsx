@@ -128,7 +128,7 @@ function AppWrapper() {
                 <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
                 <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
                 <Route path="/restaurant/profil-restaurant" element={<RestaurantProfil />} />
-                <Route path="livreur/profil-livreur" element={<LivreurProfil />} />
+                <Route path="/livreur/profil-livreur" element={<LivreurProfil />} />
             </Routes>
         </Router>
     );
