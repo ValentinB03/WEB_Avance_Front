@@ -1,5 +1,6 @@
 .container-sc {
     margin-bottom: 15vh;
+    width: 80%;
 }
 
 .content-sc {
@@ -15,7 +16,6 @@
 
 .content-sc-header p, .content-sc-line p, .content-sc-line button {
     align-content: center;
-    flex-shrink: 0; /* Empêche la réduction des éléments */
 }
 
 .content-sc-line {
@@ -52,11 +52,57 @@
     text-align: center;
 }
 
-.gestion-compte {
+.gestion-compte-bouton {
     color: white;
     font-size: 2.5rem;
     border-radius: 20px;
     margin-top: 50px;
+}
+
+
+
+.tableau-service-commercial-historique_commandes{
+    margin-bottom: 15vh;
+}
+
+.content-service-commercial-historique_commandes{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    overflow-y: auto;
+    white-space: nowrap;
+    max-height: 400px; /* Hauteur fixe pour activer le défilement */
+}
+
+.content-service-commercial-historique_commandes-header p, .content-service-commercial-historique_commandes-line p, .content-service-commercial-historique_commandes-line button {
+    align-content: center;
+}
+
+.content-service-commercial-historique_commandes-line {
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content-service-commercial-historique_commandes-header{
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.service-commercial-case-tableau{
+    min-width: 160px;
+    max-width: 160px;
+}
+
+.content-service-commercial-historique_commandes-line:nth-child(even) {
+    background-color: lightgray;
 }
 
 @media (max-width: 768px) {
