@@ -20,6 +20,7 @@ import ServiceTechnique from "../Compte/technique/service-technique.jsx";
 import ServiceCommercialInfo from "../ServiceCommercial/ServiceCommercial-info.jsx";
 import SCGestionClient from "../ServiceCommercial/SCGestionClient.jsx";
 import RestaurantProfil from "../Restaurant/profil-restaurant/profil-restaurant.jsx";
+import LivreurProfil from "../Livreur/profil/profil-livreur.jsx";
 
 
 
@@ -127,6 +128,7 @@ function AppWrapper() {
                 <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
                 <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
                 <Route path="/restaurant/profil-restaurant" element={<RestaurantProfil />} />
+                <Route path="livreur/profil-livreur" element={<LivreurProfil />} />
             </Routes>
         </Router>
     );
