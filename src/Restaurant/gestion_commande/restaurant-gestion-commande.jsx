@@ -20,7 +20,7 @@ function RestaurantGestionCommande() {
             <NavBar />
             <img src={background} alt="Background" className="background-image-panier" />
 
-            <h1 className="titre-panier">Commandes en cours</h1>
+            <h1 className="titre-gestion_commande">Commandes en cours</h1>
             <div className={"container"}>
                 <div className={"CommandeEnCours"}>
                     <p>Commandes en cours</p>
