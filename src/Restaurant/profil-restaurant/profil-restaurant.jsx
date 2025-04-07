@@ -97,7 +97,6 @@ function ProfilRestaurant() {
                     <div className="tableau-profil_restaurant-historique_commandes">
                         <div className="content-profil_restaurant-historique_commandes">
                             <div className="content-profil_restaurant-historique_commandes-header">
-                                <div className={"profil_restaurant-id-tableau"}>N°</div>
                                 <div className={"profil_restaurant-case-tableau"}>N° de commande</div>
                                 <div  className={"profil_restaurant-case-tableau"}>Date</div>
                                 <div className={"profil_restaurant-case-tableau"}>Etat de la commande</div>
@@ -107,7 +106,6 @@ function ProfilRestaurant() {
                             </div>
                             {items_profil_restaurant_historique_commandes.map(items_profil_restaurant_historique_commandes => (
                                 <div key={items_profil_restaurant_historique_commandes.id} className="content-profil_restaurant-historique_commandes-line">
-                                    <p className={"profil_restaurant-id-tableau"}>{items_profil_restaurant_historique_commandes.id}</p>
                                     <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.id_commande}</p>
                                     <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.date_commande}</p>
                                     <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.statut_commande}</p>
@@ -117,8 +115,6 @@ function ProfilRestaurant() {
                                 </div>
                             ))}
                         </div>
-                        <div className="commentaires-piste_amelioration" >Je pense qu'on devrais retirer la première colonne qui ne sert à rien puisque les numéros
-                            ne représentent rien de particulier. C'est juste un numéro d'ordre d'affichage sur les 10 dernières commandes.</div>
                     </div>`
                 </div>
             </form>

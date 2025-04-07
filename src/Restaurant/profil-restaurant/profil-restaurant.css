@@ -1,10 +1,3 @@
-.commentaires-piste_amelioration{
-    font-size: 1.5em;
-    color: #FF5F67;
-    font-weight: bold;
-}
-
-
 .background-image-profil_restaurant {
     width: 100%;
     height: 300px;
@@ -149,12 +142,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-}
-
-.profil_restaurant-id-tableau{
-    border-right: 1px solid black;
-    min-width: 30px;
-    max-width: 30px;
 }
 
 .profil_restaurant-case-tableau{

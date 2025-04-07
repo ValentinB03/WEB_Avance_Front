@@ -1,3 +1,8 @@
+.titre-gestion_commande{
+    margin-top: -70px;          /* Ajuste la position du titre */
+    color: white;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -79,10 +84,6 @@ button{
         display: none;
     }
 
-    .titre-panier{
-        font-size: 2rem;
-    }
-
     .etat-commande {
         flex-direction: column;
     }
@@ -91,8 +92,8 @@ button{
         font-size: 1.2rem;
     }
 
-    .titre-panier{
-        font-size: 1.5rem;
+    .titre-gestion_commande{
+        margin-top: -90px;          /* Ajuste la position du titre */
     }
 
     .bouton-commande, .bouton-commande-attente{
