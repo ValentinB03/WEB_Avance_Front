@@ -18,6 +18,12 @@
 
 }
 
+.titre-service-technique{
+    z-index: 1;
+    margin-top: -100px;
+    color: white;
+}
+
 .content-st{
     display: flex;
     flex-direction: column;
@@ -25,7 +31,7 @@
 }
 
 @media (max-width: 768px) {
-    h1{
+    .titre-service-technique{
         font-size: 2.7rem;
         margin-bottom: 20px;
     }

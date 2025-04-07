@@ -211,11 +211,10 @@ form {      /* Formulaire de la page */
 
     .titre-profil_developpeur {
         margin-top: -60px;
-    }
-
-    h1 {
         font-size: 2.4em;
     }
+
+
 
     .container_top {
         grid-template-columns: 1fr; /* Une seule colonne */

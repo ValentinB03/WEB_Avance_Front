@@ -20,7 +20,7 @@ function NavBar() {
     return (
         <div className="Nav-bar">
             <div className="Nav-left">
-                <h1>CES'eat</h1>
+                <Link to="/"><h1>CES'eat</h1></Link>
             </div>
             <div className="Nav-right">
                 <Link to="/">Accueil</Link>

@@ -16,6 +16,7 @@
 
 .container-livraison button{
     border-radius: 10px;
+    width: 100%;
 }
 
 .info-commande-livreur-texte{
@@ -37,11 +38,11 @@
 }
 
 @media (max-width: 768px) {
-    p {
+    .container-livraison p {
         font-size: 3vw;
     }
 
-    h1 {
+    .container-livraison h1 {
         text-align: center;
     }
 

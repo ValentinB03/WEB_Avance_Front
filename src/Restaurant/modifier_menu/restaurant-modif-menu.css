@@ -109,6 +109,7 @@ align-items: center; /* Center the input-group elements horizontally */
 .all-article img{
     width: 15vw;
     border-radius: 17px;
+    object-fit: cover;
 }
 
 
@@ -119,6 +120,15 @@ align-items: center; /* Center the input-group elements horizontally */
 
 .all-article button{
     border-radius: 10px;
+    width: 70%;
+}
+
+.article-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -138,5 +148,9 @@ align-items: center; /* Center the input-group elements horizontally */
 
     .Commande-titre{
         font-size: 3rem;
+    }
+
+    .all-article img{
+        width: 25vw;
     }
 }

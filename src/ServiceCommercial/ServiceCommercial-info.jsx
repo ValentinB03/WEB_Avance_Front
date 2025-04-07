@@ -24,26 +24,26 @@ function ServiceCommercialInfo() {
             <button className={"gestion-compte"}>Gestion des comptes clients</button>
             <div className="container-sc">
                 <p className={"chiffre-affaire"}>Chiffre d'affaires transactionnel global en cours :</p>
-                <div className="content-sc">
-                    <div className="content-sc-header">
-                        <p className={"id-tableau"}>N°</p>
-                        <p className={"case-tableau"}>Nom du restaurant</p>
-                        <p className={"case-tableau"}>N° Commande</p>
-                        <p className={"case-tableau"}> Etat de la commande</p>
-                        <p className={"case-tableau"}>Dernière modification</p>
-                        <p className={"case-tableau"}>Action</p>
-                    </div>
-                    {items.map(item => (
-                        <div key={item.id} className="content-sc-line">
-                            <p className={"id-tableau"}>{item.id}</p>
-                            <p className={"case-tableau"}>{item.name}</p>
-                            <p className={"case-tableau"}>{item.Commande}</p>
-                            <p className={"case-tableau"}>{item.Etat}</p>
-                            <p className={"case-tableau"}>{item.Date}</p>
-                            <button className={"case-tableau"}>Visualiser</button>
+                <div className="tableau-profil_restaurant-historique_commandes">
+                    <div className="content-profil_restaurant-historique_commandes">
+                        <div className="content-profil_restaurant-historique_commandes-header">
+                            <div  className={"profil_restaurant-case-tableau"}>Nom du restaurant</div>
+                            <div className={"profil_restaurant-case-tableau"}>N° Commande</div>
+                            <div className={"profil_restaurant-case-tableau"}>Etat de la commande</div>
+                            <div className={"profil_restaurant-case-tableau"}>Dernière modification</div>
+                            <div className={"profil_restaurant-case-tableau"}>Action</div>
                         </div>
-                    ))}
-                </div>
+                        {items.map(item => (
+                            <div key={item.id} className="content-profil_restaurant-historique_commandes-line">
+                                <p className={"profil_restaurant-case-tableau"}>{item.name}</p>
+                                <p className={"profil_restaurant-case-tableau"}>{item.Commande}</p>
+                                <p className={"profil_restaurant-case-tableau"}>{item.Etat}</p>
+                                <p className={"profil_restaurant-case-tableau"}>{item.Date}</p>
+                                <button className={"profil_restaurant-case-tableau"}>Visualiser</button>
+                            </div>
+                        ))}
+                    </div>
+                </div>`
             </div>
 
             <Footer/>

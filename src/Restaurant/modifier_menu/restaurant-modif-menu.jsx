@@ -53,7 +53,7 @@ function RestaurantModifMenu() {
                         {items.map(item => (
                             <div key={item.id} className="all-article">
                                     <img src={item.image} alt={item.description} />
-                                    <div>
+                                    <div className="article-details">
                                         <p>{item.description}</p>
                                         <p>{item.prix}€</p>
                                         <button>Supprimer</button>

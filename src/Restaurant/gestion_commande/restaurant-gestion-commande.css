@@ -27,6 +27,7 @@
     font-weight: initial;
     display: flex;
     margin-bottom: 5vw;
+    width: 100%;
 }
 
 .info-commande {
@@ -69,7 +70,7 @@
     width: 100%;
 }
 
-button{
+.etat-commande button{
     padding: 0.5vw 1vw;
 }
 
@@ -86,9 +87,16 @@ button{
 
     .etat-commande {
         flex-direction: column;
+        button{
+            font-size: 20px;
+        }
     }
 
     .CommandeEnCours p{
+        font-size: 1.2rem;
+    }
+
+    .CommandeEnAttente p{
         font-size: 1.2rem;
     }
 

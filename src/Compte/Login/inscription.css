@@ -19,6 +19,11 @@
     width: 100%;
 }
 
+.bannière{
+    color: white;
+    background-color: black;
+}
+
 .liste-info {
     width: 80%;
     max-width: 400px; /* Adjust as needed */

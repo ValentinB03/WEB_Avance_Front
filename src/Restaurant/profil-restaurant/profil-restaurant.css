@@ -248,11 +248,10 @@
 
     .titre-profil_restaurant {
         margin-top: -60px;
-    }
-
-    h1 {
         font-size: 2.4em;
     }
+
+
 
     .container_top-profil_restaurant {
         grid-template-columns: 1fr; /* Une seule colonne */
