@@ -50,7 +50,7 @@
 .modifier_email_restaurant, .modifier-password_profil_restaurant, .modifier-account_name_profil_restaurant, .modifier-adresse_postale_profil_restaurant, .modifier-iban_profil_restaurant {
     display: flex;                      /* Utilise Flexbox pour la mise en page */
     flex-direction: row;                /* Colonne pour empiler les éléments */
-    align-items: flex-end;              /* Centre les éléments horizontalement */
+    align-items: center;              /* Centre les éléments horizontalement */
     justify-content: space-between;     /* Espace entre les éléments */
     width: 100%;
 }
@@ -59,6 +59,18 @@
     width: auto;                    /* Ajuste la taille du bouton à son contenu */
     margin-left: 2vw;               /* Espace entre le bouton et le champ de texte */
     border: 1px solid lightgray;    /* Bordure grise */
+    background-color: white;      /* Couleur de fond */
+    color: black;             /* Couleur du texte */
+}
+
+.input-modif-profil-resto{
+    color: black;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
 }
 
 .delete-button_profil_restaurant {

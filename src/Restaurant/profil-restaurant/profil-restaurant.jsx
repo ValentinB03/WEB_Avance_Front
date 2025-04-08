@@ -35,38 +35,38 @@ function ProfilRestaurant() {
 
             <h1 className="titre-profil_restaurant">{items_profil_restaurant[0].account_name}</h1>
 
-            <form className="form-profil_restaurant">
+            <div className="form-profil_restaurant">
                 <div className="container_top-profil_restaurant">
                     <div className={"modifier-profil_restaurant"}>
                         <h2 className="titre-modifier_profil_restaurant">Modifier profil</h2>
                         <label htmlFor="email_restaurant">Email</label>
                         <div className="modifier_email_restaurant">
-                            <input type="email" id="email_address" name="email_address" placeholder={items_profil_restaurant[0].email_address} required />
+                            <input className={"input-modif-profil-resto"} type="email" id="email_address" name="email_address" placeholder={items_profil_restaurant[0].email_address} required />
                             <button className={"save-button_profil_restaurant"}>Enregistrer</button>
                         </div>
 
 
                         <label htmlFor="password">Mot de passe</label>
                         <div className="modifier-password_profil_restaurant">
-                            <input type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
+                            <input className={"input-modif-profil-resto"} type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
                             <button className={"save-button_profil_restaurant"}>Enregistrer</button>
                         </div>
 
 
                         <label htmlFor="email">Nom d'utilisateur</label>
                         <div className="modifier-account_name_profil_restaurant">
-                            <input type="nom.prenom" id="account_name_restaurant" name="account_name_restaurant" placeholder={items_profil_restaurant[0].account_name} required />
+                            <input className={"input-modif-profil-resto"} type="nom.prenom" id="account_name_restaurant" name="account_name_restaurant" placeholder={items_profil_restaurant[0].account_name} required />
                             <button className={"save-button_profil_restaurant"}>Enregistrer</button>
                         </div>
 
                         <label htmlFor="Adresse">Adresse postale</label>
                         <div className="modifier-adresse_postale_profil_restaurant">
-                            <input type="adresse" id="postal_address_restaurant" name="postal_address_restaurant" placeholder={items_profil_restaurant[0].adresse_postale} required />
+                            <input className={"input-modif-profil-resto"} type="adresse" id="postal_address_restaurant" name="postal_address_restaurant" placeholder={items_profil_restaurant[0].adresse_postale} required />
                             <button className={"save-button_profil_restaurant"}>Enregistrer</button>
                         </div>
                         <label htmlFor="Adresse">IBAN</label>
                         <div className="modifier-iban_profil_restaurant">
-                            <input type="iban" id="iban_restaurant" name="iban_restaurant" placeholder={items_profil_restaurant[0].iban} required />
+                            <input className={"input-modif-profil-resto"} type="iban" id="iban_restaurant" name="iban_restaurant" placeholder={items_profil_restaurant[0].iban} required />
                             <button className={"save-button_profil_restaurant"}>Enregistrer</button>
                         </div>
                     </div>
@@ -117,7 +117,7 @@ function ProfilRestaurant() {
                         </div>
                     </div>`
                 </div>
-            </form>
+            </div>
             <Footer />
         </div>
     );

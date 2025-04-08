@@ -21,27 +21,27 @@ function ProfilDeveloppeur() {
 
             <h1 className="titre-profil_developpeur">Profil développeur</h1>
 
-            <form>
+            <div className="form-developpeur">
                 <div className="container_top">
                     <div className={"modifier-profil_developpeur"}>
                             <h2 className="titre-modifier_profil_developpeur">Modifier profil</h2>
                             <label htmlFor="email">Email</label>
                             <div className="modifier_email">
-                                <input type="email" id="email_address" name="email_address" placeholder={items_profil_developpeur[0].email_address} required />
+                                <input className={"input-modif-profil-dev"} type="email" id="email_address" name="email_address" placeholder={items_profil_developpeur[0].email_address} required />
                                 <button className={"save-button"}>Enregistrer</button>
                             </div>
 
 
                             <label htmlFor="password">Mot de passe</label>
                             <div className="modifier-password">
-                                <input type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
+                                <input className={"input-modif-profil-dev"} type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
                                 <button className={"save-button"}>Enregistrer</button>
                             </div>
 
 
                             <label htmlFor="email">Nom d'utilisateur</label>
                             <div className="modifier-account_name">
-                                <input type="nom.prenom" id="account_name" name="account_name" placeholder={items_profil_developpeur[0].account_name} required />
+                                <input className={"input-modif-profil-dev"} type="nom.prenom" id="account_name" name="account_name" placeholder={items_profil_developpeur[0].account_name} required />
                                 <button className={"save-button"}>Enregistrer</button>
                             </div>
                     </div>
@@ -70,7 +70,7 @@ function ProfilDeveloppeur() {
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
 
 
             <Footer />

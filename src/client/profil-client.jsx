@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer.jsx';
 import Client from '../assets/img/humain.jpg'
 
 
-function ProfilClient() {
+function ModifierProfilClient() {
 
     const [items_profil_client] = useState([
         { email_address: "quentinc92@exemple.com", account_name: "quentin.c"},
@@ -38,27 +38,27 @@ function ProfilClient() {
 
             <h1 className="titre-profil_client">Mon profil</h1>
 
-            <form className="form-profil_client">
+            <div className="form-profil_client">
                 <div className="container_top-profil_client">
                     <div className={"modifier-profil_client"}>
                         <h2 className="titre-modifier_profil_client">Modifier profil</h2>
                         <label htmlFor="email_client">Email</label>
                         <div className="modifier_email_client">
-                            <input type="email" id="email_address" name="email_address" placeholder={items_profil_client[0].email_address} required />
+                            <input className={"input-modif-profil-client"} type="email" id="email_address" name="email_address" placeholder={items_profil_client[0].email_address} required />
                             <button className={"save-button_profil_client"}>Enregistrer</button>
                         </div>
 
 
                         <label htmlFor="password">Mot de passe</label>
                         <div className="modifier-password_profil_client">
-                            <input type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
+                            <input className={"input-modif-profil-client"} type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
                             <button className={"save-button_profil_client"}>Enregistrer</button>
                         </div>
 
 
                         <label htmlFor="email">Nom d'utilisateur</label>
                         <div className="modifier-account_name_profil_client">
-                            <input type="nom.prenom" id="account_name" name="account_name" placeholder={items_profil_client[0].account_name} required />
+                            <input className={"input-modif-profil-client"} type="nom.prenom" id="account_name" name="account_name" placeholder={items_profil_client[0].account_name} required />
                             <button className={"save-button_profil_client"}>Enregistrer</button>
                         </div>
                     </div>
@@ -130,7 +130,7 @@ function ProfilClient() {
                 </div>
 
 
-            </form>
+            </div>
 
 
             <Footer />
@@ -138,4 +138,4 @@ function ProfilClient() {
     );
 }
 
-export default ProfilClient;
+export default ModifierProfilClient;

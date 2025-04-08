@@ -3,6 +3,7 @@ import './SCGestionClient.css';
 import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import ImgBannier from '../assets/img/Service_Commercial.jpg';
+import {Link} from "react-router-dom";
 
 function ServiceCommercialInfo() {
 
@@ -52,7 +53,7 @@ function ServiceCommercialInfo() {
                                     <p className={"gestion-compte-case-tableau"}>{item.type}</p>
                                     <p className={"gestion-compte-case-tableau"}>{item.etat}</p>
                                     <div className={"bouton-action-tableau"}>
-                                        <button>Modifier</button>
+                                        <Link to="/service-commercial/modification-compte-client"><button>Modifier</button></Link>
                                         <button>Suspendre</button>
                                         <button>Supprimer</button>
                                     </div>

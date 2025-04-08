@@ -4,6 +4,7 @@ import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Marbre from '../assets/img/marbre.jpg'
 import Menu from '../assets/img/Menu.jpg'
+import {Link} from "react-router-dom";
 
 function Panier() {
 
@@ -40,6 +41,9 @@ function Panier() {
                     </div>
                 ))}
             </div>
+            <Link to="/paiement">
+            <button className="button-valider-panier">Payer</button>
+            </Link>
             <Footer />
         </div>
     );

@@ -50,13 +50,19 @@ form {      /* Formulaire de la page */
     width: 70%;
 }
 
-
+.form-developpeur{
+    color: black;               /* Couleur du texte */
+    display: flex;              /* Utilise Flexbox pour la mise en page */
+    flex-direction: column;     /* Colonne pour empiler les éléments */
+    align-items: normal;        /* Centre les éléments horizontalement */
+    width: 80%;
+}
 
 
 .modifier_email, .modifier-password, .modifier-account_name {
     display: flex;                      /* Utilise Flexbox pour la mise en page */
     flex-direction: row;                /* Colonne pour empiler les éléments */
-    align-items: flex-end;              /* Centre les éléments horizontalement */
+    align-items: center;              /* Centre les éléments horizontalement */
     justify-content: space-between;     /* Espace entre les éléments */
     width: 100%;
 }
@@ -65,8 +71,21 @@ form {      /* Formulaire de la page */
     width: auto;        /* Ajuste la taille du bouton à son contenu */
     margin-left: 2vw;   /* Espace entre le bouton et le champ de texte */
     border: 1px solid lightgray;    /* Bordure noire */
+    background-color: white;        /* Couleur de fond blanche */
+    color: black;
 
 }
+
+.input-modif-profil-dev{
+    color: black;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+}
+
 
 .delete-button {
     width: 70%;        /* Ajuste la taille du bouton à son contenu */
@@ -101,6 +120,7 @@ form {      /* Formulaire de la page */
     display: flex;
     flex-direction: column;
     align-items: center;                       /* Centre les éléments horizontalement */
+    gap: 10px;
 }
 
 

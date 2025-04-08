@@ -77,6 +77,12 @@
     padding: 1vw 5vw;
 }
 
+.button-valider-panier{
+    margin-bottom: 5vw;
+    font-size: 2rem;
+    padding: 10px 100px;
+}
+
 @media (max-width: 600px) {
     .all-partie{
         display: flex    ;

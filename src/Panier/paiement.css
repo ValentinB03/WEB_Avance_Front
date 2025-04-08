@@ -122,6 +122,10 @@
         align-items: center;
         gap: 30px;
         margin-top: 15vw;
+
+        button{
+            margin-top: 2vw;
+        }
     }
 
     .paiement p {

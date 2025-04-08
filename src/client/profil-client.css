@@ -50,7 +50,7 @@
 .modifier_email_client, .modifier-password_profil_client, .modifier-account_name_profil_client {
     display: flex;                      /* Utilise Flexbox pour la mise en page */
     flex-direction: row;                /* Colonne pour empiler les éléments */
-    align-items: flex-end;              /* Centre les éléments horizontalement */
+    align-items: center;              /* Centre les éléments horizontalement */
     justify-content: space-between;     /* Espace entre les éléments */
     width: 100%;
 }
@@ -59,6 +59,18 @@
     width: auto;                    /* Ajuste la taille du bouton à son contenu */
     margin-left: 2vw;               /* Espace entre le bouton et le champ de texte */
     border: 1px solid lightgray;    /* Bordure noire */
+    background-color: white;        /* Couleur de fond blanche */
+    color: black;               /* Couleur du texte noire */
+}
+
+.input-modif-profil-client{
+    color: black;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
 }
 
 .delete-button_profil_client {

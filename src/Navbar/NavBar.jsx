@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import { IoNotifications } from "react-icons/io5";
 import Notification from "../Notification/notification.jsx";
 import '../notification/notification.css'
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [notificationOpen, setNotificationOpen] = useState(false);
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser != null) {
+            try {
+                const parsedUser = JSON.parse(storedUser); // Parse l'objet user
+                setUser(parsedUser);
+            } catch (error) {
+                console.error("Erreur lors du parsing de l'objet user", error);
+            }
+        }
+    }, []);
+
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -17,6 +33,15 @@ function NavBar() {
         setNotificationOpen(!notificationOpen);
     };
 
+    const logout = () => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('user');
+        localStorage.removeItem('userType');
+        setUser(null);
+        navigate("/");
+    }
+
     return (
         <div className="Nav-bar">
             <div className="Nav-left">
@@ -24,8 +49,22 @@ function NavBar() {
             </div>
             <div className="Nav-right">
                 <Link to="/">Accueil</Link>
-                <a href="/panier">Panier</a>
-                <a href="/connexion">Se connecter</a>
+                <Link to="/panier">Panier</Link>
+                {user ? (
+                    <div className="user-menu">
+                        {user.userType === 'restaurateur' && <Link to="/restaurant/profil-restaurant">Profil</Link>}
+                        {user.userType === 'livreur' && <Link to="/livreur/profil-livreur">Profil</Link>}
+                        {user.userType === 'client' && <Link to="/client/profil-client">Profil</Link>}
+                        {user.userType === 'commercial' && <Link to="/service-commercial">Profil</Link>}
+                        {user.userType === 'technique' && <Link to="/service-technique">Profil</Link>}
+                        {user.userType === 'admin' && <Link to="/service-technique">Profil</Link>}
+                        {user.userType === 'developpeur' && <Link to="/developpeur/profil-developpeur">Profil</Link>}
+
+                        <a onClick={logout}>Se déconnecter</a>
+                    </div>
+                ) : (
+                    <Link to="/connexion">Se connecter</Link>
+                )}
                 <IoNotifications className={"notification-button"} onClick={toggleNotification}/>
             </div>
             <button className="menu-button" onClick={toggleMenu}>
@@ -34,8 +73,22 @@ function NavBar() {
             {menuOpen && (
                 <div className="dropdown-menu">
                     <Link to="/">Home</Link>
-                    <a href="/panier">Panier</a>
-                    <a href="/connexion">Se connecter</a>
+                    <Link to="/panier">Panier</Link>
+                    {user ? (
+                        <div className="user-menu">
+                            {user.userType === 'restaurateur' && <Link to="/restaurant/profil-restaurant">Profil</Link>}
+                            {user.userType === 'livreur' && <Link to="/livreur/profil-livreur">Profil</Link>}
+                            {user.userType === 'client' && <Link to="/client/profil-client">Profil</Link>}
+                            {user.userType === 'commercial' && <Link to="/service-commercial">Profil</Link>}
+                            {user.userType === 'technique' && <Link to="/service-technique">Profil</Link>}
+                            {user.userType === 'admin' && <Link to="/service-technique">Profil</Link>}
+                            {user.userType === 'developpeur' && <Link to="/developpeur/profil-developpeur">Profil</Link>}
+
+                            <a onClick={logout}>Se déconnecter</a>
+                        </div>
+                    ) : (
+                        <Link to="/connexion">Se connecter</Link>
+                    )}
                     <IoNotifications className={"notification-button"} onClick={toggleNotification}/>
                 </div>
             )}

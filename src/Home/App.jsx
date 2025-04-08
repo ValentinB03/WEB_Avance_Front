@@ -20,6 +20,7 @@ import ServiceTechnique from "../Compte/technique/service-technique.jsx";
 import ServiceCommercialInfo from "../ServiceCommercial/ServiceCommercial-info.jsx";
 import SCGestionClient from "../ServiceCommercial/SCGestionClient.jsx";
 import RestaurantProfil from "../Restaurant/profil-restaurant/profil-restaurant.jsx";
+import ModifierProfilClient from "../client/Modification-compte/modif-profil-client.jsx";
 import LivreurProfil from "../Livreur/profil/profil-livreur.jsx";
 
 
@@ -107,30 +108,32 @@ function ScrollToTop() {
 }
 function AppWrapper() {
     return (
-        <Router>
-            <ScrollToTop />
-            <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="/restaurant" element={<RestaurantMenu />} />
-                <Route path="/inscription" element={<Inscription />} />
-                <Route path="/connexion" element={<Connexion />} />
-                <Route path="/panier" element={<Panier />} />
-                <Route path="/restaurant/modification-menu" element={<RestaurantModifMenu />} />
-                <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
-                <Route path="/paiement" element={<Paiement />} />
-                <Route path="/livreur-commande" element={<CommandeLivreur />} />
-                <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
-                <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
-                <Route path="/developpeur/profil-developpeur" element={<DeveloppeurProfil />} />
-                <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
-                <Route path="/client/profil-client" element={<ClientProfil />} />
-                <Route path="/service-technique" element={<ServiceTechnique />} />
-                <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
-                <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
-                <Route path="/restaurant/profil-restaurant" element={<RestaurantProfil />} />
-                <Route path="/livreur/profil-livreur" element={<LivreurProfil />} />
-            </Routes>
-        </Router>
+            <Router>
+                <ScrollToTop />
+                <Routes>
+                    <Route path="/" element={<App />} />
+                    <Route path="/restaurant" element={<RestaurantMenu />} />
+                    <Route path="/inscription" element={<Inscription />} />
+                    <Route path="/connexion" element={<Connexion />} />
+                    <Route path="/panier" element={<Panier />} />
+                    <Route path="/restaurant/modification-menu" element={<RestaurantModifMenu />} />
+                    <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
+                    <Route path="/paiement" element={<Paiement />} />
+                    <Route path="/livreur-commande" element={<CommandeLivreur />} />
+                    <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
+                    <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
+                    <Route path="/developpeur/profil-developpeur" element={<DeveloppeurProfil />} />
+                    <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
+                    <Route path="/client/profil-client" element={<ClientProfil />} />
+                    <Route path="/service-technique" element={<ServiceTechnique />} />
+                    <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
+                    <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
+                    <Route path="/restaurant/profil-restaurant" element={<RestaurantProfil />} />
+                    <Route path="/service-commercial/modification-compte-client" element={<ModifierProfilClient />} />
+                    <Route path="/livreur/profil-livreur" element={<LivreurProfil />} />
+                </Routes>
+            </Router>
+
     );
 }
 export default AppWrapper;

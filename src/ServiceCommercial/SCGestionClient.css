@@ -58,7 +58,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    gap: 55px;
+    padding: 0 5px;
 }
 
 .content-gestion-compte-historique_commandes-header{
@@ -66,7 +67,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    gap: 55px;
+    padding: 0 5px;
 }
 
 .gestion-compte-case-tableau{

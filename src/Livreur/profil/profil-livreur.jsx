@@ -41,38 +41,38 @@ function ProfilLivreur() {
             <h1 className="titre-profil_livreur">Mon profil</h1>
 
 
-            <form className="form-profil_livreur">
+            <div className="form-profil_livreur">
                 <div className="container_top-profil_livreur">
                     <div className={"modifier-profil_livreur"}>
                         <h2 className="titre-modifier_profil_livreur">Modifier profil</h2>
                         <label htmlFor="email_livreur">Email</label>
                         <div className="modifier_email_livreur">
-                            <input type="email" id="email_address" name="email_address" placeholder={items_profil_livreur[0].email_address} required />
+                            <input className={"input-modif-profil-livreur"} type="email" id="email_address" name="email_address" placeholder={items_profil_livreur[0].email_address} required />
                             <button className={"save-button_profil_livreur"}>Enregistrer</button>
                         </div>
 
 
                         <label htmlFor="password">Mot de passe</label>
                         <div className="modifier-password_profil_livreur">
-                            <input type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
+                            <input className={"input-modif-profil-livreur"} type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
                             <button className={"save-button_profil_livreur"}>Enregistrer</button>
                         </div>
 
 
                         <label htmlFor="email">Nom d'utilisateur</label>
                         <div className="modifier-account_name_profil_livreur">
-                            <input type="nom.prenom" id="account_name_livreur" name="account_name_livreur" placeholder={items_profil_livreur[0].account_name} required />
+                            <input className={"input-modif-profil-livreur"} type="nom.prenom" id="account_name_livreur" name="account_name_livreur" placeholder={items_profil_livreur[0].account_name} required />
                             <button className={"save-button_profil_livreur"}>Enregistrer</button>
                         </div>
 
                         <label htmlFor="Adresse">Adresse postale</label>
                         <div className="modifier-adresse_postale_profil_livreur">
-                            <input type="adresse" id="postal_address_livreur" name="postal_address_livreur" placeholder={items_profil_livreur[0].adresse_postale} required />
+                            <input className={"input-modif-profil-livreur"} type="adresse" id="postal_address_livreur" name="postal_address_livreur" placeholder={items_profil_livreur[0].adresse_postale} required />
                             <button className={"save-button_profil_livreur"}>Enregistrer</button>
                         </div>
                         <label htmlFor="Adresse">IBAN</label>
                         <div className="modifier-iban_profil_livreur">
-                            <input type="iban" id="iban_livreur" name="iban_livreur" placeholder={items_profil_livreur[0].iban} required />
+                            <input className={"input-modif-profil-livreur"} type="iban" id="iban_livreur" name="iban_livreur" placeholder={items_profil_livreur[0].iban} required />
                             <button className={"save-button_profil_livreur"}>Enregistrer</button>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ function ProfilLivreur() {
                         </div>
                     </div>`
                 </div>
-            </form>
+            </div>
             <Footer />
         </div>
     );

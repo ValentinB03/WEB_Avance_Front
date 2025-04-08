@@ -14,7 +14,7 @@ function Inscription() {
 
             <h1 className="titre-inscription">S'inscrire</h1>
             <div className={"liste-info"}>
-                <form>
+                <div className={"form-inscription"}>
                     <label htmlFor="nom">Nom</label>
                     <input type="nom" id="nom" name="nom" placeholder="Votre nom" required />
                     <label htmlFor="email">Email</label>
@@ -36,7 +36,7 @@ function Inscription() {
                     <label htmlFor="code-parrainage">Code de parrainage</label>
                     <input type="code-parrainage" id="code-parrainage" name="code-parrainage" placeholder="Code de parrainage" />
                     <button className={"inscription-button"}>S'inscrire</button>
-                </form>
+                </div>
             </div>
             <Footer />
         </div>
