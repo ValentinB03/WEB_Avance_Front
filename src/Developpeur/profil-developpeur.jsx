@@ -7,8 +7,10 @@ import Developpeur from '../assets/img/humain.jpg'
 
 function ProfilDeveloppeur() {
 
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
     const [items_profil_developpeur] = useState([
-        { email_address: "quentinc92@exemple.com", account_name: "quentin.c"},
+        { email_address: user.email, account_name: user.name},
     ]);
 
     return (

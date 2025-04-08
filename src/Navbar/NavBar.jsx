@@ -37,7 +37,6 @@ function NavBar() {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
         localStorage.removeItem('user');
-        localStorage.removeItem('userType');
         setUser(null);
         navigate("/");
     }

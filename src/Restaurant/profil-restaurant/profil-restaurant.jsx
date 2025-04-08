@@ -1,17 +1,30 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './profil-restaurant.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
-import Restaurant from '../../assets/img/burger.jpg'
+import {getBanniereByOwner} from "../../api/api.jsx";
 
 
 function ProfilRestaurant() {
 
+    const [banniere, setBanniere] = useState('');
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
+    useEffect(() => {
+        const fetchRestaurant = async () => {
+            const restaurantData = await getBanniereByOwner(user.id);
+            console.log(restaurantData);
+            setBanniere(restaurantData.data);
+        };
+        fetchRestaurant();
+    }, []); // Le tableau de dépendances vide empêche l'exécution multiple
+
+
     const [items_profil_restaurant] = useState([
-        { email_address: "bigbiteburger@exemple.com", account_name: "BigBiteBurger", adresse_postale: "123 Rue de la Gastronomie, 75000 Paris", iban: "FR7612345678901234567890123"},
+        { email_address: user.email, account_name: user.name, adresse_postale: user.addressString, iban: user.IBAN},
     ]);
     const [items_profil_restaurant_parrainage] = useState([
-        {code_parrainage: "BigBiteBurger75"},
+        {code_parrainage: user.referralCode},
     ]);
     const [items_profil_restaurant_historique_commandes] = useState([
         {id:1, id_commande: "340003015", date_commande: "2023-10-01", statut_commande: "En cours", account_name_client: "Brice.Dupont",prix_commande: "15.00€", account_name_livreur: "Colin.Richard"},
@@ -30,7 +43,7 @@ function ProfilRestaurant() {
             <NavBar />
 
 
-            <img src={Restaurant} alt="Background" className="background-image-profil_restaurant" />
+            <img src={banniere || null} alt="Background" className="background-image-profil_restaurant" />
 
 
             <h1 className="titre-profil_restaurant">{items_profil_restaurant[0].account_name}</h1>

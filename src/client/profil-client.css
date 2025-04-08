@@ -47,7 +47,7 @@
     align-items: center; /* Centre les éléments horizontalement */
 }
 
-.modifier_email_client, .modifier-password_profil_client, .modifier-account_name_profil_client {
+.modifier_email_client, .modifier-password_profil_client, .modifier-account_name_profil_client, .modifier-Adresse_profil_client {
     display: flex;                      /* Utilise Flexbox pour la mise en page */
     flex-direction: row;                /* Colonne pour empiler les éléments */
     align-items: center;              /* Centre les éléments horizontalement */

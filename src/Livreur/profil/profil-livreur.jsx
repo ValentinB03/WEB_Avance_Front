@@ -7,11 +7,13 @@ import Livreur from '../../assets/livraison-resto.jpg'
 
 function ProfilLivreur() {
 
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
     const [items_profil_livreur] = useState([
-        { email_address: "emmanuel@exemple.com", account_name: "emmanuel.jid94", adresse_postale: "123 Rue de la liberté,94000 Créteil", iban: "FR7612345678901234567890321"},
+        { email_address: user.email, account_name: user.name, adresse_postale: user.addressString, iban: user.IBAN},
     ]);
     const [items_profil_livreur_parrainage] = useState([
-        {code_parrainage: "ADL-41D-8E4B"},
+        {code_parrainage: user.referralCode},
     ]);
     const [items_profil_livreur_commande_en_cours] = useState([
         {id:1, id_commande: "340003015", date_commande: "2023-10-01", statut_commande: "En cours de livraison", restaurant: "Bella Pizza", client_address: "123 avenue de la paix, 75013 Paris",prix_commande: "15.00€", client_name: "Jean Dupont", client_phone: "0606060606"},

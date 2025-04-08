@@ -3,11 +3,17 @@ import './inscription.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import Marbre from '../../assets/img/marbre.jpg';
+import {registerUser, createRestaurant, loginUser, addDocumentRestaurant} from '../../api/api.jsx';
+import {useNavigate} from "react-router-dom";
 
 function Inscription() {
     const [statut, setStatut] = useState('');
+    const [img64, setImg64] = useState('');
+    const navigate = useNavigate();
 
-    const hanleBanniere = () => {
+
+    const hanleBanniere = (event) => {
+        event.preventDefault();
         const fileInput = document.createElement('input');
         fileInput.type = 'file';
         fileInput.accept = 'image/*';
@@ -16,7 +22,7 @@ function Inscription() {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    console.log('Image sélectionnée:', e.target.result);
+                    setImg64(e.target.result); // Convertit l'image en base64
                 };
                 reader.readAsDataURL(file);
             }
@@ -24,20 +30,29 @@ function Inscription() {
         fileInput.click();
     }
 
-    const handleInscription = () => {
+    const handleInscription = async (event) => {
+        event.preventDefault();
         const nom = document.getElementById('nom').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const adresse = document.getElementById('adresse').value;
-        const villeCodePostal = document.getElementById('ville-codepostal').value;
         const codeParrainage = document.getElementById('code-parrainage').value;
-        const SIRET = document.getElementById('SIRET').value;
+        const Siret = document.getElementById('SIRET').value;
         const IBAN = document.getElementById('IBAN').value;
-        const statut = document.getElementById('statut').value;
 
+        const statut = document.getElementById('statut').value;
         console.log(
-            `Nom: ${nom}, Email: ${email}, Password: ${password}, Adresse: ${adresse}, Ville, code postal: ${villeCodePostal}, Statut: ${statut}, SIRET: ${SIRET}, IBAN: ${IBAN}, Code de parrainage: ${codeParrainage}`
+            `Nom: ${nom}, Email: ${email}, Password: ${password}, Adresse: ${adresse}, Statut: ${statut}, SIRET: ${Siret}, IBAN: ${IBAN}, Code de parrainage: ${codeParrainage}, Image de la bannière: ${img64}`
         )
+        const data = await registerUser(nom, email, password, statut, adresse, codeParrainage, Siret, IBAN);
+        await loginUser(email, password);
+        if(statut === "restaurateur") {
+            const data2 = await createRestaurant(nom, adresse, email, document.getElementById('Desc').value, data.user.id)
+            console.log(data2);
+            await addDocumentRestaurant(data2.id, 'Banniere', img64);
+        }
+
+        navigate("/");
 
     }
 
@@ -62,20 +77,22 @@ function Inscription() {
                         <option value="">Sélectionnez un statut</option>
                         <option value="client">Client</option>
                         <option value="livreur">Livreur</option>
-                        <option value="restaurant">Restaurant</option>
+                        <option value="restaurateur">Restaurant</option>
                     </select>
-                    {statut === "restaurant" && <button className="bannière" onClick={hanleBanniere}>Bannière</button>}
-                    {statut === "restaurant" && <label htmlFor="SIRET">SIRET</label>}
-                    {statut === "restaurant" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" required />}
-                    {statut === "restaurant" && <label htmlFor="IBAN">IBAN</label>}
-                    {statut === "restaurant" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" required />}
+                    {statut === "restaurateur" && <button className="bannière" onClick={hanleBanniere}>Bannière</button>}
+                    {statut === "restaurateur" && <label htmlFor="Desc">Description du restaurant</label>}
+                    {statut === "restaurateur" && <input type="Desc" id="Desc" name="Desc" placeholder="Description" required />}
+                    {statut === "restaurateur" && <label htmlFor="SIRET">SIRET</label>}
+                    {statut === "restaurateur" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" required />}
+                    {statut === "restaurateur" && <label htmlFor="IBAN">IBAN</label>}
+                    {statut === "restaurateur" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" required />}
                     {statut === "livreur" && <label htmlFor="SIRET">SIRET</label>}
                     {statut === "livreur" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" required />}
                     {statut === "livreur" && <label htmlFor="IBAN">IBAN</label>}
                     {statut === "livreur" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" required />}
                     <label htmlFor="code-parrainage">Code de parrainage</label>
                     <input type="code-parrainage" id="code-parrainage" name="code-parrainage" placeholder="Code de parrainage" />
-                    <button className={"inscription-button"} onClick={handleInscription}>S'inscrire</button>
+                    <button className={"inscription-button"} onClick={handleInscription} type="submit">S'inscrire</button>
                 </form>
             </div>
             <Footer />

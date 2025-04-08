@@ -14,12 +14,9 @@ function Connexion() {
     const handleSubmit = async () => {
         try {
             const data = await loginUser(email, password);
-            const { accessToken, refreshToken, user } = data;
+            const { accessToken, refreshToken } = data;
             console.log("Login successful");
             if (accessToken && refreshToken) {
-                localStorage.setItem('accessToken', accessToken);
-                localStorage.setItem('refreshToken', refreshToken);
-                localStorage.setItem('user', JSON.stringify(user));
                 navigate("/");
             }
         } catch (error) {

@@ -5,14 +5,10 @@ import Footer from '../Footer/Footer.jsx';
 import Client from '../assets/img/humain.jpg'
 
 
-function ModifierProfilClient() {
+function ProfilClient() {
 
-    const [items_profil_client] = useState([
-        { email_address: "quentinc92@exemple.com", account_name: "quentin.c"},
-    ]);
-    const [items_profil_client_parrainage] = useState([
-            {code_parrainage: "QUENTIN92"},
-    ]);
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
     const [items_profil_client_commandes_en_cours] = useState([
         {id_commande: "340003015", restaurant: "Big Bite Burger", date_commande: "2023-10-01", statut_commande: "En cours", livreur: "Jean Dupont", prix_total: "15.00€"},
     ]);
@@ -42,12 +38,18 @@ function ModifierProfilClient() {
                 <div className="container_top-profil_client">
                     <div className={"modifier-profil_client"}>
                         <h2 className="titre-modifier_profil_client">Modifier profil</h2>
-                        <label htmlFor="email_client">Email</label>
-                        <div className="modifier_email_client">
-                            <input className={"input-modif-profil-client"} type="email" id="email_address" name="email_address" placeholder={items_profil_client[0].email_address} required />
+
+                        <label htmlFor="email">Nom d'utilisateur</label>
+                        <div className="modifier-account_name_profil_client">
+                            <input className={"input-modif-profil-client"} type="nom.prenom" id="account_name" name="account_name" placeholder={user.name} required />
                             <button className={"save-button_profil_client"}>Enregistrer</button>
                         </div>
 
+                        <label htmlFor="email_client">Email</label>
+                        <div className="modifier_email_client">
+                            <input className={"input-modif-profil-client"} type="email" id="email_address" name="email_address" placeholder={user.email} required />
+                            <button className={"save-button_profil_client"}>Enregistrer</button>
+                        </div>
 
                         <label htmlFor="password">Mot de passe</label>
                         <div className="modifier-password_profil_client">
@@ -55,18 +57,18 @@ function ModifierProfilClient() {
                             <button className={"save-button_profil_client"}>Enregistrer</button>
                         </div>
 
-
-                        <label htmlFor="email">Nom d'utilisateur</label>
-                        <div className="modifier-account_name_profil_client">
-                            <input className={"input-modif-profil-client"} type="nom.prenom" id="account_name" name="account_name" placeholder={items_profil_client[0].account_name} required />
+                        <label htmlFor="Adresse">Adresse</label>
+                        <div className="modifier-Adresse_profil_client">
+                            <input className={"input-modif-profil-client"} type="Adresse" id="Adresse" name="Adresse" placeholder={user.addressString} required />
                             <button className={"save-button_profil_client"}>Enregistrer</button>
                         </div>
+
                     </div>
 
                     <div className="container_top_right-profil_client">
                         <div className="parrainage-profil_client">
                             <h2 className="titre-parrainage_profil_client">Parrainage</h2>
-                            <p>Mon code : {items_profil_client_parrainage[0].code_parrainage} </p>
+                            <p>Mon code : {user.referralCode} </p>
                         </div>
                         <div className="supprimer-profil_client">
                             <h2 className="titre-supprimer_profil_client">Supprimer profil</h2>
@@ -138,4 +140,4 @@ function ModifierProfilClient() {
     );
 }
 
-export default ModifierProfilClient;
+export default ProfilClient;
