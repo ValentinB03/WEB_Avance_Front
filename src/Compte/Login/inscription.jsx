@@ -7,6 +7,40 @@ import Marbre from '../../assets/img/marbre.jpg';
 function Inscription() {
     const [statut, setStatut] = useState('');
 
+    const hanleBanniere = () => {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.onchange = (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    console.log('Image sélectionnée:', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+        fileInput.click();
+    }
+
+    const handleInscription = () => {
+        const nom = document.getElementById('nom').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const adresse = document.getElementById('adresse').value;
+        const villeCodePostal = document.getElementById('ville-codepostal').value;
+        const codeParrainage = document.getElementById('code-parrainage').value;
+        const SIRET = document.getElementById('SIRET').value;
+        const IBAN = document.getElementById('IBAN').value;
+        const statut = document.getElementById('statut').value;
+
+        console.log(
+            `Nom: ${nom}, Email: ${email}, Password: ${password}, Adresse: ${adresse}, Ville, code postal: ${villeCodePostal}, Statut: ${statut}, SIRET: ${SIRET}, IBAN: ${IBAN}, Code de parrainage: ${codeParrainage}`
+        )
+
+    }
+
     return (
         <div className="App">
             <NavBar />
@@ -14,7 +48,7 @@ function Inscription() {
 
             <h1 className="titre-inscription">S'inscrire</h1>
             <div className={"liste-info"}>
-                <div className={"form-inscription"}>
+                <form className={"form-inscription"}>
                     <label htmlFor="nom">Nom</label>
                     <input type="nom" id="nom" name="nom" placeholder="Votre nom" required />
                     <label htmlFor="email">Email</label>
@@ -23,8 +57,6 @@ function Inscription() {
                     <input type="password" id="password" name="password" placeholder="Votre mot de passe" required />
                     <label htmlFor="adresse">Adresse</label>
                     <input type="adresse" id="adresse" name="adresse" placeholder="Votre adresse" required />
-                    <label htmlFor="ville-codepostal">Ville, code postal</label>
-                    <input type="ville-codepostal" id="ville-codepostal" name="ville-codepostal" placeholder="Votre ville, code postal" required />
                     <label htmlFor="statut">Statut</label>
                     <select id="statut" name="statut" required onChange={(e) => setStatut(e.target.value)}>
                         <option value="">Sélectionnez un statut</option>
@@ -32,7 +64,7 @@ function Inscription() {
                         <option value="livreur">Livreur</option>
                         <option value="restaurant">Restaurant</option>
                     </select>
-                    {statut === "restaurant" && <button className="bannière">Bannière</button>}
+                    {statut === "restaurant" && <button className="bannière" onClick={hanleBanniere}>Bannière</button>}
                     {statut === "restaurant" && <label htmlFor="SIRET">SIRET</label>}
                     {statut === "restaurant" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" required />}
                     {statut === "restaurant" && <label htmlFor="IBAN">IBAN</label>}
@@ -43,8 +75,8 @@ function Inscription() {
                     {statut === "livreur" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" required />}
                     <label htmlFor="code-parrainage">Code de parrainage</label>
                     <input type="code-parrainage" id="code-parrainage" name="code-parrainage" placeholder="Code de parrainage" />
-                    <button className={"inscription-button"}>S'inscrire</button>
-                </div>
+                    <button className={"inscription-button"} onClick={handleInscription}>S'inscrire</button>
+                </form>
             </div>
             <Footer />
         </div>

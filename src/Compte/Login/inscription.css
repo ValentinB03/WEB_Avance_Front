@@ -22,6 +22,7 @@
 .bannière{
     color: white;
     background-color: black;
+    width: 100%;
 }
 
 .liste-info {
@@ -37,8 +38,9 @@
 .form-inscription {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
+    color: black;
 }
 
 .form-inscription input, .form-inscription select{
