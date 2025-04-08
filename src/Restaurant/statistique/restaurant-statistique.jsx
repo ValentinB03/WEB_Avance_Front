@@ -40,8 +40,7 @@ function RestaurantStatistique() {
                 <img src={ImgResto} alt="Background" className="background-image-modifcarte"/>
 
                 <h1 className="titre-modifcarte">Big Bite Burger</h1>
-                <h1 className="titre-statistique">Statistiques du restaurant</h1>
-                <h2 className="titre-graphique">Graphique</h2>
+                <h1 className="titre-statistique">Statistiques du restaurant - mois en cours</h1>
                 <div className="graphique-global">
                     <div className="legende-graphique">
                         <p>Légende :    </p>
