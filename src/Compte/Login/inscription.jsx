@@ -33,6 +33,14 @@ function Inscription() {
                         <option value="restaurant">Restaurant</option>
                     </select>
                     {statut === "restaurant" && <button className="bannière">Bannière</button>}
+                    {statut === "restaurant" && <label htmlFor="SIRET">SIRET</label>}
+                    {statut === "restaurant" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" required />}
+                    {statut === "restaurant" && <label htmlFor="IBAN">IBAN</label>}
+                    {statut === "restaurant" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" required />}
+                    {statut === "livreur" && <label htmlFor="SIRET">SIRET</label>}
+                    {statut === "livreur" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" required />}
+                    {statut === "livreur" && <label htmlFor="IBAN">IBAN</label>}
+                    {statut === "livreur" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" required />}
                     <label htmlFor="code-parrainage">Code de parrainage</label>
                     <input type="code-parrainage" id="code-parrainage" name="code-parrainage" placeholder="Code de parrainage" />
                     <button className={"inscription-button"}>S'inscrire</button>

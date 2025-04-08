@@ -5,6 +5,12 @@
     font-size: 3rem;
 }
 
+.titre-commande_livreur{
+    z-index: 1;
+    margin-top: -90px;
+    color: white;
+}
+
 .container-livraison{
     color: black;
     display: flex;
@@ -40,6 +46,17 @@
 @media (max-width: 768px) {
     .container-livraison p {
         font-size: 3vw;
+    }
+
+    .titre-commande_livreur{
+        z-index: 1;
+        margin-top: -140px;
+        color: white;
+        font-size: 2.5em;
+    }
+
+    .sous-titre{
+        font-size: 2em;
     }
 
     .container-livraison h1 {
