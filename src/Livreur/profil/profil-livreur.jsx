@@ -3,11 +3,59 @@ import './profil-livreur.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import Livreur from '../../assets/livraison-resto.jpg'
+import {
+    DeleteUser,
+    editAddressUser,
+    editEmailUser,
+    editIbanUser,
+    editNameUser,
+    editPasswordUser,
+    getUser
+} from "../../api/api.jsx";
+import {useNavigate} from "react-router-dom";
 
 
 function ProfilLivreur() {
 
     const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const navigate = useNavigate();
+
+    const modifLivreurName = () => {
+        const account_name = document.getElementById("account_name_livreur").value;
+        editNameUser(user.id, account_name);
+        getUser(user.id);
+    }
+    const modifLivreurPassword = () => {
+        const password = document.getElementById("password").value;
+        editPasswordUser(user.id, password);
+        getUser(user.id);
+    }
+    const modifLivreurAdress = () => {
+        const addressString = document.getElementById("postal_address_livreur").value;
+        editAddressUser(user.id, addressString);
+        getUser(user.id);
+    }
+    const modifLivreurEmail = () => {
+        const email_address = document.getElementById("email_address").value;
+        editEmailUser(user.id, email_address);
+        getUser(user.id);
+    }
+    const modifLivreurIban = () => {
+        const iban = document.getElementById("iban_livreur").value;
+        editIbanUser(user.id, iban);
+        getUser(user.id);
+    }
+
+    const deleteProfil = () => {
+        const confirmation = window.confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.");
+        if (confirmation) {
+            // Appel à la fonction pour supprimer le profil
+            // deleteUser(user.id);
+            DeleteUser(user.id);
+            alert("Votre compte a été supprimé avec succès.");
+            navigate('/');
+        }
+    }
 
     const [items_profil_livreur] = useState([
         { email_address: user.email, account_name: user.name, adresse_postale: user.addressString, iban: user.IBAN},
@@ -50,32 +98,32 @@ function ProfilLivreur() {
                         <label htmlFor="email_livreur">Email</label>
                         <div className="modifier_email_livreur">
                             <input className={"input-modif-profil-livreur"} type="email" id="email_address" name="email_address" placeholder={items_profil_livreur[0].email_address} required />
-                            <button className={"save-button_profil_livreur"}>Enregistrer</button>
+                            <button className={"save-button_profil_livreur"} onClick={modifLivreurEmail}>Enregistrer</button>
                         </div>
 
 
                         <label htmlFor="password">Mot de passe</label>
                         <div className="modifier-password_profil_livreur">
                             <input className={"input-modif-profil-livreur"} type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
-                            <button className={"save-button_profil_livreur"}>Enregistrer</button>
+                            <button className={"save-button_profil_livreur"} onClick={modifLivreurPassword}>Enregistrer</button>
                         </div>
 
 
                         <label htmlFor="email">Nom d'utilisateur</label>
                         <div className="modifier-account_name_profil_livreur">
                             <input className={"input-modif-profil-livreur"} type="nom.prenom" id="account_name_livreur" name="account_name_livreur" placeholder={items_profil_livreur[0].account_name} required />
-                            <button className={"save-button_profil_livreur"}>Enregistrer</button>
+                            <button className={"save-button_profil_livreur"} onClick={modifLivreurName}>Enregistrer</button>
                         </div>
 
                         <label htmlFor="Adresse">Adresse postale</label>
                         <div className="modifier-adresse_postale_profil_livreur">
                             <input className={"input-modif-profil-livreur"} type="adresse" id="postal_address_livreur" name="postal_address_livreur" placeholder={items_profil_livreur[0].adresse_postale} required />
-                            <button className={"save-button_profil_livreur"}>Enregistrer</button>
+                            <button className={"save-button_profil_livreur"} onClick={modifLivreurAdress}>Enregistrer</button>
                         </div>
                         <label htmlFor="Adresse">IBAN</label>
                         <div className="modifier-iban_profil_livreur">
                             <input className={"input-modif-profil-livreur"} type="iban" id="iban_livreur" name="iban_livreur" placeholder={items_profil_livreur[0].iban} required />
-                            <button className={"save-button_profil_livreur"}>Enregistrer</button>
+                            <button className={"save-button_profil_livreur"} onClick={modifLivreurIban}>Enregistrer</button>
                         </div>
                     </div>
 
@@ -86,7 +134,7 @@ function ProfilLivreur() {
                         </div>
                         <div className="supprimer-profil_livreur">
                             <h2 className="titre-supprimer_profil_livreur">Supprimer profil</h2>
-                            <button className={"delete-button_profil_livreur"}>Supprimer</button>
+                            <button className={"delete-button_profil_livreur"} onClick={deleteProfil}>Supprimer</button>
                         </div>
                         <div className="commencer_livraison-profil_livreur">
                             <h2 className="titre-supprimer_profil_livreur">Début de service</h2>

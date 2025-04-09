@@ -105,6 +105,13 @@ input[type="text"] {
   padding: 10px;
 }
 
+.separate{
+    color: black;
+    text-align: center;
+    font-size: 2rem;
+    margin: -20px;
+}
+
 .bento-box-item {
   background-color: white;
   width: 15rem;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
 import './inscription.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
@@ -30,31 +30,42 @@ function Inscription() {
         fileInput.click();
     }
 
+    // Références pour les champs
+    const nomRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const adresseRef = useRef();
+    const codeParrainageRef = useRef();
+    const siretRef = useRef();
+    const ibanRef = useRef();
+    const descRef = useRef();
+
     const handleInscription = async (event) => {
         event.preventDefault();
-        const nom = document.getElementById('nom').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const adresse = document.getElementById('adresse').value;
-        const codeParrainage = document.getElementById('code-parrainage').value;
-        const Siret = document.getElementById('SIRET').value;
-        const IBAN = document.getElementById('IBAN').value;
 
-        const statut = document.getElementById('statut').value;
+        const nom = nomRef.current.value;
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        const adresse = adresseRef.current.value;
+        const codeParrainage = codeParrainageRef.current?.value || '';
+        const Siret = siretRef.current?.value || '';
+        const IBAN = ibanRef.current?.value || '';
+        const description = descRef.current?.value || '';
+
         console.log(
             `Nom: ${nom}, Email: ${email}, Password: ${password}, Adresse: ${adresse}, Statut: ${statut}, SIRET: ${Siret}, IBAN: ${IBAN}, Code de parrainage: ${codeParrainage}, Image de la bannière: ${img64}`
-        )
+        );
+
         const data = await registerUser(nom, email, password, statut, adresse, codeParrainage, Siret, IBAN);
         await loginUser(email, password);
-        if(statut === "restaurateur") {
-            const data2 = await createRestaurant(nom, adresse, email, document.getElementById('Desc').value, data.user.id)
+        if (statut === "restaurateur") {
+            const data2 = await createRestaurant(nom, adresse, email, description, data.user.id);
             console.log(data2);
             await addDocumentRestaurant(data2.id, 'Banniere', img64);
         }
 
         navigate("/");
-
-    }
+    };
 
     return (
         <div className="App">
@@ -65,13 +76,13 @@ function Inscription() {
             <div className={"liste-info"}>
                 <form className={"form-inscription"}>
                     <label htmlFor="nom">Nom</label>
-                    <input type="nom" id="nom" name="nom" placeholder="Votre nom" required />
+                    <input type="nom" id="nom" name="nom" placeholder="Votre nom" ref={nomRef} required />
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Votre email" required />
+                    <input type="email" id="email" name="email" placeholder="Votre email" ref={emailRef} required />
                     <label htmlFor="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" placeholder="Votre mot de passe" required />
+                    <input type="password" id="password" name="password" placeholder="Votre mot de passe" ref={passwordRef} required />
                     <label htmlFor="adresse">Adresse</label>
-                    <input type="adresse" id="adresse" name="adresse" placeholder="Votre adresse" required />
+                    <input type="adresse" id="adresse" name="adresse" placeholder="Votre adresse" ref={adresseRef} required />
                     <label htmlFor="statut">Statut</label>
                     <select id="statut" name="statut" required onChange={(e) => setStatut(e.target.value)}>
                         <option value="">Sélectionnez un statut</option>
@@ -81,15 +92,15 @@ function Inscription() {
                     </select>
                     {statut === "restaurateur" && <button className="bannière" onClick={hanleBanniere}>Bannière</button>}
                     {statut === "restaurateur" && <label htmlFor="Desc">Description du restaurant</label>}
-                    {statut === "restaurateur" && <input type="Desc" id="Desc" name="Desc" placeholder="Description" required />}
+                    {statut === "restaurateur" && <input type="Desc" id="Desc" name="Desc" placeholder="Description" ref={descRef} required />}
                     {statut === "restaurateur" && <label htmlFor="SIRET">SIRET</label>}
-                    {statut === "restaurateur" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" required />}
+                    {statut === "restaurateur" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" ref={siretRef} required />}
                     {statut === "restaurateur" && <label htmlFor="IBAN">IBAN</label>}
-                    {statut === "restaurateur" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" required />}
+                    {statut === "restaurateur" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" ref={ibanRef} required />}
                     {statut === "livreur" && <label htmlFor="SIRET">SIRET</label>}
-                    {statut === "livreur" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" required />}
+                    {statut === "livreur" && <input type="SIRET" id="SIRET" name="SIRET" placeholder="SIRET" ref={siretRef} required />}
                     {statut === "livreur" && <label htmlFor="IBAN">IBAN</label>}
-                    {statut === "livreur" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" required />}
+                    {statut === "livreur" && <input type="IBAN" id="IBAN" name="IBAN" placeholder="IBAN" ref={ibanRef} required />}
                     <label htmlFor="code-parrainage">Code de parrainage</label>
                     <input type="code-parrainage" id="code-parrainage" name="code-parrainage" placeholder="Code de parrainage" />
                     <button className={"inscription-button"} onClick={handleInscription} type="submit">S'inscrire</button>
