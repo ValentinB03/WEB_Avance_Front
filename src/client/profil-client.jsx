@@ -3,16 +3,48 @@ import './profil-client.css';
 import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Client from '../assets/img/humain.jpg'
+import {DeleteUser, editAddressUser, editEmailUser, editNameUser, editPasswordUser, getUser} from "../api/api.jsx";
+import {useNavigate} from "react-router-dom";
 
 
 function ProfilClient() {
 
-    const [items_profil_client] = useState([
-        { email_address: "quentinc92@exemple.com", account_name: "quentin.c"},
-    ]);
-    const [items_profil_client_parrainage] = useState([
-            {code_parrainage: "QUENTIN92"},
-    ]);
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const navigate = useNavigate();
+
+    const modifUserName = () => {
+        const account_name = document.getElementById("account_name").value;
+        editNameUser(user.id, account_name);
+        getUser(user.id);
+    }
+    const modifUserPassword = () => {
+        const password = document.getElementById("password").value;
+        editPasswordUser(user.id, password);
+        getUser(user.id);
+    }
+    const modifUserAdress = () => {
+        const addressString = document.getElementById("Adresse").value;
+        editAddressUser(user.id, addressString);
+        getUser(user.id);
+    }
+    const modifUserEmail = () => {
+        const email_address = document.getElementById("email_address").value;
+        editEmailUser(user.id, email_address);
+        getUser(user.id);
+    }
+
+    const deleteProfil = () => {
+        const confirmation = window.confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.");
+        if (confirmation) {
+            // Appel à la fonction pour supprimer le profil
+            // deleteUser(user.id);
+            DeleteUser(user.id);
+            alert("Votre compte a été supprimé avec succès.");
+            navigate('/');
+        }
+    }
+
+
     const [items_profil_client_commandes_en_cours] = useState([
         {id_commande: "340003015", restaurant: "Big Bite Burger", date_commande: "2023-10-01", statut_commande: "En cours", livreur: "Jean Dupont", prix_total: "15.00€"},
     ]);
@@ -38,39 +70,45 @@ function ProfilClient() {
 
             <h1 className="titre-profil_client">Mon profil</h1>
 
-            <form className="form-profil_client">
+            <div className="form-profil_client">
                 <div className="container_top-profil_client">
                     <div className={"modifier-profil_client"}>
                         <h2 className="titre-modifier_profil_client">Modifier profil</h2>
-                        <label htmlFor="email_client">Email</label>
-                        <div className="modifier_email_client">
-                            <input type="email" id="email_address" name="email_address" placeholder={items_profil_client[0].email_address} required />
-                            <button className={"save-button_profil_client"}>Enregistrer</button>
-                        </div>
-
-
-                        <label htmlFor="password">Mot de passe</label>
-                        <div className="modifier-password_profil_client">
-                            <input type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
-                            <button className={"save-button_profil_client"}>Enregistrer</button>
-                        </div>
-
 
                         <label htmlFor="email">Nom d'utilisateur</label>
                         <div className="modifier-account_name_profil_client">
-                            <input type="nom.prenom" id="account_name" name="account_name" placeholder={items_profil_client[0].account_name} required />
-                            <button className={"save-button_profil_client"}>Enregistrer</button>
+                            <input className={"input-modif-profil-client"} type="nom.prenom" id="account_name" name="account_name" placeholder={user.name} required />
+                            <button className={"save-button_profil_client"} onClick={modifUserName}>Enregistrer</button>
                         </div>
+
+                        <label htmlFor="email_client">Email</label>
+                        <div className="modifier_email_client">
+                            <input className={"input-modif-profil-client"} type="email" id="email_address" name="email_address" placeholder={user.email} required />
+                            <button className={"save-button_profil_client"} onClick={modifUserEmail}>Enregistrer</button>
+                        </div>
+
+                        <label htmlFor="password">Mot de passe</label>
+                        <div className="modifier-password_profil_client">
+                            <input className={"input-modif-profil-client"} type="password" id="password" name="password" placeholder="xxxxxxxxxxx" required />
+                            <button className={"save-button_profil_client"} onClick={modifUserPassword}>Enregistrer</button>
+                        </div>
+
+                        <label htmlFor="Adresse">Adresse</label>
+                        <div className="modifier-Adresse_profil_client">
+                            <input className={"input-modif-profil-client"} type="Adresse" id="Adresse" name="Adresse" placeholder={user.addressString} required />
+                            <button className={"save-button_profil_client"} onClick={modifUserAdress}>Enregistrer</button>
+                        </div>
+
                     </div>
 
                     <div className="container_top_right-profil_client">
                         <div className="parrainage-profil_client">
                             <h2 className="titre-parrainage_profil_client">Parrainage</h2>
-                            <p>Mon code : {items_profil_client_parrainage[0].code_parrainage} </p>
+                            <p>Mon code : {user.referralCode} </p>
                         </div>
                         <div className="supprimer-profil_client">
                             <h2 className="titre-supprimer_profil_client">Supprimer profil</h2>
-                            <button className={"delete-button_profil_client"}>Supprimer</button>
+                            <button className={"delete-button_profil_client"} onClick={deleteProfil}>Supprimer</button>
                         </div>
                     </div>
                 </div>
@@ -130,7 +168,7 @@ function ProfilClient() {
                 </div>
 
 
-            </form>
+            </div>
 
 
             <Footer />

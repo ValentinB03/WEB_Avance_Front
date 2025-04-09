@@ -1,0 +1,363 @@
+.background-image-profil_livreur {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Assure que l'image couvre toute la zone sans déformation */
+}
+
+.titre-profil_livreur {     /* Titre de la section */
+    z-index: 1;                 /* Position au-dessus de l'image de fond */
+    margin-top: -70px;          /* Ajuste la position du titre */
+    color: white;               /* Couleur du texte */
+}
+
+
+.form-profil_livreur {           /* Formulaire de la page */
+    color: black;               /* Couleur du texte */
+    display: flex;              /* Utilise Flexbox pour la mise en page */
+    flex-direction: column;     /* Colonne pour empiler les éléments */
+    align-items: normal;        /* Centre les éléments horizontalement */
+    width: 80%;                 /* Prend toute la largeur de son conteneur */
+}
+
+
+/*------------------------------------------------------------------*/
+/*---Partie du haut Modifier/Supprimer profil + Commande en cours---*/
+/*------------------------------------------------------------------*/
+.container_top-profil_livreur {          /* bloc contenant Modifier et supprimer profil */
+    display: grid;                      /* Utilise une grille CSS pour la mise en page */
+    grid-template-columns: 1fr 1fr;     /* Deux colonnes de taille égale */
+    gap: 20vw;                          /* Espace entre les colonnes */
+    place-items: start;                 /* Centre les éléments dans la grille */
+    margin: 0 100px;                    /* Espace entre le haut et le bas */
+}
+
+.titre-modifier_profil_livreur {
+    text-align: center;     /* Centre le texte axe x*/
+    margin: 0 auto;         /* Centre le texte axe y */
+    width: 70%;
+}
+
+.modifier-profil_livreur, .supprimer-profil_livreur {
+    width: 100%;    /* Assure que les éléments prennent toute la largeur de leur cellule */
+}
+
+.supprimer-profil_livreur, .parrainage-profil_livreur{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+}
+
+.modifier_email_livreur, .modifier-password_profil_livreur, .modifier-account_name_profil_livreur, .modifier-adresse_postale_profil_livreur, .modifier-iban_profil_livreur {
+    display: flex;                      /* Utilise Flexbox pour la mise en page */
+    flex-direction: row;                /* Colonne pour empiler les éléments */
+    align-items: center;              /* Centre les éléments horizontalement */
+    justify-content: space-between;     /* Espace entre les éléments */
+    width: 100%;
+}
+
+.save-button_profil_livreur {
+    width: auto;                    /* Ajuste la taille du bouton à son contenu */
+    margin-left: 2vw;               /* Espace entre le bouton et le champ de texte */
+    border: 1px solid lightgray;    /* Bordure grise */
+    background-color: white; /* Couleur de fond */
+    color: black; /* Couleur du texte */
+}
+
+.input-modif-profil-livreur{
+    color: black;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.container_top_right-profil_livreur{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.titre-parrainage_profil_livreur{
+    margin-top: 0;
+}
+.code_parrainage_livreur{
+    margin-top: -10px;
+    font-size: 1em; /* Taille de la police */
+}
+
+
+.delete-button_profil_livreur {
+    margin-top: -5px;               /* Réduire la marge supérieure pour l'espacement */
+    width: 70%;                     /* Ajuste la taille du bouton à son contenu */
+    border: 1px solid lightgray;    /* Bordure grise */
+
+}
+
+.commencer_livraison-profil_livreur {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre les éléments horizontalement */
+    margin-top: 20px;
+}
+ .commencer_livraison-button_profil_livreur{
+     margin-top: -5px;
+     padding: 20px;
+     background-color: #000000; /* Couleur de fond */
+     color: white; /* Couleur du texte */
+     width: 200px;
+ }
+
+.container-profil_livreur-commandes_en_cours{
+    margin: 50px 100px;
+}
+
+.profil_livreur-details_commande_en_cours_commande_numero{
+
+}
+.profil_livreur-details_commande_en_cours{
+    margin-bottom: -10px;
+}
+
+/*-----------------------Fin partie supérieur-----------------------*/
+
+
+
+
+
+
+/*------------------------------------------------------------------*/
+/*-------------Partie du milieu : commandes en cours----------------*/
+/*------------------------------------------------------------------*/
+.container-profil_livreur-commande_en_cours{
+    margin: 50px 0;
+}
+
+.content-profil_livreur-commande_en_cours{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: min-content;
+    min-width: 600px;
+}
+
+
+.liste-profil_livreur-commande_en_cours{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding-right: 10px;
+
+    button{
+        width: 130px;
+        height: 80px;
+        background-color: #000000;  /* Couleur de fond */
+        color: white;               /* Couleur du texte */
+    }
+    p{
+        margin: 1px 10px;
+        font-size: 1.2em;           /* Taille de la police */
+    }
+    .liste_commandes-profil_livreur{
+        margin: 10px 0;
+    }
+}
+/*-----------------------Fin partie du milieu-----------------------*/
+
+
+
+
+
+
+
+/*------------------------------------------------------------------*/
+/*-------------Partie du bas : historique des commandes-------------*/
+/*------------------------------------------------------------------*/
+.container-profil_livreur-historique_commandes{
+    margin: 50px 0;
+}
+
+.content-profil_livreur-historique_commandes{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.content-profil_livreur-historique_commandes-header p, .content-profil_livreur-historique_commandes-line p, .content-profil_livreur-historique_commandes-line button {
+    align-content: center;
+}
+
+.content-profil_livreur-historique_commandes-line {
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content-profil_livreur-historique_commandes-header{
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profil_livreur-case-tableau{
+    min-width: 160px;
+    max-width: 160px;
+}
+
+.content-profil_livreur-historique_commandes-line:nth-child(even) {
+    background-color: lightgray;
+}
+/*-----------------------Fin partie basse-----------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------*/
+/* Media Queries pour rendre le design responsive */
+/*------------------------------------------------*/
+
+/* Media Queries pour les écrans de taille inférieure à 1200px */
+
+@media (max-width: 1200px) {
+    .container_top-profil_livreur {
+        grid-template-columns: 1fr 1fr; /* Deux colonnes de taille égale */
+        gap: 20vw; /* Espace entre les éléments */
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+    }
+
+    .titre-modifier_profil_livreur, .modifier-password_profil_livreur, .modifier-account_name_profil_livreur {
+        min-width: 260px; /* Assure que les éléments prennent toute la largeur de leur cellule */
+    }
+
+    .container-profil_livreur-commandes_en_cours {
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+    }
+
+    .container-options_livreur{
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+
+    }
+}
+
+
+
+/* Media Queries pour les petits écrans */
+
+@media (max-width: 835px) {
+
+    .titre-profil_livreur {
+        margin-top: -55px;
+    }
+
+
+    .container_top-profil_livreur {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 5vw; /* Réduire l'espace entre les éléments */
+        margin: 0 6px 15px 6px;           /* Réduire la marge de gauche */
+    }
+
+    .container_top_right-profil_livreur {
+        margin: 0 6px 15px 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .modifier-profil_livreur, .supprimer-profil_livreur {
+        margin: 0 0 15px 0;
+    }
+
+    .delete-button_profil_livreur{
+        width: 50%;        /* Ajuste la taille du bouton à son contenu */
+    }
+
+    .container-options_livreur{
+        flex-direction: column;
+        margin: 15px 6px 100px 6px;           /* Réduire la marge de gauche */
+        gap: 0; /* Espace entre les éléments */
+        button{
+            width: 70%;
+        }
+    }
+}
+
+
+@media (max-width: 735px) {
+    .container-profil_livreur-commande_en_cours {
+        margin: 20px 0;
+    }
+
+    .content-profil_livreur-commande_en_cours {
+        margin: 10px;
+        min-width: 100%;
+    }
+
+    .liste-profil_livreur-commande_en_cours {
+        flex-direction: column;
+        padding-right: 0;
+
+        button {
+            width: 100px;
+            height: 60px;
+        }
+
+        p {
+            margin: 5px 5px;
+            font-size: 1em;
+        }
+
+        .liste_commandes-profil_livreur {
+            margin: 5px 0;
+        }
+    }
+}
+
+
+/* Media Queries pour les très petits écrans */
+
+@media (max-width: 480px) {
+
+    .titre-profil_livreur {
+        margin-top: -60px;
+        font-size: 2.4em;
+    }
+
+    .container_top-profil_livreur {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 2vw;                   /* Réduire l'espace entre les éléments */
+        margin: 0 1vw;           /* Réduire la marge de gauche */
+    }
+
+    .modifier-profil_livreur, .supprimer-profil_livreur {
+        margin: 0 0 15px 0;
+    }
+}

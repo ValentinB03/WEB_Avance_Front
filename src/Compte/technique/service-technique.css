@@ -12,8 +12,16 @@
 
     button{
         margin: 0 2rem;
+        border: 1px solid lightgray;    /* Bordure noire */
+
     }
 
+}
+
+.titre-service-technique{
+    z-index: 1;
+    margin-top: -100px;
+    color: white;
 }
 
 .content-st{
@@ -23,7 +31,7 @@
 }
 
 @media (max-width: 768px) {
-    h1{
+    .titre-service-technique{
         font-size: 2.7rem;
         margin-bottom: 20px;
     }

@@ -1,3 +1,8 @@
+.titre-gestion_commande{
+    margin-top: -70px;          /* Ajuste la position du titre */
+    color: white;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -22,6 +27,7 @@
     font-weight: initial;
     display: flex;
     margin-bottom: 5vw;
+    width: 100%;
 }
 
 .info-commande {
@@ -64,7 +70,7 @@
     width: 100%;
 }
 
-button{
+.etat-commande button{
     padding: 0.5vw 1vw;
 }
 
@@ -79,20 +85,23 @@ button{
         display: none;
     }
 
-    .titre-panier{
-        font-size: 2rem;
-    }
-
     .etat-commande {
         flex-direction: column;
+        button{
+            font-size: 20px;
+        }
     }
 
     .CommandeEnCours p{
         font-size: 1.2rem;
     }
 
-    .titre-panier{
-        font-size: 1.5rem;
+    .CommandeEnAttente p{
+        font-size: 1.2rem;
+    }
+
+    .titre-gestion_commande{
+        margin-top: -90px;          /* Ajuste la position du titre */
     }
 
     .bouton-commande, .bouton-commande-attente{

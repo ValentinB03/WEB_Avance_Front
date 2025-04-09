@@ -19,18 +19,39 @@ import ClientProfil from "../client/profil-client.jsx";
 import ServiceTechnique from "../Compte/technique/service-technique.jsx";
 import ServiceCommercialInfo from "../ServiceCommercial/ServiceCommercial-info.jsx";
 import SCGestionClient from "../ServiceCommercial/SCGestionClient.jsx";
+import RestaurantProfil from "../Restaurant/profil-restaurant/profil-restaurant.jsx";
+import ModifierProfilClient from "../client/Modification-compte/modif-profil-client.jsx";
+import LivreurProfil from "../Livreur/profil/profil-livreur.jsx";
+import {getAllResto, getBanniereByOwner} from "../api/api.jsx";
 
 
 
 function App() {
     const [text, setText] = useState('');
-    const [items] = useState([
-        { id: 1, title: 'Big Bite Burger', description: 'Savourez des burgers gourmands et généreux, composés de viande fraîche, de pains moelleux et d’ingrédients de qualité.', image: 'src/assets/img/burger.jpg' },
-        { id: 2, title: 'Bella Pizza', description: 'Découvrez l’authenticité de l’Italie avec nos pizzas artisanales, préparées avec des ingrédients frais et une pâte croustillante faite maison.', image: 'src/assets/img/pasta.jpg' },
-        { id: 3, title: 'Sakura Sushi', description: 'Plongez dans l’élégance japonaise avec nos sushis raffinés, préparés à la perfection pour une expérience gustative unique.', image: 'src/assets/img/pizza.jpg' },
-        { id: 4, title: 'Pasta Fresca', description: 'Voyagez en Italie avec nos délicieuses pâtes fraîches, cuisinées avec amour et accompagnées de sauces maison savoureuses.', image: 'src/assets/img/sushi.jpeg' }
-    ]);
-    const filteredItems = items.filter(item => item.title.toLowerCase().includes(text.toLowerCase()));
+    const [allResto, setAllResto] = useState([]);
+
+    useEffect(() => {
+        const fetchRestaurants = async () => {
+            try {
+                const restaurants = await getAllResto();
+                // Ajout des bannières pour chaque restaurant
+                const restaurantsWithBanners = await Promise.all(
+                    restaurants.map(async (restaurant) => {
+                        const banniere = await getBanniereByOwner(restaurant.ownerId);
+                        return { ...restaurant, banniere };
+                    })
+                );
+
+                setAllResto(restaurantsWithBanners);
+                console.log("Liste des restaurants récupérée :", restaurantsWithBanners);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des restaurants :", error);
+            }
+        };
+        fetchRestaurants();
+    }, []);
+
+    const filteredItems = allResto.filter(resto => resto.name.toLowerCase().includes(text.toLowerCase()));
 
     const scrollToRestaurants = () => {
         document.getElementById('liste-resto').scrollIntoView({ behavior: 'smooth' });
@@ -42,10 +63,8 @@ function App() {
 
     const navigate = useNavigate();
 
-    const handleItemClick = (id) => {
-        if (id === 1) {
-            navigate('/restaurant');
-        }
+    const handleItemClick = () => {
+        navigate('/restaurant');
     };
 
 
@@ -82,8 +101,9 @@ function App() {
                     <div className="content-boxs">
                         {filteredItems.map(item => (
                             <div key={item.id} className="bento-box-item" onClick={() => handleItemClick(item.id)}>
-                                <img src={item.image} alt={item.title} />
-                                <p className="bento-box-item-content titre-resto">{item.title}</p>
+                                <img src={item.banniere.data} alt={item.title} />
+                                <p className="bento-box-item-content titre-resto">{item.name}</p>
+                                <p className="separate">-</p>
                                 <p className="bento-box-item-content">{item.description}</p>
                             </div>
                         ))}
@@ -105,28 +125,32 @@ function ScrollToTop() {
 }
 function AppWrapper() {
     return (
-        <Router>
-            <ScrollToTop />
-            <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="/restaurant" element={<RestaurantMenu />} />
-                <Route path="/inscription" element={<Inscription />} />
-                <Route path="/connexion" element={<Connexion />} />
-                <Route path="/panier" element={<Panier />} />
-                <Route path="/restaurant/modification-menu" element={<RestaurantModifMenu />} />
-                <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
-                <Route path="/paiement" element={<Paiement />} />
-                <Route path="/livreur-commande" element={<CommandeLivreur />} />
-                <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
-                <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
-                <Route path="/developpeur/profil-developpeur" element={<DeveloppeurProfil />} />
-                <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
-                <Route path="/client/profil-client" element={<ClientProfil />} />
-                <Route path="/service-technique" element={<ServiceTechnique />} />
-                <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
-                <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
-            </Routes>
-        </Router>
+            <Router>
+                <ScrollToTop />
+                <Routes>
+                    <Route path="/" element={<App />} />
+                    <Route path="/restaurant" element={<RestaurantMenu />} />
+                    <Route path="/inscription" element={<Inscription />} />
+                    <Route path="/connexion" element={<Connexion />} />
+                    <Route path="/panier" element={<Panier />} />
+                    <Route path="/restaurant/modification-menu" element={<RestaurantModifMenu />} />
+                    <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
+                    <Route path="/paiement" element={<Paiement />} />
+                    <Route path="/livreur-commande" element={<CommandeLivreur />} />
+                    <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
+                    <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
+                    <Route path="/developpeur/profil-developpeur" element={<DeveloppeurProfil />} />
+                    <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
+                    <Route path="/client/profil-client" element={<ClientProfil />} />
+                    <Route path="/service-technique" element={<ServiceTechnique />} />
+                    <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
+                    <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
+                    <Route path="/restaurant/profil-restaurant" element={<RestaurantProfil />} />
+                    <Route path="/service-commercial/modification-compte-client" element={<ModifierProfilClient />} />
+                    <Route path="/livreur/profil-livreur" element={<LivreurProfil />} />
+                </Routes>
+            </Router>
+
     );
 }
 export default AppWrapper;

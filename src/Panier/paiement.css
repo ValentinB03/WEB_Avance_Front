@@ -39,7 +39,7 @@
 }
 
 .liste-resume img{
-    width: 10.2vw;
+    width: 13.2vw;
     height: auto;
     border-radius: 17px;
 
@@ -65,7 +65,7 @@
     border-radius: 20px;
     gap: 1vw;
     align-items: flex-end;
-    width: 25vw;
+    width: 35vw;
     margin: 1vw 0;
     justify-content: space-between;
 }
@@ -73,7 +73,7 @@
 .article-resume p {
     text-align: center;
     font-weight: bold;
-    font-size: 0.8vw;
+    font-size: 1vw;
 }
 
 .resume h1 {
@@ -108,13 +108,13 @@
         width: 80%;
     }
     .article-resume{
-        width: 75%;
+        width: 90%;
     }
     .article-resume img{
-        width: 22vw;
+        width: 30vw;
     }
     .article-resume p {
-        font-size: 1.73vw;
+        font-size: 2.3vw;
     }
 
     .container-paiement{
@@ -122,6 +122,10 @@
         align-items: center;
         gap: 30px;
         margin-top: 15vw;
+
+        button{
+            margin-top: 2vw;
+        }
     }
 
     .paiement p {

@@ -20,10 +20,10 @@ function RestaurantGestionCommande() {
             <NavBar />
             <img src={background} alt="Background" className="background-image-panier" />
 
-            <h1 className="titre-panier">Commandes en cours</h1>
+            <h1 className="titre-gestion_commande">Commandes</h1>
             <div className={"container"}>
                 <div className={"CommandeEnCours"}>
-                    <p>Commandes en cours</p>
+                    <h2>Commandes en cours</h2>
                     {CommandeEnCours.map(item => (
                         <div key={item.id} className={"etat-commande"}>
                             <div className={"info-commande"}>
@@ -41,7 +41,7 @@ function RestaurantGestionCommande() {
                 </div>
                 <div className="vertical-bar"></div>
                 <div className={"CommandeEnAttente"}>
-                    <p>Commandes en attente</p>
+                    <h2>Commandes en attente</h2>
                     {CommandeEnAttente.map(item => (
                         <div key={item.id} className={"etat-commande"}>
                             <div className={"info-commande"}>

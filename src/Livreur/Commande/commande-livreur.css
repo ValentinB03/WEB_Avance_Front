@@ -5,6 +5,12 @@
     font-size: 3rem;
 }
 
+.titre-commande_livreur{
+    z-index: 1;
+    margin-top: -90px;
+    color: white;
+}
+
 .container-livraison{
     color: black;
     display: flex;
@@ -16,6 +22,7 @@
 
 .container-livraison button{
     border-radius: 10px;
+    width: 100%;
 }
 
 .info-commande-livreur-texte{
@@ -37,11 +44,22 @@
 }
 
 @media (max-width: 768px) {
-    p {
+    .container-livraison p {
         font-size: 3vw;
     }
 
-    h1 {
+    .titre-commande_livreur{
+        z-index: 1;
+        margin-top: -140px;
+        color: white;
+        font-size: 2.5em;
+    }
+
+    .sous-titre{
+        font-size: 2em;
+    }
+
+    .container-livraison h1 {
         text-align: center;
     }
 

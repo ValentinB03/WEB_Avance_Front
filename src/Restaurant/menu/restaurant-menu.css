@@ -44,7 +44,7 @@
     border-top-left-radius: 20px;
 }
 
-button {
+.content button {
     padding: 10px 80px;
     border-radius: 0;
     margin-left: 0;
@@ -76,6 +76,10 @@ button {
     color: black;
 }
 
+.container h2{
+    font-size: 2rem;
+}
+
 @media (max-width: 700px) {
     .Menu, .Article-seul {
         flex-direction: column;
@@ -92,7 +96,7 @@ button {
         padding: 0;
     }
 
-    button {
+    .content button {
         padding: 2% 10%;
         margin-left: 0;
     }

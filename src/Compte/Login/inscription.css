@@ -12,9 +12,16 @@
 .titre-inscription {
     z-index: 1;
     margin-top: -80px;
+    color: white;
 }
 
 .content-inscription {
+    width: 100%;
+}
+
+.bannière{
+    color: white;
+    background-color: black;
     width: 100%;
 }
 
@@ -28,15 +35,15 @@
 
 }
 
-form {
-    color: black;
+.form-inscription {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
+    color: black;
 }
 
-form input, form select, form button {
+.form-inscription input, .form-inscription select{
     color: black;
     width: 100%;
     margin: 10px 0;
@@ -47,7 +54,11 @@ form input, form select, form button {
 }
 
 .inscription-button{
-    margin-top: 50px;
-    background-color: black;
     color: white;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: black;
 }

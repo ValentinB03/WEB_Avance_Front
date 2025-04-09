@@ -1,0 +1,35 @@
+.titre-modification-profil{
+    color: white;
+    margin-top: -70px;
+}
+
+.container-modification-profil{
+    color: black;
+    display: flex;
+    flex-direction: row;
+    width: 60vw;
+    justify-content: space-between;
+    margin-bottom: 3vw;
+    flex-wrap: wrap;
+}
+
+.container-modification-profil-gauche{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button-modification-profil{
+    margin-top: 20px;
+}
+
+.container-modification-profil-droite{
+    display: flex;
+    flex-direction: column;
+
+    input{
+        background-image: none;
+        padding: 1vw 1vw;
+    }
+
+}

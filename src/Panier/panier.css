@@ -17,6 +17,7 @@
 .titre-panier {
     z-index: 1;
     margin-top: -90px;
+    color: white;
 }
 
 .content-img {
@@ -75,6 +76,12 @@
 
 .partie-bouton button {
     padding: 1vw 5vw;
+}
+
+.button-valider-panier{
+    margin-bottom: 5vw;
+    font-size: 2rem;
+    padding: 10px 100px;
 }
 
 @media (max-width: 600px) {

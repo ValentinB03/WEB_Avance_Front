@@ -12,7 +12,7 @@ function ServiceTechnique() {
         <div className="App">
             <NavBar/>
             <img src={ImgBannier} alt="Background" className="background-image-modifcarte"/>
-            <h1 className="titre-modifcarte">Service technique</h1>
+            <h1 className="titre-service-technique">Service technique</h1>
 
             <div className="container-st">
                 <div className="content-st">
