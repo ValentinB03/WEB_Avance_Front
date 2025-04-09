@@ -8,7 +8,7 @@ import {
     editIbanResto,
     editNameResto,
     editPasswordResto,
-    getBanniereByOwner,
+    getBanniereByOwner, getRestaurantByOwner,
     getUser
 } from "../../api/api.jsx";
 import {useNavigate} from "react-router-dom";
@@ -17,14 +17,17 @@ import {useNavigate} from "react-router-dom";
 function ProfilRestaurant() {
 
     const [banniere, setBanniere] = useState('');
+    const [resto, setResto] = useState('');
     const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchRestaurant = async () => {
             const restaurantData = await getBanniereByOwner(user.id);
-            console.log(restaurantData);
             setBanniere(restaurantData.data);
+            const restaurantData2 = await getRestaurantByOwner(user.id);
+            console.log(restaurantData2[0].id);
+            setResto(restaurantData2[0]);
         };
         fetchRestaurant();
     }, []); // Le tableau de dépendances vide empêche l'exécution multiple
@@ -87,6 +90,10 @@ function ProfilRestaurant() {
         }
     }
 
+    const navigateToModifCarte = () => {
+        navigate(`/restaurant/modification-menu/${resto.id}`);
+    }
+
     return (
         <div className="App">
             <NavBar />
@@ -146,7 +153,7 @@ function ProfilRestaurant() {
                 </div>
 
                 <div className="container-options_restaurant">
-                        <button className={"option-button_profil_restaurant"}>Modifier la carte</button>
+                    <button className={"option-button_profil_restaurant"} onClick={navigateToModifCarte}>Modifier la carte</button>
                         <button className={"option-button_profil_restaurant"}>Gestion des commandes</button>
                         <button className={"option-button_profil_restaurant"}>Statistiques du restaurant</button>
                 </div>

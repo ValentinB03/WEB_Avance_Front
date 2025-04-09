@@ -1,24 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './SCGestionClient.css';
 import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import ImgBannier from '../assets/img/Service_Commercial.jpg';
 import {Link} from "react-router-dom";
+import {getAllUsers} from "../api/api.jsx";
 
 function ServiceCommercialInfo() {
 
     const [text, setText] = useState('');
+    const [allUsers, setAllUsers] = useState([]);
 
-    const [items] = useState([
-        { id: 1, name: 'Alex G.', adresse: '25 rue de la paix', email: 'axel.g@gmail.com', type: 'Client', etat: 'Actif' },
-        { id: 2, name: 'Nolan A.', adresse: '24 rue de la paix', email: 'nolan.a@gmail.com', type: 'Livreur', etat: 'Actif' },
-        { id: 3, name: 'Kevin X.', adresse: '23 rue de la paix', email: 'kevin.x@gmail.com', type: 'Client', etat: 'Suspendu' },
-        { id: 4, name: 'Manon F.', adresse: '22 rue de la paix', email: 'manon.f@gmail.com', type: 'Client', etat: 'Actif' },
-        { id: 5, name: 'Bella Pizza', adresse: '21 rue de la paix', email: 'bastien.v@gmail.com', type: 'Restaurateur', etat: 'Actif' },
-        { id: 6, name: 'Valentin H.', adresse: '20 rue de la paix', email: 'valentin.h@gmail.com', type: 'Livreur', etat: 'Suspendu' },
-    ]);
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const users = await getAllUsers(); // Assuming you have a function to fetch all users
+                setAllUsers(users);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des utilisateurs :", error);
+            }
+        };
+        fetchUsers();
+    } , []);
 
-    const filteredItems = items.filter(item => item.email.toLowerCase().includes(text.toLowerCase()));
+    const filteredItems = allUsers.filter(item => item.email.toLowerCase().includes(text.toLowerCase()));
 
     const handleChange = (event) => {
         setText(event.target.value);

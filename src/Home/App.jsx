@@ -63,8 +63,8 @@ function App() {
 
     const navigate = useNavigate();
 
-    const handleItemClick = () => {
-        navigate('/restaurant');
+    const handleItemClick = (id) => {
+        navigate(`/restaurant/${id}`);
     };
 
 
@@ -101,7 +101,11 @@ function App() {
                     <div className="content-boxs">
                         {filteredItems.map(item => (
                             <div key={item.id} className="bento-box-item" onClick={() => handleItemClick(item.id)}>
-                                <img src={item.banniere.data} alt={item.title} />
+                                {item.banniere ? (
+                                    <img src={item.banniere.data} alt={item.title} />
+                                ) : (
+                                    <img src="src/assets/default.png" alt="Default" />
+                                )}
                                 <p className="bento-box-item-content titre-resto">{item.name}</p>
                                 <p className="separate">-</p>
                                 <p className="bento-box-item-content">{item.description}</p>
@@ -129,11 +133,11 @@ function AppWrapper() {
                 <ScrollToTop />
                 <Routes>
                     <Route path="/" element={<App />} />
-                    <Route path="/restaurant" element={<RestaurantMenu />} />
+                    <Route path="/restaurant/:id" element={<RestaurantMenu />} />
                     <Route path="/inscription" element={<Inscription />} />
                     <Route path="/connexion" element={<Connexion />} />
                     <Route path="/panier" element={<Panier />} />
-                    <Route path="/restaurant/modification-menu" element={<RestaurantModifMenu />} />
+                    <Route path="/restaurant/modification-menu/:id" element={<RestaurantModifMenu />} />
                     <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
                     <Route path="/paiement" element={<Paiement />} />
                     <Route path="/livreur-commande" element={<CommandeLivreur />} />
