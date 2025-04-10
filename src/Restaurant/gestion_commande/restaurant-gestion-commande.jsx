@@ -1,24 +1,41 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './restaurant-gestion-commande.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
-import background from '../../assets/img/burger.jpg'
+import {getBanniereByOwner, getOrderByRestoId, updateOrderStatus} from "../../api/api.jsx";
 
 
 function RestaurantGestionCommande() {
 
-    const [items] = useState([
-        { id: 1, commande: '154-856-987', date: '17/05/2003', EtatCommande: 'En attente livreur', prix: 17 },
-        { id: 2, commande: '154-856-987', date: '17/05/2003', EtatCommande: 'En attente', prix: 17 },
-        { id: 3, commande: '154-856-987', date: '17/05/2003', EtatCommande: 'En préparation', prix: 17 },
+    const user = JSON.parse(localStorage.getItem('user'));
+    const [CommandeEnCours, setCommandeEnCours] = useState([]);
+    const [CommandeEnAttente, setCommandeEnAttente] = useState([]);
+    const [Banniere, setBanniere] = useState([]);
 
-    ]);
-    const CommandeEnCours = items.filter(item => item.EtatCommande === ('En préparation') || item.EtatCommande === ('En attente livreur'));
-    const CommandeEnAttente = items.filter(item => item.EtatCommande === 'En attente');
+    useEffect(() => {
+        const fetchCommande = async () => {
+            try {
+                const banniere = await getBanniereByOwner(user.id);
+                setBanniere(banniere.data);
+                const response = await getOrderByRestoId(user.id);
+                setCommandeEnAttente(response.filter((item) => item.status === 'pending'));
+                setCommandeEnCours(response.filter((item) => item.status === 'preparing' || item.status === 'ready'));
+
+            } catch (error) {
+                console.error("Erreur lors de la récupération des restaurants :", error);
+            }
+        }
+        fetchCommande();
+    } , []);
+
+    const ModifStats = (id, status) => {
+        updateOrderStatus(id, status);
+    }
+
     return (
         <div className="App">
             <NavBar />
-            <img src={background} alt="Background" className="background-image-panier" />
+            <img src={Banniere} alt="Background" className="background-image-panier" />
 
             <h1 className="titre-gestion_commande">Commandes</h1>
             <div className={"container"}>
@@ -27,14 +44,14 @@ function RestaurantGestionCommande() {
                     {CommandeEnCours.map(item => (
                         <div key={item.id} className={"etat-commande"}>
                             <div className={"info-commande"}>
-                                <p><b>N°Commande :</b>N°{item.commande}</p>
-                                <p><b>Date :</b> {item.date}</p>
-                                <p><b>Etat de la commande :</b> {item.EtatCommande}</p>
-                                <p><b>Prix :</b> {item.prix}€</p>
+                                <p><b>N°Commande :</b>N°{item.id}</p>
+                                <p><b>Date :</b> {item.updatedAt}</p>
+                                <p><b>Etat de la commande :</b> {item.status}</p>
+                                <p><b>Prix :</b> {item.price}€</p>
                             </div>
                             <div className={"bouton-commande"}>
                                 <button>Visualiser</button>
-                                <button>Commande annulée</button>
+                                <button onClick={ModifStats(item.id, 'cancelled')}>Commande annulée</button>
                             </div>
                         </div>
                     ))}
@@ -45,14 +62,14 @@ function RestaurantGestionCommande() {
                     {CommandeEnAttente.map(item => (
                         <div key={item.id} className={"etat-commande"}>
                             <div className={"info-commande"}>
-                                <p><b>N°Commande :</b>N°{item.commande}</p>
-                                <p><b>Date :</b>{item.date}</p>
-                                <p><b>Etat de la commande :</b>{item.EtatCommande}</p>
-                                <p><b>Prix :</b>{item.prix}€</p>
+                                <p><b>N°Commande :</b>N°{item.id}</p>
+                                <p><b>Date :</b>{item.updatedAt}</p>
+                                <p><b>Etat de la commande :</b>{item.status}</p>
+                                <p><b>Prix :</b>{item.price}€</p>
                             </div>
                             <div className={"bouton-commande-attente"}>
-                                <button className={"bouton-accepter"}>Accepter</button>
-                                <button className={"bouton-refuser"}>Refuser</button>
+                                <button className={"bouton-accepter"} onClick={ModifStats(item.id, 'preparing')}>Accepter</button>
+                                <button className={"bouton-refuser"} onClick={ModifStats(item.id, 'cancelled')}>Refuser</button>
                             </div>
                         </div>
                     ))}

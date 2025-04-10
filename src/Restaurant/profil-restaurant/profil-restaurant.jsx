@@ -94,6 +94,10 @@ function ProfilRestaurant() {
         navigate(`/restaurant/modification-menu/${resto.id}`);
     }
 
+    const navigateToGestionCommande = () => {
+        navigate(`/restaurant/commande`);
+    }
+
     return (
         <div className="App">
             <NavBar />
@@ -154,7 +158,7 @@ function ProfilRestaurant() {
 
                 <div className="container-options_restaurant">
                     <button className={"option-button_profil_restaurant"} onClick={navigateToModifCarte}>Modifier la carte</button>
-                        <button className={"option-button_profil_restaurant"}>Gestion des commandes</button>
+                        <button className={"option-button_profil_restaurant"} onClick={navigateToGestionCommande}>Gestion des commandes</button>
                         <button className={"option-button_profil_restaurant"}>Statistiques du restaurant</button>
                 </div>
 
