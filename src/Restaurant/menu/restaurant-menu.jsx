@@ -3,7 +3,13 @@ import './restaurant-menu.css';
 import NavBar from '../../Navbar/NavBar';
 import Footer from '../../Footer/Footer';
 import {useParams} from "react-router-dom";
-import {getAllArticleRestoById, getAllMenuRestoById, getBanniereByOwner, getRestaurantById} from "../../api/api.jsx";
+import {
+    addArticleOrder, addMenuOrder, createOrder,
+    getAllArticleRestoById,
+    getAllMenuRestoById,
+    getBanniereByOwner, getOrderByClientId,
+    getRestaurantById
+} from "../../api/api.jsx";
 import DefaultBG from '../../assets/default.png';
 
 function RestaurantMenu() {
@@ -12,6 +18,8 @@ function RestaurantMenu() {
     const [menus, setMenus] = useState([]);
 
     const { id } = useParams();
+    const user= JSON.parse(localStorage.getItem('user'));
+
 
     useEffect(() => {
         const fetchRestaurants = async () => {
@@ -33,6 +41,45 @@ function RestaurantMenu() {
         };
         fetchRestaurants();
     }, []);
+
+    const ajout_panier_article = (id) => {
+        // Logique d'ajout au panier
+        getOrderByClientId(user.id).then((response) => {
+            console.log("Récupération de la commande", response);
+            if(response.length > 0) {
+                addArticleOrder(response[0].id, id)
+            }
+            else {
+                const createOrderZ = async () => {
+                    const response = await createOrder(user.id,restaurant.id);
+                    console.log("Création de la commande", response);
+
+
+                };
+                createOrderZ();
+                addArticleOrder(response[0].id, id)
+            }
+        });
+    }
+
+    const ajout_panier_menu = (id) => {
+        // Logique d'ajout au panier
+        getOrderByClientId(user.id).then((response) => {
+            console.log("Récupération de la commande", response);
+            if(response.length > 0) {
+                addMenuOrder(response[0].id, id)
+            }
+            else {
+                const createOrderZ = async () => {
+                    const response = await createOrder(user.id,restaurant.id);
+                    console.log("Création de la commande", response);
+
+                };
+                createOrderZ();
+                addMenuOrder(response[0].id, id)
+            }
+        });
+    }
 
     return (
         <div className="App">
@@ -69,7 +116,7 @@ function RestaurantMenu() {
                                             <p>{item.name}</p>
                                             <p>{item.description}</p>
                                             <p>{item.price}€</p>
-                                            <button>Ajouter au panier</button>
+                                            <button onClick={() => ajout_panier_menu(item.id)}>Ajouter au panier</button>
                                         </div>
                                     </div>
                                 ))}
@@ -83,7 +130,7 @@ function RestaurantMenu() {
                                             <p>{item.name}</p>
                                             <p>{item.description}</p>
                                             <p>{item.price}€</p>
-                                            <button>Ajouter au panier</button>
+                                            <button onClick={() => ajout_panier_article(item.id)}>Ajouter au panier</button>
                                         </div>
                                     </div>
                                 ))}

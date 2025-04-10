@@ -81,6 +81,7 @@
 
 .container-profil_client-commandes_en_cours{
     margin: 50px 100px;
+
 }
 
 .profil_client-details_commande_en_cours_commande_numero{
@@ -90,12 +91,6 @@
     margin-bottom: -10px;
 }
 
-.container_maps-profil_client iframe{
-    width: 40rem;           /* Largeur de la carte */
-    height: 25rem;          /* Hauteur de la carte */
-    margin: 2vw 0;          /* Marge autour de la carte */
-    border: 0               /* Pas de bordure */
-}
 
 /*-----------------------Fin partie supérieur-----------------------*/
 
