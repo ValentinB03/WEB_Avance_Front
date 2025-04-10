@@ -14,6 +14,7 @@ function RestaurantGestionCommande() {
     const [CommandeEnAttente, setCommandeEnAttente] = useState([]);
     const [Banniere, setBanniere] = useState([]);
     const navigate = useNavigate();
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         const fetchCommande = async () => {
@@ -29,10 +30,11 @@ function RestaurantGestionCommande() {
             }
         }
         fetchCommande();
-    } , []);
+    } , [refresh]);
 
     const ModifStatus = (id, status) => {
         updateOrderStatus(id, status);
+        setRefresh(refresh + 1);
     }
 
     const navigateToDetails = (id) => {

@@ -22,6 +22,7 @@ function RestaurantModifMenu() {
     const [isAvailable, setIsAvailable] = useState(false);
     const [articles, setArticles] = useState([]);
     const [menus, setMenus] = useState([]);
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         const fetchRestaurant = async () => {
@@ -35,7 +36,7 @@ function RestaurantModifMenu() {
             setMenus(menu);
         };
         fetchRestaurant();
-    }, []); // Le tableau de dépendances vide empêche l'exécution multiple
+    }, [refresh]); // Le tableau de dépendances vide empêche l'exécution multiple
 
     const AddArticle = () => {
         console.log("Ajout d'un article");
@@ -57,6 +58,7 @@ function RestaurantModifMenu() {
             const itemPrix = document.getElementById("item-prix").value;
             createArticleNoMenu(itemName, itemDescription, itemPrix, restaurant.id);
         }
+        setRefresh(refresh + 1);
     }
 
     const AddMenu = () => {
@@ -65,6 +67,7 @@ function RestaurantModifMenu() {
         const itemDescription = document.getElementById("item-description").value;
         const itemPrix = document.getElementById("item-prix").value;
         createMenu(itemName, itemDescription, itemPrix, restaurant.id);
+        setRefresh(refresh + 1);
     }
 
     const deleteArticle = (id) => {

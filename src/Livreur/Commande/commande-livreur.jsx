@@ -4,12 +4,14 @@ import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import background from '../../assets/livraison-resto.jpg'
 import {getAllOrder, getRestaurantById, getUser, updateOrderForLivreur} from "../../api/api.jsx";
+import {useNavigate} from "react-router-dom";
 
 
 function CommandeLivreur() {
 
     const [Info, setInfo] = useState([]);
     const user = JSON.parse(localStorage.getItem('user'));
+    const navigation = useNavigate();
 
     useEffect(() => {
         const fetchOrder = async () => {
@@ -39,6 +41,7 @@ function CommandeLivreur() {
 
     const ModifStatus = (id, status) => {
         updateOrderForLivreur(id, status, user.id);
+        navigation("/livreur/profil-livreur");
     }
 
     const NoRefu = () => {
