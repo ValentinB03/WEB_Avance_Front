@@ -19,10 +19,6 @@
     justify-content: center;
 }
 
-.button-modification-profil{
-    margin-top: 20px;
-}
-
 .container-modification-profil-droite{
     display: flex;
     flex-direction: column;
@@ -32,4 +28,10 @@
         padding: 1vw 1vw;
     }
 
+}
+
+.container-modification-profil-GC{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

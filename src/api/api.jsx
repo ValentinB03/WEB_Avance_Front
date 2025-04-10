@@ -109,7 +109,7 @@ export const getUser = async (idUser) => {
 export const getAllUsers = async () => {
     try {
         console.log(localStorage.getItem('accessToken'))
-        const response = await axios.get(`/api/users`,{
+        const response = await axios.get(`/api/users/`,{
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -160,7 +160,6 @@ export const DeleteUser = async (idUser) => {
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
             }
         });
-        localStorage.clear();
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
         throw error;
@@ -289,6 +288,24 @@ export const editNameUser = async (idOwner, name) => {
 
 };
 
+export const editActiveUser = async (idOwner, isActive) => {
+    try {
+        const response = await axios.put(`/api/users/${idOwner}`, {
+            isActive
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+
+};
+
 export const editPasswordUser = async (idOwner, password) => {
     try {
         const response = await axios.put(`/api/users/${idOwner}`, {
@@ -347,6 +364,24 @@ export const editAddressUser = async (idOwner, addressString) => {
     try {
         const response = await axios.put(`/api/users/${idOwner}`, {
             addressString
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+
+};
+
+export const editRefferalCodeUser = async (idOwner, referralCode) => {
+    try {
+        const response = await axios.put(`/api/users/${idOwner}`, {
+            referralCode
         }, {
             headers: {
                 "Content-Type": "application/json",
