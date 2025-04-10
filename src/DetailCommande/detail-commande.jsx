@@ -5,7 +5,14 @@ import Footer from '../Footer/Footer.jsx';
 import ImgResto from '../assets/img/burger.jpg';
 import Menu from '../assets/img/menu.jpg';
 import {useParams} from "react-router-dom";
-import {getArticleById, getMenuById, getOrderById, getOrderItemsByIdOrder, updateOrderStatus} from "../api/api.jsx";
+import {
+    addNotification,
+    getArticleById,
+    getMenuById,
+    getOrderById,
+    getOrderItemsByIdOrder,
+    updateOrderStatus
+} from "../api/api.jsx";
 import DefaultBG from '../assets/default.png';
 
 
@@ -47,6 +54,7 @@ function RestaurantDetailsCommande() {
 
     const ModifStatus = (id, status) => {
         updateOrderStatus(id, status);
+        addNotification(order.clientId, "Votre commande attend un livreur");
     }
 
     return (

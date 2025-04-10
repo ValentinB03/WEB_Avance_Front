@@ -45,9 +45,10 @@ function RestaurantMenu() {
     const ajout_panier_article = (id) => {
         // Logique d'ajout au panier
         getOrderByClientId(user.id).then((response) => {
-            console.log("Récupération de la commande", response);
-            if(response.length > 0) {
-                addArticleOrder(response[0].id, id)
+            const filteredResponse = response.filter((item) => item.status === 'Panier');
+            console.log("Récupération de la commande", filteredResponse);
+            if(filteredResponse.length > 0) {
+                addArticleOrder(filteredResponse[0].id, id)
             }
             else {
                 const createOrderZ = async () => {
@@ -65,9 +66,10 @@ function RestaurantMenu() {
     const ajout_panier_menu = (id) => {
         // Logique d'ajout au panier
         getOrderByClientId(user.id).then((response) => {
-            console.log("Récupération de la commande", response);
-            if(response.length > 0) {
-                addMenuOrder(response[0].id, id)
+            const filteredResponse = response.filter((item) => item.status === 'Panier');
+            console.log("Récupération de la commande", filteredResponse);
+            if(filteredResponse.length > 0) {
+                addMenuOrder(filteredResponse[0].id, id)
             }
             else {
                 const createOrderZ = async () => {

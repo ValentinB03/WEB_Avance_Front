@@ -4,10 +4,11 @@ import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Marbre from '../assets/img/marbre.jpg'
 import {
+    addNotification,
     getArticleById,
     getMenuById,
     getOrderByClientId,
-    getOrderItemsByIdOrder,
+    getOrderItemsByIdOrder, getRestaurantById,
     updateOrderForPaiement
 } from "../api/api.jsx";
 import DefaultBG from '../assets/default.png';
@@ -20,6 +21,7 @@ function Panier() {
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
     const navigate = useNavigate();
+    const [restaurant, setRestaurant] = useState(null);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -39,8 +41,10 @@ function Panier() {
                 try {
                     const response = await getOrderByClientId(user.id);
                     const responseFilter = response.filter((item) => item.status === 'Panier');
+                    const restaurant = await getRestaurantById(responseFilter[0].restaurantId)
+                    setRestaurant(restaurant);
                     if (responseFilter.length > 0) {
-                        const responseItems = await getOrderItemsByIdOrder(response[0].id);
+                        const responseItems = await getOrderItemsByIdOrder(responseFilter[0].id);
                         // Regrouper les items par articleId ou menuId
                         const groupedItems = {};
                         responseItems.forEach(item => {
@@ -87,6 +91,7 @@ function Panier() {
 
     const StartOrder = async () => {
         updateOrderForPaiement(items[0].orderId, total, 'En attente', total+4+2.40)
+        addNotification(restaurant.ownerId, "Nouvelle commande")
         navigate('/');
     }
 
