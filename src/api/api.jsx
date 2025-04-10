@@ -687,16 +687,11 @@ export const DeleteMenu = async (id) => {
     }
 };
 
-export const createOrder = async (clientId, restaurantId, price, delivererId, status, destination, origin) => {
+export const createOrder = async (clientId, restaurantId) => {
     try {
         const response = await axios.post(`/api/orders/`, {
             clientId,
-            restaurantId,
-            price,
-            delivererId,
-            status,
-            destination,
-            origin
+            restaurantId
         }, {
             headers: {
                 "Content-Type": "application/json",
@@ -904,26 +899,41 @@ export const DeleteOrderItemById = async (idOrderItem) => {
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
             }
         });
-        localStorage.clear();
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
         throw error;
     }
 };
 
-
-export const getNotificationByUserId = async (userId) => {
+export const getNotification = async (userId) => {
     try {
-        await axios.get(`/api/notifications/user/${userId}`,{
+        const response = await axios.get(`/api/notifications/user/${userId}`,{
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
             }
         });
-        localStorage.clear();
-    } catch (error) {
+        return response.data;
+    }
+    catch (error) {
         console.error("Erreur lors de la connexion :", error);
         throw error;
     }
 }
 
+export const addNotification = async (userId, message) => {
+    try {
+        await axios.post(`/api/notifications/`, {
+            userId,
+            message
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+    } catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}

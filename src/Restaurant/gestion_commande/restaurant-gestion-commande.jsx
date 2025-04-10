@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './restaurant-gestion-commande.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
-import {getBanniereByOwner, getOrderByRestoId, updateOrderStatus} from "../../api/api.jsx";
+import {addNotification, getBanniereByOwner, getOrderByRestoId, updateOrderStatus} from "../../api/api.jsx";
 import {useNavigate, useParams} from "react-router-dom";
 
 
@@ -22,6 +22,7 @@ function RestaurantGestionCommande() {
                 const banniere = await getBanniereByOwner(user.id);
                 setBanniere(banniere.data);
                 const response = await getOrderByRestoId(id);
+                console.log("Récupération de la commande", response);
                 setCommandeEnAttente(response.filter((item) => item.status === 'En attente'));
                 setCommandeEnCours(response.filter((item) => item.status === 'En cours de préparation' || item.status === 'Prête'));
 
@@ -34,6 +35,7 @@ function RestaurantGestionCommande() {
 
     const ModifStatus = (id, status) => {
         updateOrderStatus(id, status);
+        addNotification(CommandeEnAttente.clientId, "Votre commande est en cour de préparation");
         setRefresh(refresh + 1);
     }
 
