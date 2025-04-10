@@ -5,6 +5,8 @@ import { IoNotifications } from "react-icons/io5";
 import Notification from "../Notification/notification.jsx";
 import '../notification/notification.css'
 import { useNavigate } from "react-router-dom";
+import {getNotificationByUserId} from "../api/api.jsx";
+
 
 function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -12,9 +14,9 @@ function NavBar() {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser != null) {
+    useEffect(() => {                                                       // Récupérer l'utilisateur depuis le localStorage
+        const storedUser = localStorage.getItem('user');                    // Vérifier si l'utilisateur est connecté
+        if (storedUser != null) {                                                      // Si l'utilisateur est connecté
             try {
                 const parsedUser = JSON.parse(storedUser); // Parse l'objet user
                 setUser(parsedUser);
