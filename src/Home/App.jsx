@@ -150,7 +150,7 @@ function AppWrapper() {
                     <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
                     <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
                     <Route path="/restaurant/profil-restaurant" element={<RestaurantProfil />} />
-                    <Route path="/service-commercial/modification-compte-client" element={<ModifierProfilClient />} />
+                    <Route path="/service-commercial/modification-compte-client/:id" element={<ModifierProfilClient />} />
                     <Route path="/livreur/profil-livreur" element={<LivreurProfil />} />
                 </Routes>
             </Router>

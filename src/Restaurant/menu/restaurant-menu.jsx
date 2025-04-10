@@ -93,8 +93,18 @@ function RestaurantMenu() {
                         ) : (
                             <img src={DefaultBG} alt="Default" className="background-image" />
                         )}
-                        <p className="info-resto">Ouvert/Fermé<br/>
-                        Adresse : 25 Rue de la guerre<br/>
+                        <div className="opening-hours">
+                            <p className="info-resto">Horaires d'ouverture :<br/></p>
+                            <p className="info-resto">Lundi : {restaurant.openingHours.monday}<br/></p>
+                            <p className="info-resto">Mardi : {restaurant.openingHours.tuesday}<br/></p>
+                            <p className="info-resto">Mercredi : {restaurant.openingHours.wednesday}<br/></p>
+                            <p className="info-resto">Jeudi : {restaurant.openingHours.thursday}<br/></p>
+                            <p className="info-resto">Vendredi : {restaurant.openingHours.friday}<br/></p>
+                            <p className="info-resto">Samedi : {restaurant.openingHours.saturday}<br/></p>
+                            <p className="info-resto">Dimanche : {restaurant.openingHours.sunday}<br/></p>
+                        </div>
+                        <p className="info-resto">
+                        Adresse : {restaurant.addressString}<br/>
                         Prix moyen : 27€</p>
                         <div className="liste-article">
                             <p><u>Menu :</u></p>
