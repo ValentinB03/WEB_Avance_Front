@@ -12,9 +12,9 @@ function NavBar() {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser != null) {
+    useEffect(() => {                                                       // Récupérer l'utilisateur depuis le localStorage
+        const storedUser = localStorage.getItem('user');                    // Vérifier si l'utilisateur est connecté
+        if (storedUser != null) {                                                      // Si l'utilisateur est connecté
             try {
                 const parsedUser = JSON.parse(storedUser); // Parse l'objet user
                 setUser(parsedUser);

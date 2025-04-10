@@ -15,7 +15,6 @@ function Connexion() {
         try {
             const data = await loginUser(email, password);
             const { accessToken, refreshToken } = data;
-            console.log("Login successful");
             if (accessToken && refreshToken) {
                 navigate("/");
             }

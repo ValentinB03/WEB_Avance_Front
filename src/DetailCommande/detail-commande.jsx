@@ -1,20 +1,53 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './detail-commande.css';
 import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import ImgResto from '../assets/img/burger.jpg';
 import Menu from '../assets/img/menu.jpg';
+import {useParams} from "react-router-dom";
+import {getArticleById, getMenuById, getOrderById, getOrderItemsByIdOrder, updateOrderStatus} from "../api/api.jsx";
+import DefaultBG from '../assets/default.png';
+
 
 function RestaurantDetailsCommande() {
 
-    const [items] = useState([
-        { id: 1, Article: 'Menu 1', image: Menu, prix: 17 },
-        { id: 2, Article: 'Frites sans sauce', image: Menu, prix: 5 },
-        { id: 3, Article: 'Thé noir', image: Menu, prix: 2 },
-    ]);
-    const [items2] = useState([
-        { id: 1, Commande: '145-632-987', Livreur: 'Axel G.', date: '14/02/2003 12h02', EtatCommande: 'En cours', prix: 24 },
-    ]);
+    const { id } = useParams();
+    const user = JSON.parse(localStorage.getItem('user'));
+    const [order, setOrder] = useState([]);
+    const [items, setItems] = useState([]);
+
+
+
+    useEffect(() => {
+        const fetchOrder = async () => {
+            const response2 = await getOrderById(id);
+            setOrder(response2);
+            const response = await getOrderItemsByIdOrder(response2.id);
+            setItems(response);
+            const combinedItems = await Promise.all(
+                response.map(async (item) => {
+                    try {
+                        if (item.articleId) {
+                            const article = await getArticleById(item.articleId);
+                            return { ...item, details: article };
+                        } else if (item.menuId) {
+                            const menu = await getMenuById(item.menuId);
+                            return { ...item, details: menu };
+                        }
+
+                    } catch (error) {
+                        console.error("Erreur lors de la récupération des détails :", error);
+                        return item; // Retourne l'item sans détails en cas d'erreur
+                    }
+                }))
+            setItems(combinedItems);
+        };
+        fetchOrder();
+    }, []);
+
+    const ModifStatus = (id, status) => {
+        updateOrderStatus(id, status);
+    }
 
     return (
         <div className="App">
@@ -22,26 +55,27 @@ function RestaurantDetailsCommande() {
             <div className="content-img">
                 <img src={ImgResto} alt="Background" className="background-image-modifcarte" />
             </div>
-            <h1 className="titre-modifcarte">Big Bite Burger</h1>
+            <h1 className="titre-modifcarte">{user.name}</h1>
             <h1 className={"Commande-titre"}>Détails de la commande</h1>
             <div className="container-detail">
                 <div className="container-detail-texte">
-                    <p className="detail-texte"><b>Commande :</b> {items2[0].Commande}</p>
-                    <p className="detail-texte"><b>Livreur :</b> {items2[0].Livreur}</p>
-                    <p className="detail-texte"><b>Date :</b> {items2[0].date}</p>
-                    <p className="detail-texte"><b>Etat de la commande :</b> {items2[0].EtatCommande}</p>
-                    <p className="detail-texte"><b>Prix total :</b> {items2[0].prix}€</p>
+                    <p className="detail-texte"><b>Commande :</b> {order.id}</p>
+                    <p className="detail-texte"><b>Date :</b> {order.updatedAt}</p>
+                    <p className="detail-texte"><b>Etat de la commande :</b> {order.status}</p>
+                    <p className="detail-texte"><b>Prix total :</b> {order.price}€</p>
                 </div>
                 <div className="containers-liste-items-resto">
                     {items.map(item => (
                         <div key={item.id} className="container-detail-items-resto">
-                            <img src={item.image} alt="Menu" className="img-menu" />
-                            <p className="detail-texte">{item.Article}</p>
-                            <p className="detail-texte">Prix: {item.prix}€</p>
+                            <img src={DefaultBG} alt="Menu" className="img-menu" />
+                            <p className="detail-texte">{item?.details?.name || "Nom indisponible"}</p>
+                            <p className="detail-texte">Prix: {item?.details?.price ? `${item.details.price}€` : "Prix indisponible"}</p>
                         </div>
                     ))}
                 </div>
+                <button className={"bouton-fini"} onClick={() => ModifStatus(order.id, 'Prête')}>Préparation terminer</button>
             </div>
+
             <Footer />
         </div>
     );

@@ -47,7 +47,8 @@
     text-align: center;
     font-size: 20px;
     font-weight: bold;
-    max-width: 50vw;
+    max-width: 45vw;
+    min-width: 45vw;
     gap: 3vw;
     justify-content: space-between;
 }
@@ -93,6 +94,7 @@
     }
     .partie-commande {
         max-width: 75vw;
+        min-width: 75vw;
     }
 
     .partie-commande img {

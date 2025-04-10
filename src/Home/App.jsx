@@ -63,8 +63,8 @@ function App() {
 
     const navigate = useNavigate();
 
-    const handleItemClick = () => {
-        navigate('/restaurant');
+    const handleItemClick = (id) => {
+        navigate(`/restaurant/${id}`);
     };
 
 
@@ -101,7 +101,11 @@ function App() {
                     <div className="content-boxs">
                         {filteredItems.map(item => (
                             <div key={item.id} className="bento-box-item" onClick={() => handleItemClick(item.id)}>
-                                <img src={item.banniere.data} alt={item.title} />
+                                {item.banniere ? (
+                                    <img src={item.banniere.data} alt={item.title} />
+                                ) : (
+                                    <img src="src/assets/default.png" alt="Default" />
+                                )}
                                 <p className="bento-box-item-content titre-resto">{item.name}</p>
                                 <p className="separate">-</p>
                                 <p className="bento-box-item-content">{item.description}</p>
@@ -129,24 +133,24 @@ function AppWrapper() {
                 <ScrollToTop />
                 <Routes>
                     <Route path="/" element={<App />} />
-                    <Route path="/restaurant" element={<RestaurantMenu />} />
+                    <Route path="/restaurant/:id" element={<RestaurantMenu />} />
                     <Route path="/inscription" element={<Inscription />} />
                     <Route path="/connexion" element={<Connexion />} />
                     <Route path="/panier" element={<Panier />} />
-                    <Route path="/restaurant/modification-menu" element={<RestaurantModifMenu />} />
-                    <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
+                    <Route path="/restaurant/modification-menu/:id" element={<RestaurantModifMenu />} />
+                    <Route path="/restaurant/commande/:id" element={<RestaurantGestionCommande />} />
                     <Route path="/paiement" element={<Paiement />} />
                     <Route path="/livreur-commande" element={<CommandeLivreur />} />
                     <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
-                    <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
+                    <Route path="/restaurant/details-commande/:id" element={<RestaurantDetailsCommande />} />
                     <Route path="/developpeur/profil-developpeur" element={<DeveloppeurProfil />} />
-                    <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
+                    <Route path="/restaurant/statistique/:id" element={<RestaurantStatistique />} />
                     <Route path="/client/profil-client" element={<ClientProfil />} />
                     <Route path="/service-technique" element={<ServiceTechnique />} />
                     <Route path="/service-commercial" element={<ServiceCommercialInfo />} />
                     <Route path="/service-commercial/gestion-compte" element={<SCGestionClient />} />
                     <Route path="/restaurant/profil-restaurant" element={<RestaurantProfil />} />
-                    <Route path="/service-commercial/modification-compte-client" element={<ModifierProfilClient />} />
+                    <Route path="/service-commercial/modification-compte-client/:id" element={<ModifierProfilClient />} />
                     <Route path="/livreur/profil-livreur" element={<LivreurProfil />} />
                 </Routes>
             </Router>

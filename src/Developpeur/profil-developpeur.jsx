@@ -89,16 +89,16 @@ function ProfilDeveloppeur() {
                     <h2>Consulter les composants disponibles</h2>
                     <div className="grid-composants">
                         <div className="composant-service_paiement">
-                            <div className="composant-box_1"><h4>Composant : Service de paiement</h4></div>
-                            <button className="consulter-button">Consulter</button>
+                            <div className="composant-box_1"><h4>Composant : Service d'authentification</h4></div>
+                            <button className="consulter-button" onClick={() => window.open('https://github.com/Mathieu-Le-Masson/BackAdvancedWeb/tree/main/services/auth', '_blank')}>Consulter</button>
                         </div>
                         <div className="composant-liste_restaurants">
-                            <div className="composant-box_2"><h4>Composant : Liste des restaurants</h4></div>
-                            <button className="consulter-button">Consulter</button>
+                            <div className="composant-box_2"><h4>Composant : Service de commande</h4></div>
+                            <button className="consulter-button" onClick={() => window.open('https://github.com/Mathieu-Le-Masson/BackAdvancedWeb/tree/main/services/orders', '_blank')}>Consulter</button>
                         </div>
                         <div className="composant-suivi_livraison">
-                            <div className="composant-box_3"> <h4>Composant : Suivi de livraison</h4></div>
-                            <button className="consulter-button">Consulter</button>
+                            <div className="composant-box_3"> <h4>Composant : Service de restaurants</h4></div>
+                            <button className="consulter-button" onClick={() => window.open('https://github.com/Mathieu-Le-Masson/BackAdvancedWeb/tree/main/services/restaurants', '_blank')}>Consulter</button>
                         </div>
                     </div>
                 </div>

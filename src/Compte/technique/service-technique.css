@@ -4,18 +4,54 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 10vw 0;
+    margin: 5vw 0;
+    width: 100%;
 
     p{
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
 
     button{
         margin: 0 2rem;
         border: 1px solid lightgray;    /* Bordure noire */
+        width: 35%;
 
     }
 
+}
+
+.container-st-statistique{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5vw 0;
+    width: 80%;
+    background-color: lightgray;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1; /* optionnel : un petit padding autour */}
+
+.system-health{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vw;
+    width: 100%;
+    background-color: lightgray;
+    border-radius: 10px;
+    gap: 3vw;
+    flex-wrap: wrap;
+    h2{
+        border-bottom: 2px solid #f1f1f1; /* optionnel : un petit padding autour */
+        padding-bottom: 15px;
+    }
+}
+
+.system-health-auth, .system-health-restaurant, .system-health-orders{
+    width: 30%;
+    min-width: 300px;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1; /* optionnel : un petit padding autour */
 }
 
 .titre-service-technique{
@@ -27,7 +63,7 @@
 .content-st{
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
