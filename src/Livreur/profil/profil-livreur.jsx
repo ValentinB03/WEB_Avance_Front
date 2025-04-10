@@ -4,6 +4,7 @@ import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import Livreur from '../../assets/livraison-resto.jpg'
 import {
+    addNotification,
     DeleteUser,
     editAddressUser,
     editEmailUser,
@@ -113,8 +114,10 @@ function ProfilLivreur() {
         navigate('/livreur-commande');
     }
 
-    const ModifStatus = (id, status) => {
+    const ModifStatus = (id, status, idclient, idresto) => {
         updateOrderStatus(id, status);
+        addNotification(idclient, "Votre commande à été livrée");
+        addNotification(idresto, "La commande à été livrée");
         setRefresh(refresh + 1);
     }
 
@@ -196,7 +199,7 @@ function ProfilLivreur() {
                                         <p><b>Nom client : </b>{order?.clientUser.name}</p>
                                         <p><b>Adresse de livraison : </b>{order?.clientUser.addressString}</p>
                                     </div>
-                                        <button className="visualiser_button-profil_livreur-commande_en_cours" onClick={() => ModifStatus(order.id, 'Livrée')}>Valider livraison</button>
+                                        <button className="visualiser_button-profil_livreur-commande_en_cours" onClick={() => ModifStatus(order.id, 'Livrée', order?.clientUser.id, order?.restaurantUser.id)}>Valider livraison</button>
                                 </div>
                             </div>
                         </div>

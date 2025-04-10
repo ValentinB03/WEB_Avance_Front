@@ -17,6 +17,7 @@ import DefaultBG from '../assets/default.png';
 function Panier() {
     const [user, setUser] = useState(null);
     const [items, setItems] = useState([]);
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -36,6 +37,7 @@ function Panier() {
                 try {
                     const response = await getOrderByClientId(user.id);
                     const responseFilter = response.filter((item) => item.status === 'Panier');
+                    console.log("Récupération de la commande", responseFilter);
                     if (responseFilter.length > 0) {
                         const responseItems = await getOrderItemsByIdOrder(responseFilter[0].id);
 
@@ -77,15 +79,19 @@ function Panier() {
             };
             panier();
         }
-    }, [user]);
+    }, [user, refresh]);
 
     const AddItem = async (Orderitem) => {
+        console.log("AddItem");
         const order = await getOrderByClientId(user.id);
         await addArticleOrder(order[0].id, Orderitem.articleId);
+        setRefresh(refresh + 1);
     }
 
     const DeleteItem = async (Orderitem) => {
+        console.log("DeleteItem");
         await DeleteOrderItemById(Orderitem.id);
+        setRefresh(refresh + 1);
     }
 
     return (

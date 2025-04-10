@@ -3,7 +3,7 @@ import './commande-livreur.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import background from '../../assets/livraison-resto.jpg'
-import {getAllOrder, getRestaurantById, getUser, updateOrderForLivreur} from "../../api/api.jsx";
+import {addNotification, getAllOrder, getRestaurantById, getUser, updateOrderForLivreur} from "../../api/api.jsx";
 import {useNavigate} from "react-router-dom";
 
 
@@ -41,6 +41,7 @@ function CommandeLivreur() {
 
     const ModifStatus = (id, status) => {
         updateOrderForLivreur(id, status, user.id);
+        addNotification(Info.clientId, "Votre commande est en cours de livraison");
         navigation("/livreur/profil-livreur");
     }
 

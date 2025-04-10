@@ -687,16 +687,11 @@ export const DeleteMenu = async (id) => {
     }
 };
 
-export const createOrder = async (clientId, restaurantId, price, delivererId, status, destination, origin) => {
+export const createOrder = async (clientId, restaurantId) => {
     try {
         const response = await axios.post(`/api/orders/`, {
             clientId,
-            restaurantId,
-            price,
-            delivererId,
-            status,
-            destination,
-            origin
+            restaurantId
         }, {
             headers: {
                 "Content-Type": "application/json",
@@ -904,7 +899,6 @@ export const DeleteOrderItemById = async (idOrderItem) => {
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
             }
         });
-        localStorage.clear();
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
         throw error;
@@ -927,3 +921,19 @@ export const getNotification = async (userId) => {
     }
 }
 
+export const addNotification = async (userId, message) => {
+    try {
+        await axios.post(`/api/notifications/`, {
+            userId,
+            message
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+    } catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
