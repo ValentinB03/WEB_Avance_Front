@@ -5,8 +5,6 @@ import { IoNotifications } from "react-icons/io5";
 import Notification from "../Notification/notification.jsx";
 import '../notification/notification.css'
 import { useNavigate } from "react-router-dom";
-import {getNotificationByUserId} from "../api/api.jsx";
-
 
 function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
