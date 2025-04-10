@@ -910,3 +910,20 @@ export const DeleteOrderItemById = async (idOrderItem) => {
         throw error;
     }
 };
+
+export const getNotification = async (userId) => {
+    try {
+        const response = await axios.get(`/api/notifications/user/${userId}`,{
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
+
