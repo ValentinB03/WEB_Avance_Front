@@ -10,10 +10,16 @@ export const loginUser = async (email, password) => {
                 "Content-Type": "application/json"
             }
         });
-        const { accessToken, refreshToken} = response.data;
+        const { accessToken, refreshToken, user} = response.data;
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
-        await getUser(response.data.user.id);
+        const response2 = await axios.get(`/api/users/${user.id}`,{
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        localStorage.setItem('user', JSON.stringify(response2.data));
         return response.data;
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
@@ -93,8 +99,6 @@ export const getUser = async (idUser) => {
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
             }
         });
-        localStorage.setItem('user', JSON.stringify(response.data));
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
@@ -671,6 +675,38 @@ export const createOrder = async (clientId, restaurantId, price, delivererId, st
     }
 }
 
+export const getOrderById = async (Id) => {
+    try {
+        const response = await axios.get(`/api/orders//${Id}`,{
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
+
+export const getAllOrder = async () => {
+    try {
+        const response = await axios.get(`/api/orders/`,{
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
+
 export const getOrderByClientId = async (clientId) => {
     try {
         const response = await axios.get(`/api/orders/ByClient/${clientId}`,{
@@ -742,6 +778,24 @@ export const updateOrderForPaiement = async (orderId, price, status, totalAmount
             price,
             status,
             totalAmount
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+    }
+    catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
+
+export const updateOrderForLivreur = async (orderId, status, delivererId) => {
+    try {
+        await axios.put(`/api/orders/${orderId}`,{
+            status,
+            delivererId
         }, {
             headers: {
                 "Content-Type": "application/json",

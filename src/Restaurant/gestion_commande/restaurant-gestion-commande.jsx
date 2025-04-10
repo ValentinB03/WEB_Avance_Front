@@ -3,23 +3,26 @@ import './restaurant-gestion-commande.css';
 import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import {getBanniereByOwner, getOrderByRestoId, updateOrderStatus} from "../../api/api.jsx";
+import {useNavigate, useParams} from "react-router-dom";
 
 
 function RestaurantGestionCommande() {
 
+    const { id} = useParams();
     const user = JSON.parse(localStorage.getItem('user'));
     const [CommandeEnCours, setCommandeEnCours] = useState([]);
     const [CommandeEnAttente, setCommandeEnAttente] = useState([]);
     const [Banniere, setBanniere] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCommande = async () => {
             try {
                 const banniere = await getBanniereByOwner(user.id);
                 setBanniere(banniere.data);
-                const response = await getOrderByRestoId(user.id);
-                setCommandeEnAttente(response.filter((item) => item.status === 'pending'));
-                setCommandeEnCours(response.filter((item) => item.status === 'preparing' || item.status === 'ready'));
+                const response = await getOrderByRestoId(id);
+                setCommandeEnAttente(response.filter((item) => item.status === 'En attente'));
+                setCommandeEnCours(response.filter((item) => item.status === 'En cours de préparation' || item.status === 'Prête'));
 
             } catch (error) {
                 console.error("Erreur lors de la récupération des restaurants :", error);
@@ -28,8 +31,12 @@ function RestaurantGestionCommande() {
         fetchCommande();
     } , []);
 
-    const ModifStats = (id, status) => {
+    const ModifStatus = (id, status) => {
         updateOrderStatus(id, status);
+    }
+
+    const navigateToDetails = (id) => {
+        navigate(`/restaurant/details-commande/${id}`);
     }
 
     return (
@@ -50,8 +57,8 @@ function RestaurantGestionCommande() {
                                 <p><b>Prix :</b> {item.price}€</p>
                             </div>
                             <div className={"bouton-commande"}>
-                                <button>Visualiser</button>
-                                <button onClick={ModifStats(item.id, 'cancelled')}>Commande annulée</button>
+                                <button onClick={() => navigateToDetails(item.id)}>Visualiser</button>
+                                <button onClick={() => ModifStatus(item.id, 'Annulée')}>Commande annulée</button>
                             </div>
                         </div>
                     ))}
@@ -68,8 +75,8 @@ function RestaurantGestionCommande() {
                                 <p><b>Prix :</b>{item.price}€</p>
                             </div>
                             <div className={"bouton-commande-attente"}>
-                                <button className={"bouton-accepter"} onClick={ModifStats(item.id, 'preparing')}>Accepter</button>
-                                <button className={"bouton-refuser"} onClick={ModifStats(item.id, 'cancelled')}>Refuser</button>
+                                <button className={"bouton-accepter"} onClick={() => ModifStatus(item.id, 'En cours de préparation')}>Accepter</button>
+                                <button className={"bouton-refuser"} onClick={() => ModifStatus(item.id, 'Annulée')}>Refuser</button>
                             </div>
                         </div>
                     ))}

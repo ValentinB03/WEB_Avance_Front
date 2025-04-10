@@ -19,6 +19,11 @@
     justify-content: center;
 }
 
+.bouton-fini{
+    width: 100%;
+    margin-bottom: 3vw;
+}
+
 .container-detail-items {
     border: 3px solid black;
     border-radius: 20px;

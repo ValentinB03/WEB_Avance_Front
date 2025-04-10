@@ -7,8 +7,8 @@ import {
     editAddressResto, editEmailResto,
     editIbanResto,
     editNameResto,
-    editPasswordResto,
-    getBanniereByOwner, getRestaurantByOwner,
+    editPasswordResto, getAllOrder,
+    getBanniereByOwner, getRestaurantById, getRestaurantByOwner,
     getUser
 } from "../../api/api.jsx";
 import {useNavigate} from "react-router-dom";
@@ -18,8 +18,9 @@ function ProfilRestaurant() {
 
     const [banniere, setBanniere] = useState('');
     const [resto, setResto] = useState('');
-    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    const user = JSON.parse(localStorage.getItem('user'));
     const navigate = useNavigate();
+    const [order_fini, setOrder_fini] = useState([]);
 
     useEffect(() => {
         const fetchRestaurant = async () => {
@@ -30,6 +31,29 @@ function ProfilRestaurant() {
             setResto(restaurantData2[0]);
         };
         fetchRestaurant();
+
+        const fetchtOrder_fini = async () => {
+            try {
+                const orders = await getAllOrder(); // Récupère toutes les commandes
+                const ordersFilter = orders.filter((item) => item.status === 'Livrée' || item.status === 'Annulée');
+                const ordersWithUsers = await Promise.all(
+                    ordersFilter.map(async (order) => {
+                        const restaurantUser = await getRestaurantById(order.restaurantId); // Récupère les infos du restaurant
+                        const clientUser = await getUser(order.clientId); // Récupère les infos du client
+                        return {
+                            ...order,
+                            restaurantUser,
+                            clientUser,
+                        };
+                    })
+                );
+                console.log("Order_fini :",ordersWithUsers);
+                setOrder_fini(ordersWithUsers);
+            } catch (error) {
+                console.error("Erreur lors de la récupération de l'utilisateur :", error);
+            }
+        }
+        fetchtOrder_fini();
     }, []); // Le tableau de dépendances vide empêche l'exécution multiple
 
 
@@ -38,17 +62,6 @@ function ProfilRestaurant() {
     ]);
     const [items_profil_restaurant_parrainage] = useState([
         {code_parrainage: user.referralCode},
-    ]);
-    const [items_profil_restaurant_historique_commandes] = useState([
-        {id:1, id_commande: "340003015", date_commande: "2023-10-01", statut_commande: "En cours", account_name_client: "Brice.Dupont",prix_commande: "15.00€", account_name_livreur: "Colin.Richard"},
-        {id:2, id_commande: "340003016", date_commande: "2023-10-02", statut_commande: "Livrée", account_name_client: "Maelig.Dupont", prix_commande: "20.00€", account_name_livreur: "Hugo.Richard"},
-        {id:3, id_commande: "340003017", date_commande: "2023-10-03", statut_commande: "Annulée", account_name_client: "Pauline.Dupont", prix_commande: "25.00€", account_name_livreur: "David.Richard"},
-        {id:4, id_commande: "340003018", date_commande: "2023-10-04", statut_commande: "En cours", account_name_client: "Béatrice.Dupont", prix_commande: "30.00€", account_name_livreur: "Maxime.Richard"},
-        {id:5, id_commande: "340003019", date_commande: "2023-10-05", statut_commande: "Livrée", account_name_client: "DJ.Dupont", prix_commande: "35.00€", account_name_livreur: "Quentin.Richard"},
-        {id:6, id_commande: "340003020", date_commande: "2023-10-06", statut_commande: "Annulée", account_name_client: "Anne-Laure.Dupont", prix_commande: "40.00€", account_name_livreur: "Mathieu.Richard"},
-        {id:7, id_commande: "340003021", date_commande: "2023-10-07", statut_commande: "En cours", account_name_client: "Jeremy.Dupont", prix_commande: "45.00€", account_name_livreur: "Maxence.Richard"},
-        {id:8, id_commande: "340003022", date_commande: "2023-10-08", statut_commande: "Livrée", account_name_client: "Axel.Dupont", prix_commande: "50.00€", account_name_livreur: "Nolan.Richard"},
-        {id:9, id_commande: "340003023", date_commande: "2023-10-09", statut_commande: "Annulée", account_name_client: "Valentin.Dupont", prix_commande: "55.00€", account_name_livreur: "Ohonna.Richard"},
     ]);
 
 
@@ -95,7 +108,11 @@ function ProfilRestaurant() {
     }
 
     const navigateToGestionCommande = () => {
-        navigate(`/restaurant/commande`);
+        navigate(`/restaurant/commande/${resto.id}`);
+    }
+
+    const navigateToStats = () => {
+        navigate(`/restaurant/statistique/${resto.id}`);
     }
 
     return (
@@ -159,7 +176,7 @@ function ProfilRestaurant() {
                 <div className="container-options_restaurant">
                     <button className={"option-button_profil_restaurant"} onClick={navigateToModifCarte}>Modifier la carte</button>
                         <button className={"option-button_profil_restaurant"} onClick={navigateToGestionCommande}>Gestion des commandes</button>
-                        <button className={"option-button_profil_restaurant"}>Statistiques du restaurant</button>
+                        <button className={"option-button_profil_restaurant"} onClick={navigateToStats}>Statistiques du restaurant</button>
                 </div>
 
 
@@ -174,17 +191,17 @@ function ProfilRestaurant() {
                                 <div  className={"profil_restaurant-case-tableau"}>Date</div>
                                 <div className={"profil_restaurant-case-tableau"}>Etat de la commande</div>
                                 <div className={"profil_restaurant-case-tableau"}>Client</div>
+                                <div className={"profil_restaurant-case-tableau"}>Adresse du client</div>
                                 <div className={"profil_restaurant-case-tableau"}>Prix de la commande</div>
-                                <div className={"profil_restaurant-case-tableau"}>Livreur</div>
                             </div>
-                            {items_profil_restaurant_historique_commandes.map(items_profil_restaurant_historique_commandes => (
-                                <div key={items_profil_restaurant_historique_commandes.id} className="content-profil_restaurant-historique_commandes-line">
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.id_commande}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.date_commande}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.statut_commande}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.account_name_client}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.prix_commande}</p>
-                                    <p className={"profil_restaurant-case-tableau"}>{items_profil_restaurant_historique_commandes.account_name_livreur}</p>
+                            {order_fini.map(order => (
+                                <div key={order.id} className="content-profil_restaurant-historique_commandes-line">
+                                    <p className={"profil_restaurant-case-tableau"}>{order.id}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{order.createdAt}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{order.status}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{order.clientUser.name}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{order.clientUser.addressString}</p>
+                                    <p className={"profil_restaurant-case-tableau"}>{order.price}</p>
                                 </div>
                             ))}
                         </div>

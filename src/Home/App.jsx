@@ -138,13 +138,13 @@ function AppWrapper() {
                     <Route path="/connexion" element={<Connexion />} />
                     <Route path="/panier" element={<Panier />} />
                     <Route path="/restaurant/modification-menu/:id" element={<RestaurantModifMenu />} />
-                    <Route path="/restaurant/commande" element={<RestaurantGestionCommande />} />
+                    <Route path="/restaurant/commande/:id" element={<RestaurantGestionCommande />} />
                     <Route path="/paiement" element={<Paiement />} />
                     <Route path="/livreur-commande" element={<CommandeLivreur />} />
                     <Route path="/livreur/details-commande" element={<LivreurDetailsCommande />} />
-                    <Route path="/restaurant/details-commande" element={<RestaurantDetailsCommande />} />
+                    <Route path="/restaurant/details-commande/:id" element={<RestaurantDetailsCommande />} />
                     <Route path="/developpeur/profil-developpeur" element={<DeveloppeurProfil />} />
-                    <Route path="/restaurant/statistique" element={<RestaurantStatistique />} />
+                    <Route path="/restaurant/statistique/:id" element={<RestaurantStatistique />} />
                     <Route path="/client/profil-client" element={<ClientProfil />} />
                     <Route path="/service-technique" element={<ServiceTechnique />} />
                     <Route path="/service-commercial" element={<ServiceCommercialInfo />} />

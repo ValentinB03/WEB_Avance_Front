@@ -36,7 +36,7 @@ function Panier() {
             const paiement = async () => {
                 try {
                     const response = await getOrderByClientId(user.id);
-                    const responseFilter = response.filter((item) => item.status === 'panier');
+                    const responseFilter = response.filter((item) => item.status === 'Panier');
                     if (responseFilter.length > 0) {
                         const responseItems = await getOrderItemsByIdOrder(response[0].id);
                         // Regrouper les items par articleId ou menuId
@@ -84,7 +84,7 @@ function Panier() {
     }, [user]);
 
     const StartOrder = async () => {
-        updateOrderForPaiement(items[0].orderId, total, 'pending', total+4+2.40)
+        updateOrderForPaiement(items[0].orderId, total, 'En attente', total+4+2.40)
     }
 
     return (

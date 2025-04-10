@@ -35,7 +35,7 @@ function Panier() {
             const panier = async () => {
                 try {
                     const response = await getOrderByClientId(user.id);
-                    const responseFilter = response.filter((item) => item.status === 'panier');
+                    const responseFilter = response.filter((item) => item.status === 'Panier');
                     if (responseFilter.length > 0) {
                         const responseItems = await getOrderItemsByIdOrder(responseFilter[0].id);
 
