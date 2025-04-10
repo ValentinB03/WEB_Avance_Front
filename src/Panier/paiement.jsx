@@ -11,6 +11,7 @@ import {
     updateOrderForPaiement
 } from "../api/api.jsx";
 import DefaultBG from '../assets/default.png';
+import {useNavigate} from "react-router-dom";
 
 function Panier() {
 
@@ -18,6 +19,7 @@ function Panier() {
     const [user, setUser] = useState(null);
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -85,6 +87,7 @@ function Panier() {
 
     const StartOrder = async () => {
         updateOrderForPaiement(items[0].orderId, total, 'En attente', total+4+2.40)
+        navigate('/');
     }
 
     return (

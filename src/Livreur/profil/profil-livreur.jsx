@@ -21,6 +21,7 @@ function ProfilLivreur() {
     const navigate = useNavigate();
     const [order_en_cours, setOrder_en_cours] = useState([]);
     const [order_fini, setOrder_fini] = useState([]);
+    const [refresh, setRefresh] = useState(0);
 
     const modifLivreurName = () => {
         const account_name = document.getElementById("account_name_livreur").value;
@@ -105,7 +106,7 @@ function ProfilLivreur() {
             }
         }
         fetchtOrder_fini();
-    } , []);
+    } , [refresh]);
 
 
     const naviagteToCommandeDispo = () => {
@@ -114,6 +115,7 @@ function ProfilLivreur() {
 
     const ModifStatus = (id, status) => {
         updateOrderStatus(id, status);
+        setRefresh(refresh + 1);
     }
 
     return (
@@ -180,27 +182,26 @@ function ProfilLivreur() {
                     </div>
                 </div>
 
-
-                <div className="container-profil_livreur-commande_en_cours">
-                    <h2 className="titre-profil_livreur-commande_en_cours">Commande en cours</h2>
-                    <div className="tableau-profil_livreur-commande_en_cours">
-                        <div className="content-profil_livreur-commande_en_cours">
-                            {order_en_cours.map(order => (
-                            <div key={order.id} className="liste-profil_livreur-commande_en_cours">
-                                <div className="liste_commandes-profil_livreur">
-                                    <p><b>Commande N°</b> {order?.id}</p>
-                                    <p><b>Date : </b>{order?.createdAt}</p>
-                                    <p><b>Etat de la commande </b>{order?.status} </p>
-                                    <p><b>Restaurant : </b>{order?.restaurantUser.name}</p>
-                                    <p><b>Nom client : </b>{order?.clientUser.name}</p>
-                                    <p><b>Adresse de livraison : </b>{order?.clientUser.addressString}</p>
+                {order_en_cours.map(order => (
+                    <div className="container-profil_livreur-commande_en_cours">
+                        <h2 className="titre-profil_livreur-commande_en_cours">Commande en cours</h2>
+                        <div className="tableau-profil_livreur-commande_en_cours">
+                            <div className="content-profil_livreur-commande_en_cours">
+                                <div key={order.id} className="liste-profil_livreur-commande_en_cours">
+                                    <div className="liste_commandes-profil_livreur">
+                                        <p><b>Commande N°</b> {order?.id}</p>
+                                        <p><b>Date : </b>{order?.createdAt}</p>
+                                        <p><b>Etat de la commande </b>{order?.status} </p>
+                                        <p><b>Restaurant : </b>{order?.restaurantUser.name}</p>
+                                        <p><b>Nom client : </b>{order?.clientUser.name}</p>
+                                        <p><b>Adresse de livraison : </b>{order?.clientUser.addressString}</p>
+                                    </div>
+                                        <button className="visualiser_button-profil_livreur-commande_en_cours" onClick={() => ModifStatus(order.id, 'Livrée')}>Valider livraison</button>
                                 </div>
-                                    <button className="visualiser_button-profil_livreur-commande_en_cours" onClick={() => ModifStatus(order.id, 'Livrée')}>Valider livraison</button>
                             </div>
-                            ))}
                         </div>
                     </div>
-                </div>
+                ))}
 
 
                 <div className="container-profil_livreur-historique_commandes">
