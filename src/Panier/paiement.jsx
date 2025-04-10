@@ -7,6 +7,7 @@ import Menu from '../assets/img/Menu.jpg'
 
 function Panier() {
 
+
     const [items] = useState([
         { id: 1, resto: 'Big Bite Burger', description: 'Burger N°1 + Frites + Boisson', image: Menu, prix: 17 },
         { id: 2, resto: 'Big Bite Burger', description: 'Burger N°2 + Frites + Boisson', image: Menu, prix: 17 },

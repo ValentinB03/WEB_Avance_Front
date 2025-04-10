@@ -4,8 +4,26 @@ import NavBar from '../Navbar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import ImgResto from '../assets/img/burger.jpg';
 import Menu from '../assets/img/menu.jpg';
+import { createOrder } from "../api/api.jsx";
+
+
 
 function RestaurantDetailsCommande() {
+
+    const { id } = useParams();
+    const [orderItems, setOrderItems] = useState([]);
+
+
+    useEffect(() => {
+        const fetchOrder = async () => {
+            const orderData = await getOrderItemsByOrderID(id);
+            setOrderItems(orderData);
+        };
+        fetchOrder();
+    };
+
+    const
+
 
     const [items] = useState([
         { id: 1, Article: 'Menu 1', image: Menu, prix: 17 },

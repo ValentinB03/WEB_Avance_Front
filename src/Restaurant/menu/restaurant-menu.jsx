@@ -12,6 +12,8 @@ function RestaurantMenu() {
     const [menus, setMenus] = useState([]);
 
     const { id } = useParams();
+    const user= JSON.parse(localStorage.getItem('user'));
+
 
     useEffect(() => {
         const fetchRestaurants = async () => {
@@ -33,6 +35,20 @@ function RestaurantMenu() {
         };
         fetchRestaurants();
     }, []);
+
+    const ajout_panier = (id) => {
+        console.log("Ajout au panier");
+        // Logique d'ajout au panier
+        createOrder(user.id,restaurant.id, articles, menus)
+        getOrderByClientId(user.id).then((response) => {
+            if(response) {
+                //updateOrder(response.id, id);
+            }
+            else {
+                createOrder(user.id,restaurant.id, );
+            }
+        }
+    }
 
     return (
         <div className="App">
@@ -59,7 +75,7 @@ function RestaurantMenu() {
                                             <p>{item.name}</p>
                                             <p>{item.description}</p>
                                             <p>{item.price}€</p>
-                                            <button>Ajouter au panier</button>
+                                            <button onClick={ajout_panier(item.id)}>Ajouter au panier</button>
                                         </div>
                                     </div>
                                 ))}
@@ -73,7 +89,7 @@ function RestaurantMenu() {
                                             <p>{item.name}</p>
                                             <p>{item.description}</p>
                                             <p>{item.price}€</p>
-                                            <button>Ajouter au panier</button>
+                                            <button onClick={ajout_panier(item.id)}>Ajouter au panier</button>
                                         </div>
                                     </div>
                                 ))}

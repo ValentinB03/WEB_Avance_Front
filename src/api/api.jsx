@@ -615,3 +615,59 @@ export const DeleteMenu = async (id) => {
         throw error;
     }
 };
+
+export const createOrder = async (clientId, restaurantId, price, delivererId, status, destination, origin) => {
+    try {
+        const response = await axios.post(`/api/orders/`, {
+            clientId,
+            restaurantId,
+            price,
+            delivererId,
+            status,
+            destination,
+            origin
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
+
+export const getOrderByClientId = async (clientId) => {
+    try {
+        const response = await axios.get(`/api/orders/${clientId}`,{
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
+
+export const updateOrderStatus = async (orderId, status) => {
+    try {
+        await axios.patch(`/api/orders/${orderId}/status`,{
+            status
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+    }
+    catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
