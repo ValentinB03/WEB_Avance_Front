@@ -2,15 +2,16 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import { IoNotifications } from "react-icons/io5";
-import Notification from "../Notification/notification.jsx";
 import '../notification/notification.css'
 import { useNavigate } from "react-router-dom";
+import {getNotification} from "../api/api.jsx";
 
 function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [notificationOpen, setNotificationOpen] = useState(false);
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
+    const [items, setItems] = useState([]);
 
     useEffect(() => {                                                       // Récupérer l'utilisateur depuis le localStorage
         const storedUser = localStorage.getItem('user');                    // Vérifier si l'utilisateur est connecté
@@ -23,6 +24,28 @@ function NavBar() {
             }
         }
     }, []);
+
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                const response = await getNotification(user.id);
+                const formattedItems = response.notifications.map(item => ({
+                    formattedDateTime: item.createdAt.split('T')[0] + ' ' + item.createdAt.split('T')[1].split('.')[0],
+                    message: item.message
+                }));
+                console.log(formattedItems);
+                setItems(formattedItems);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des notifications :", error);
+            }
+        };
+
+        const interval = setInterval(() => {
+            fetchNotifications();
+        }, 20000); // Exécute toutes les 2 secondes
+
+        return () => clearInterval(interval); // Nettoie l'intervalle lorsque le composant est démonté
+    }, [user]);
 
 
     const toggleMenu = () => {
@@ -93,7 +116,14 @@ function NavBar() {
             )}
             {notificationOpen && (
                 <div className="notification-popup">
-                    <Notification />
+                    <div className="notification">
+                        {items?.map(item => (
+                            <div key={item.id}>
+                                <p className="notification-date">{item?.formattedDateTime}</p>
+                                <p className="notification-message">    {item?.message}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
