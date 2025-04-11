@@ -68,8 +68,8 @@ function ServiceTechnique() {
                                 <div className="auth-service">
                                     <p>Service d'authentification : {systemHealth?.services.auth.status}</p>
                                     <p>Durée de vie : {systemHealth?.services.auth.metrics.uptime}</p>
-                                    <p>Mémoire utilisé : {systemHealth?.services.auth.metrics.memory.usage.heapUsed}</p>
-                                    <p>CPU utilisé : {systemHealth?.services.auth.metrics.memory.system.percentFree}</p>
+                                    <p>Ram utilisé : {systemHealth?.services.auth.metrics.memory.usage.heapUsed}</p>
+                                    <p>CPU utilisé : {systemHealth?.services.auth.metrics.cpu.load[2]*100}%</p>
                                 </div>
                             </div>
                             <div className="system-health-restaurant">
@@ -77,8 +77,8 @@ function ServiceTechnique() {
                                 <div className="restaurant-service">
                                     <p>Service de restaurant : {systemHealth?.services.restaurant.status}</p>
                                     <p>Durée de vie : {systemHealth?.services.restaurant.metrics.uptime}</p>
-                                    <p>Mémoire utilisé : {systemHealth?.services.restaurant.metrics.memory.usage.heapUsed}</p>
-                                    <p>CPU utilisé : {systemHealth?.services.restaurant.metrics.memory.system.percentFree}</p>
+                                    <p>Ram utilisé : {systemHealth?.services.restaurant.metrics.memory.usage.heapUsed}</p>
+                                    <p>CPU utilisé : {systemHealth?.services.restaurant.metrics.cpu.load[2]*100}%</p>
                                 </div>
                             </div>
                             <div className="system-health-orders">
@@ -86,8 +86,8 @@ function ServiceTechnique() {
                                 <div className="orders-service">
                                     <p>Service de commande : {systemHealth?.services.orders.status}</p>
                                     <p>Durée de vie : {systemHealth?.services.orders.metrics.uptime}</p>
-                                    <p>Mémoire utilisé : {systemHealth?.services.orders.metrics.memory.usage.heapUsed}</p>
-                                    <p>CPU utilisé : {systemHealth?.services.orders.metrics.memory.system.percentFree}</p>
+                                    <p>Ram utilisé : {systemHealth?.services.orders.metrics.memory.usage.heapUsed}</p>
+                                    <p>CPU utilisé : {systemHealth?.services.orders.metrics.cpu.load[2]*100}%</p>
                                 </div>
                             </div>
                         </div>

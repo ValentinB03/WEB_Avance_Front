@@ -46,19 +46,19 @@ function RestaurantMenu() {
         // Logique d'ajout au panier
         getOrderByClientId(user.id).then((response) => {
             const filteredResponse = response.filter((item) => item.status === 'Panier');
+            const doesNotExist = !filteredResponse.some((item) => item.restaurantId === restaurant.id);
             console.log("Récupération de la commande", filteredResponse);
-            if(filteredResponse.length > 0) {
+            if(filteredResponse.length > 0 && !doesNotExist) {
                 addArticleOrder(filteredResponse[0].id, id)
             }
             else {
                 const createOrderZ = async () => {
                     const response = await createOrder(user.id,restaurant.id);
                     console.log("Création de la commande", response);
-
+                    ajout_panier_article(id);
 
                 };
                 createOrderZ();
-                addArticleOrder(response[0].id, id)
             }
         });
     }
@@ -67,18 +67,20 @@ function RestaurantMenu() {
         // Logique d'ajout au panier
         getOrderByClientId(user.id).then((response) => {
             const filteredResponse = response.filter((item) => item.status === 'Panier');
+            const doesNotExist = !filteredResponse.some((item) => item.restaurantId === restaurant.id);
             console.log("Récupération de la commande", filteredResponse);
-            if(filteredResponse.length > 0) {
+            if(filteredResponse.length > 0 && !doesNotExist) {
                 addMenuOrder(filteredResponse[0].id, id)
             }
             else {
                 const createOrderZ = async () => {
                     const response = await createOrder(user.id,restaurant.id);
                     console.log("Création de la commande", response);
+                    ajout_panier_menu(id);
 
                 };
                 createOrderZ();
-                addMenuOrder(response[0].id, id)
+
             }
         });
     }

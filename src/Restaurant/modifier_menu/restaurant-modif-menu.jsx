@@ -29,7 +29,7 @@ function RestaurantModifMenu() {
             const restaurantData2 = await getRestaurantById(id);
             setRestaurant(restaurantData2);
             const restaurantData = await getBanniereByOwner(restaurantData2.ownerId);
-            setBanniere(restaurantData.data);
+            setBanniere(restaurantData?.data || DefaultBG);
             const article = await getAllArticleRestoById(restaurantData2.id);
             setArticles(article.filter(article => !article.menuId));
             const menu = await getAllMenuRestoById(restaurantData2.id);
@@ -72,10 +72,12 @@ function RestaurantModifMenu() {
 
     const deleteArticle = (id) => {
         DeleteArticle(id)
+        setRefresh(refresh + 1);
     }
 
     const deleteMenu = (id) => {
         DeleteMenu(id)
+        setRefresh(refresh + 1);
     }
 
     return (

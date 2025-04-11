@@ -12,11 +12,12 @@ import {
     getUser
 } from "../../api/api.jsx";
 import {useNavigate} from "react-router-dom";
+import DefaultBG from "../../assets/default.png";
 
 
 function ProfilRestaurant() {
 
-    const [banniere, setBanniere] = useState('');
+    const [banniere, setBanniere] = useState(null);
     const [resto, setResto] = useState('');
     const user = JSON.parse(localStorage.getItem('user'));
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ function ProfilRestaurant() {
     useEffect(() => {
         const fetchRestaurant = async () => {
             const restaurantData = await getBanniereByOwner(user.id);
-            setBanniere(restaurantData.data);
+            setBanniere(restaurantData?.data || DefaultBG);
             const restaurantData2 = await getRestaurantByOwner(user.id);
             console.log(restaurantData2[0].id);
             setResto(restaurantData2[0]);

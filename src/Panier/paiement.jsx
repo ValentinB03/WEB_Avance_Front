@@ -21,7 +21,8 @@ function Panier() {
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
     const navigate = useNavigate();
-    const [restaurant, setRestaurant] = useState(null);
+    const [restaurants, setRestaurants] = useState(null);
+    const [commande, setCommande] = useState("???");
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -41,45 +42,45 @@ function Panier() {
                 try {
                     const response = await getOrderByClientId(user.id);
                     const responseFilter = response.filter((item) => item.status === 'Panier');
-                    const restaurant = await getRestaurantById(responseFilter[0].restaurantId)
-                    setRestaurant(restaurant);
-                    if (responseFilter.length > 0) {
-                        const responseItems = await getOrderItemsByIdOrder(responseFilter[0].id);
-                        // Regrouper les items par articleId ou menuId
-                        const groupedItems = {};
-                        responseItems.forEach(item => {
-                            const key = item.articleId || item.menuId;
-                            if (!groupedItems[key]) {
-                                groupedItems[key] = { ...item, quantite: item.quantity };
-                            } else {
-                                groupedItems[key].quantite += item.quantity;
-                            }
-                        });
+                    for (const responseI of responseFilter) {
+                        if (responseFilter.length > 0) {
+                            const responseItems = await getOrderItemsByIdOrder(responseI.id);
 
-                        // Convertir en tableau et récupérer les détails
-                        const groupedItemsArray = Object.values(groupedItems);
-                        const combinedItems = await Promise.all(
-                            groupedItemsArray.map(async (item) => {
-                                try {
-                                    if (item.articleId) {
-                                        const article = await getArticleById(item.articleId);
-                                        return { ...item, details: article };
-                                    } else if (item.menuId) {
-                                        const menu = await getMenuById(item.menuId);
-                                        return { ...item, details: menu };
-                                    }
-
-                                } catch (error) {
-                                    console.error("Erreur lors de la récupération des détails :", error);
-                                    return item; // Retourne l'item sans détails en cas d'erreur
+                            // Regrouper les items par articleId ou menuId
+                            const groupedItems = {};
+                            responseItems.forEach(item => {
+                                const key = item.articleId || item.menuId;
+                                if (!groupedItems[key]) {
+                                    groupedItems[key] = {...item, quantite: item.quantity};
+                                } else {
+                                    groupedItems[key].quantite += item.quantity;
                                 }
-                            })
-                        );
-                        const totalAmount = combinedItems.reduce((acc, item) => {
-                            return acc + (item.details?.price || 0) * (item.quantite || 0);
-                        }, 0);
-                        setTotal(totalAmount);
-                        setItems(combinedItems); // Met à jour l'état avec les articles et menus combinés
+                            });
+
+                            // Convertir en tableau et récupérer les détails
+                            const groupedItemsArray = Object.values(groupedItems);
+                            const combinedItems = await Promise.all(
+                                groupedItemsArray.map(async (item) => {
+                                    try {
+                                        if (item.articleId) {
+                                            const article = await getArticleById(item.articleId);
+                                            return {...item, details: article};
+                                        } else if (item.menuId) {
+                                            const menu = await getMenuById(item.menuId);
+                                            return {...item, details: menu};
+                                        }
+                                    } catch (error) {
+                                        console.error("Erreur lors de la récupération des détails :", error);
+                                        return item; // Retourne l'item sans détails en cas d'erreur
+                                    }
+                                })
+                            );
+                            const totalAmount = combinedItems.reduce((acc, item) => {
+                                return acc + (item.details?.price || 0) * (item.quantite || 0);
+                            }, 0);
+                            setTotal((prevTotal) => prevTotal + totalAmount);
+                            setItems((prevItems) => [...prevItems, ...combinedItems]);
+                        }
                     }
                 } catch (error) {
                     console.error("Erreur lors de la récupération du panier :", error);
@@ -89,9 +90,45 @@ function Panier() {
         }
     }, [user]);
 
-    const StartOrder = async () => {
-        updateOrderForPaiement(items[0].orderId, total, 'En attente', total+4+2.40)
-        addNotification(restaurant.ownerId, "Nouvelle commande")
+    useEffect(() => {
+        setCommande("");
+        const grouped = Object.values(
+            items.reduce((acc, item) => {
+                if (!acc[item.orderId]) {
+                    acc[item.orderId] = [];
+                }
+                acc[item.orderId].push(item);
+                setCommande( prev => prev + item.orderId + "");
+                return acc;
+            }, {})
+
+
+        );
+        console.log("Items grouped :", grouped);
+        setRestaurants(grouped);
+    } , [items]);
+
+    const StartOrder = async (event) => {
+        event.preventDefault()
+        const grouped = Object.values(
+            items.reduce((acc, item) => {
+                if (!acc[item.orderId]) {
+                    acc[item.orderId] = [];
+                }
+                acc[item.orderId].push(item);
+                return acc;
+            }, {})
+        );
+        for (const item of grouped) {
+            let total = 0;
+            for (const itemI of item) {
+                total += (itemI.details?.price || 0) * (itemI.quantite || 0);
+            }
+            updateOrderForPaiement(item[0].orderId, total, 'En attente', total+4+2.40)
+            const restaurantTemp = await getRestaurantById(item[0].details.restaurantId)
+            await addNotification(restaurantTemp.ownerId, "Nouvelle commande")
+
+        }
         navigate('/');
     }
 
@@ -102,20 +139,20 @@ function Panier() {
 
             <h1 className="titre-panier">Paiement</h1>
             <div className="container-paiement">
-                <div className={"paiement"}>
-                    <h1>Coordonnées de la carte</h1>
-                    <p>Information de la carte</p>
-                    <input type="text" placeholder="Nom du titulaire"/>
-                    <div className={"data-ccv"}>
-                        <input type="text" placeholder="MM/AA" />
-                        <input type="text" placeholder="CCV" />
-                    </div>
-                    <p>Titulaire de la carte</p>
-                    <input type="text" placeholder="Nom du titulaire" />
-                    <button onClick={StartOrder}>Payer</button>
-                </div>
+                <form  className={"paiement"}>
+                        <h1>Coordonnées de la carte</h1>
+                        <p>Information de la carte</p>
+                        <input type="text" placeholder="Nom du titulaire" required/>
+                        <div className={"data-ccv"}>
+                            <input type="text" placeholder="MM/AA" required/>
+                            <input type="text" placeholder="CCV" required/>
+                        </div>
+                        <p>Titulaire de la carte</p>
+                        <input type="text" placeholder="Nom du titulaire" required/>
+                        <button onClick={StartOrder}>Payer</button>
+                </form>
                 <div className={"resume"}>
-                    <h1>N°Commande : {items[0]?.orderId}</h1>
+                    <h1>N°Commande : {commande}</h1>
                     <div className={"liste-resume"}>
                         {items.map(item => (
                             <div key={item.id} className="article-resume">
@@ -135,7 +172,7 @@ function Panier() {
                     </div>
                     <div className={"total-livraison"}>
                         <p>Livraison :</p>
-                        <p>4€</p>
+                        <p>{restaurants?.length * 4}€</p>
                     </div>
                     <div className={"total-frais"}>
                         <p>Frais :</p>
@@ -143,7 +180,7 @@ function Panier() {
                     </div>
                     <div className={"totals"}>
                         <p>Total</p>
-                        <p>{total + 4 + 2.40}</p>
+                        <p>{total + (restaurants?.length * 4) + 2.40}</p>
                     </div>
                 </div>
             </div>

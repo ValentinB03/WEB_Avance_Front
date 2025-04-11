@@ -6,6 +6,7 @@ import ImgResto from '../../assets/img/burger.jpg';
 import { Line } from "react-chartjs-2";
 import { Chart, LineElement, CategoryScale, LinearScale, PointElement, Tooltip } from "chart.js";
 import {getAllOrder, getRestaurantById, getUser} from "../../api/api.jsx";
+import {useParams} from "react-router-dom";
 
 Chart.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip);
 
@@ -16,12 +17,14 @@ function RestaurantStatistique() {
             labels: [],
             datasets: [],
         });
+        const { id } = useParams();
 
         useEffect(() => {
             const fetchtOrder_fini = async () => {
                 try {
                     const orders = await getAllOrder(); // Récupère toutes les commandes
-                    const ordersFilter = orders.filter((item) => item.status === 'Livrée');
+                    let ordersFilter = orders.filter((item) => item.status === 'Livrée');
+                    ordersFilter = ordersFilter.filter((item) => item.restaurantId === id);
                     const ordersWithUsers = await Promise.all(
                         ordersFilter.map(async (order) => {
                             const restaurantUser = await getRestaurantById(order.restaurantId);

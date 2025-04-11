@@ -4,6 +4,7 @@ import NavBar from '../../Navbar/NavBar.jsx';
 import Footer from '../../Footer/Footer.jsx';
 import {addNotification, getBanniereByOwner, getOrderByRestoId, updateOrderStatus} from "../../api/api.jsx";
 import {useNavigate, useParams} from "react-router-dom";
+import DefaultBG from '../../assets/default.png';
 
 
 function RestaurantGestionCommande() {
@@ -20,7 +21,7 @@ function RestaurantGestionCommande() {
         const fetchCommande = async () => {
             try {
                 const banniere = await getBanniereByOwner(user.id);
-                setBanniere(banniere.data);
+                setBanniere(banniere?.data || DefaultBG);
                 const response = await getOrderByRestoId(id);
                 console.log("Récupération de la commande", response);
                 setCommandeEnAttente(response.filter((item) => item.status === 'En attente'));

@@ -6,8 +6,8 @@ import ImgResto from '../assets/img/burger.jpg';
 import Menu from '../assets/img/menu.jpg';
 import {useParams} from "react-router-dom";
 import {
-    addNotification,
-    getArticleById,
+    addNotification, addNotificationLivreur,
+    getArticleById, getBanniereByOwner,
     getMenuById,
     getOrderById,
     getOrderItemsByIdOrder,
@@ -22,6 +22,7 @@ function RestaurantDetailsCommande() {
     const user = JSON.parse(localStorage.getItem('user'));
     const [order, setOrder] = useState([]);
     const [items, setItems] = useState([]);
+    const [banniere, setBanniere] = useState([]);
 
 
 
@@ -31,6 +32,8 @@ function RestaurantDetailsCommande() {
             setOrder(response2);
             const response = await getOrderItemsByIdOrder(response2.id);
             setItems(response);
+            const banniere = await getBanniereByOwner(user.id);
+            setBanniere(banniere?.data || DefaultBG);
             const combinedItems = await Promise.all(
                 response.map(async (item) => {
                     try {
@@ -55,13 +58,14 @@ function RestaurantDetailsCommande() {
     const ModifStatus = (id, status) => {
         updateOrderStatus(id, status);
         addNotification(order.clientId, "Votre commande attend un livreur");
+        addNotificationLivreur(order.clientId, true, "Une nouvelle commande est disponible");
     }
 
     return (
         <div className="App">
             <NavBar />
             <div className="content-img">
-                <img src={ImgResto} alt="Background" className="background-image-modifcarte" />
+                <img src={banniere} alt="Background" className="background-image-modifcarte" />
             </div>
             <h1 className="titre-modifcarte">{user.name}</h1>
             <h1 className={"Commande-titre"}>Détails de la commande</h1>
