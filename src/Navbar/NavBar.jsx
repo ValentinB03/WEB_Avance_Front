@@ -42,7 +42,7 @@ function NavBar() {
 
         const interval = setInterval(() => {
             fetchNotifications();
-        }, 20000); // Exécute toutes les 2 secondes
+        }, 2000); // Exécute toutes les 2 secondes
 
         return () => clearInterval(interval); // Nettoie l'intervalle lorsque le composant est démonté
     }, [user]);

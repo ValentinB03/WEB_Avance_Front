@@ -923,7 +923,7 @@ export const getNotification = async (userId) => {
 
 export const addNotification = async (userId, message) => {
     try {
-        await axios.post(`/api/notifications/`, {
+         const response = await axios.post(`/api/notifications/`, {
             userId,
             message
         }, {
@@ -932,6 +932,7 @@ export const addNotification = async (userId, message) => {
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
             }
         });
+         return response.data;
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
         throw error;

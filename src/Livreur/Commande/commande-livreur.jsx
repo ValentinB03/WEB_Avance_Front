@@ -17,7 +17,7 @@ function CommandeLivreur() {
         const fetchOrder = async () => {
             try {
                 const orders = await getAllOrder(); // Récupère toutes les commandes
-                const ordersFilter = orders.filter((item) => item.status === 'En cours de préparation' || item.status === 'Prête');
+                const ordersFilter = orders.filter((item) => item.status === 'Prête');
                 const ordersWithUsers = await Promise.all(
                     ordersFilter.map(async (order) => {
                         const restaurantUser = await getRestaurantById(order.restaurantId); // Récupère les infos du restaurant
