@@ -4,7 +4,7 @@ import './NavBar.css';
 import { IoNotifications } from "react-icons/io5";
 import '../notification/notification.css'
 import { useNavigate } from "react-router-dom";
-import {getNotification} from "../api/api.jsx";
+import {getNotification, getNotificationLivreur} from "../api/api.jsx";
 
 function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -28,13 +28,28 @@ function NavBar() {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const response = await getNotification(user.id);
-                const formattedItems = response.notifications.map(item => ({
-                    formattedDateTime: item.createdAt.split('T')[0] + ' ' + item.createdAt.split('T')[1].split('.')[0],
-                    message: item.message
-                }));
-                console.log(formattedItems);
-                setItems(formattedItems);
+                if(user){
+                    if(user.userType === 'livreur'){
+                        const response = await getNotificationLivreur();
+                        setItems(response.notifications);
+                        const formattedItems = response.notifications.map(item => ({
+                            formattedDateTime: item.createdAt.split('T')[0] + ' ' + item.createdAt.split('T')[1].split('.')[0],
+                            message: item.message
+                        }));
+                        console.log(formattedItems);
+                        setItems(formattedItems);
+                    }
+                    else{
+                        const response = await getNotification(user.id);
+                        setItems(response.notifications);
+                        const formattedItems = response.notifications.map(item => ({
+                            formattedDateTime: item.createdAt.split('T')[0] + ' ' + item.createdAt.split('T')[1].split('.')[0],
+                            message: item.message
+                        }));
+                        console.log(formattedItems);
+                        setItems(formattedItems);
+                    }
+                }
             } catch (error) {
                 console.error("Erreur lors de la récupération des notifications :", error);
             }
@@ -71,7 +86,12 @@ function NavBar() {
             </div>
             <div className="Nav-right">
                 <Link to="/">Accueil</Link>
-                <Link to="/panier">Panier</Link>
+                {user ? (
+                    <>
+                        {user.userType === 'client' && <Link to="/panier">Panier</Link>}
+                        {user.userType === 'commercial' && <Link to="/panier">Panier</Link>}
+                    </>
+                ) : (<></>)}
                 {user ? (
                     <div className="user-menu">
                         {user.userType === 'restaurateur' && <Link to="/restaurant/profil-restaurant">Profil</Link>}

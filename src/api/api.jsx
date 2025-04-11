@@ -921,6 +921,25 @@ export const getNotification = async (userId) => {
     }
 }
 
+
+
+export const getNotificationLivreur = async () => {
+    try {
+        const response = await axios.get(`/api/notifications/livreur`,{
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
+
+
 export const addNotification = async (userId, message) => {
     try {
          const response = await axios.post(`/api/notifications/`, {
@@ -933,6 +952,24 @@ export const addNotification = async (userId, message) => {
             }
         });
          return response.data;
+    } catch (error) {
+        console.error("Erreur lors de la connexion :", error);
+        throw error;
+    }
+}
+
+export const addNotificationLivreur = async (userId, livreur, message) => {
+    try {
+        await axios.post(`/api/notifications/`, {
+            userId,
+            livreur,
+            message
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
         throw error;
